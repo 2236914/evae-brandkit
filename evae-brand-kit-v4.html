@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evae Digital — Brand Kit IV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Barlow:wght@200;300;400;500&family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void:    #0D0D0D;
+  --carbon:  #2B2B2E;
+  --graphite:#3A3D41;
+  --smoke:   #6F7278;
+  --sand:    #D8D3C8;
+  --ivory:   #F5F1E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--void);
+  color:var(--ivory);
+  font-family:'Barlow',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ══ COVER ══ */
+.cover{
+  min-height:100svh;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  background:var(--void);
+  position:relative;
+  overflow:hidden;
+}
+
+/* large ruled lines background */
+.cover-lines{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.cover-lines::before{
+  content:'';
+  position:absolute;
+  left:0;right:0;
+  top:50%;
+  height:1px;
+  background:rgba(245,241,232,0.05);
+}
+.cover-lines::after{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;
+  left:50%;
+  width:1px;
+  background:rgba(245,241,232,0.04);
+}
+
+.cover-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:28px 24px;
+  border-bottom:1px solid #1A1A1A;
+  position:relative;
+  z-index:1;
+}
+.ch-left{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:9px;
+  font-weight:400;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--smoke);
+}
+.ch-right{
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--graphite);
+}
+
+.cover-body{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:0 24px 0;
+  position:relative;
+  z-index:1;
+}
+
+.cover-roman{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(110px,30vw,220px);
+  font-weight:400;
+  line-height:0.82;
+  letter-spacing:-0.04em;
+  color:var(--ivory);
+  display:block;
+  position:relative;
+}
+
+/* big outlined number */
+.cover-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(80px,22vw,160px);
+  font-weight:600;
+  line-height:1;
+  letter-spacing:-0.02em;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(245,241,232,0.08);
+  position:absolute;
+  right:24px;
+  bottom:0;
+  pointer-events:none;
+}
+
+.cover-footer{
+  position:relative;
+  z-index:1;
+  background:var(--carbon);
+  border-top:1px solid #252528;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  padding:18px 24px;
+  gap:16px;
+}
+.cf-tag{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:10px;
+  font-weight:400;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--smoke);
+}
+.cf-divider{width:1px;height:24px;background:var(--graphite);}
+.cf-tagline{
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--smoke);
+  text-align:right;
+  font-weight:300;
+  font-style:italic;
+}
+
+/* ══ SECTION ══ */
+.sec{padding:68px 24px;}
+.sec+.sec{border-top:1px solid #141416;}
+.sec.on-ivory{background:var(--ivory);color:var(--void);}
+.sec.on-sand{background:var(--sand);color:var(--void);}
+.sec.on-carbon{background:var(--carbon);color:var(--ivory);}
+.sec.on-void{background:var(--void);color:var(--ivory);}
+
+.s-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:9px;font-weight:500;
+  letter-spacing:4px;text-transform:uppercase;
+  color:var(--smoke);margin-bottom:4px;
+}
+.s-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(40px,11vw,64px);
+  font-weight:400;
+  line-height:1.0;
+  letter-spacing:-0.03em;
+  margin-bottom:44px;
+}
+.on-void .s-title,.on-carbon .s-title{color:var(--ivory);}
+.on-ivory .s-title,.on-sand .s-title{color:var(--void);}
+
+/* ══ LOGO ══ */
+.logo-giant{
+  width:100%;
+  background:var(--void);
+  border:1px solid #1E1E1E;
+  border-radius:4px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:80px 24px;
+  margin-bottom:3px;
+  position:relative;
+  overflow:hidden;
+}
+.lg-bg-text{
+  position:absolute;
+  font-family:'DM Serif Display',serif;
+  font-size:220px;
+  font-weight:400;
+  color:rgba(245,241,232,0.025);
+  letter-spacing:-0.04em;
+  pointer-events:none;
+  line-height:1;
+  user-select:none;
+}
+.logo-word{
+  font-family:'DM Serif Display',serif;
+  letter-spacing:-0.04em;
+  line-height:1;
+  position:relative;
+  z-index:1;
+}
+.lw-xl{font-size:clamp(80px,20vw,140px);color:var(--ivory);}
+.lw-lg{font-size:clamp(56px,14vw,96px);}
+.lw-md{font-size:40px;}
+.lw-sm{font-size:28px;}
+
+.logo-row-3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:3px;
+  margin-bottom:3px;
+}
+.lr-cell{
+  border-radius:4px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:36px 12px 24px;
+  gap:14px;
+}
+.lr-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:8px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  font-weight:400;
+}
+
+/* italic block */
+.logo-italic-strip{
+  background:var(--sand);
+  border-radius:4px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:28px 24px;
+}
+.lis-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(52px,13vw,88px);
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:-0.04em;
+  color:var(--void);
+  line-height:1;
+}
+.lis-tag{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--smoke);border:1px solid var(--smoke);
+  padding:5px 12px;border-radius:2px;
+  align-self:flex-end;
+}
+
+.logo-note-box{
+  margin-top:20px;
+  padding:20px 18px;
+  border-left:2px solid var(--graphite);
+}
+.lnb-text{font-size:12px;color:var(--smoke);line-height:1.8;}
+
+/* ══ PALETTE ══ */
+.pal-stack{display:flex;flex-direction:column;gap:3px;}
+.pal-item{
+  display:flex;
+  align-items:stretch;
+  border-radius:4px;
+  overflow:hidden;
+  height:64px;
+}
+.pi-chip{width:64px;flex-shrink:0;}
+.pi-body{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  background:var(--carbon);
+}
+.pi-body.light-bg{background:#1D1D20;}
+.pi-name{
+  font-family:'DM Serif Display',serif;
+  font-size:20px;
+  font-weight:400;
+  letter-spacing:-0.02em;
+}
+.pi-right{text-align:right;}
+.pi-hex{
+  font-family:'Barlow',monospace;
+  font-size:10px;letter-spacing:1.5px;
+  color:var(--smoke);
+}
+.pi-use{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--graphite);margin-top:2px;}
+
+/* ══ TYPE ══ */
+.type-panels{display:flex;flex-direction:column;gap:3px;}
+.tp{
+  padding:28px 22px;
+  background:var(--carbon);
+  border-radius:4px;
+}
+.tp-lbl{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:8px;font-weight:500;
+  letter-spacing:4px;text-transform:uppercase;
+  color:var(--graphite);margin-bottom:14px;
+}
+.tt-display{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(48px,12vw,80px);
+  font-weight:400;
+  color:var(--ivory);
+  line-height:1.0;
+  letter-spacing:-0.035em;
+}
+.tt-display em{font-style:italic;color:var(--sand);}
+.tt-heading{
+  font-family:'DM Serif Display',serif;
+  font-size:28px;font-weight:400;
+  color:var(--ivory);line-height:1.25;letter-spacing:-0.02em;
+}
+.tt-condensed{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;font-weight:400;
+  letter-spacing:5px;text-transform:uppercase;
+  color:var(--smoke);
+}
+.tt-body{
+  font-family:'Barlow',sans-serif;
+  font-size:14px;font-weight:300;
+  color:var(--smoke);line-height:1.9;
+}
+.tt-micro{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:8px;font-weight:500;
+  letter-spacing:5px;text-transform:uppercase;
+  color:var(--graphite);
+}
+
+/* ══ PHONE ══ */
+.phone-wrap{display:flex;justify-content:center;}
+.phone{
+  width:min(318px,100%);
+  background:var(--void);
+  border-radius:52px;
+  border:1.5px solid var(--carbon);
+  overflow:hidden;
+}
+.ph-island{
+  height:28px;background:var(--void);
+  display:flex;align-items:center;justify-content:center;
+}
+.ph-island::after{
+  content:'';width:80px;height:20px;
+  background:var(--carbon);border-radius:0 0 14px 14px;
+}
+.ph-screen{background:var(--ivory);min-height:680px;}
+
+/* status */
+.ph-status{
+  padding:8px 20px 6px;
+  display:flex;justify-content:space-between;
+  font-size:10px;color:var(--smoke);font-weight:400;letter-spacing:0.3px;
+}
+
+/* header */
+.ph-bar{
+  padding:10px 20px 14px;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  border-bottom:1px solid var(--sand);
+}
+.ph-brand{
+  font-family:'DM Serif Display',serif;
+  font-size:26px;font-weight:400;
+  color:var(--void);letter-spacing:-0.04em;
+  line-height:1;
+}
+.ph-bar-right{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:8px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--smoke);
+}
+
+/* hero block */
+.ph-hero{
+  margin:16px;
+  background:var(--void);
+  border-radius:16px;
+  padding:24px 20px 20px;
+  position:relative;
+  overflow:hidden;
+}
+.ph-hero-watermark{
+  position:absolute;right:-12px;bottom:-16px;
+  font-family:'DM Serif Display',serif;
+  font-size:80px;font-weight:400;font-style:italic;
+  color:rgba(245,241,232,0.04);
+  line-height:1;letter-spacing:-0.04em;
+  pointer-events:none;user-select:none;
+}
+.ph-h-lbl{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:8px;font-weight:400;letter-spacing:3px;text-transform:uppercase;
+  color:var(--graphite);margin-bottom:10px;
+}
+.ph-h-val{
+  font-family:'DM Serif Display',serif;
+  font-size:56px;font-weight:400;
+  color:var(--ivory);letter-spacing:-0.04em;line-height:1;
+}
+.ph-h-sub{font-size:10px;color:var(--smoke);margin:4px 0 16px;}
+.ph-h-track{height:1px;background:var(--graphite);}
+.ph-h-fill{height:100%;width:74%;background:var(--sand);}
+.ph-h-pill{
+  position:absolute;top:18px;right:18px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:7px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--smoke);border:1px solid var(--graphite);
+  padding:3px 10px;border-radius:2px;
+}
+
+/* stats */
+.ph-stats{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:6px;margin:10px 16px 16px;
+}
+.ph-s{
+  background:var(--void);border-radius:10px;
+  padding:12px 10px;
+}
+.ph-s-l{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:7px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--graphite);margin-bottom:6px;
+}
+.ph-s-v{
+  font-family:'DM Serif Display',serif;
+  font-size:24px;font-weight:400;
+  color:var(--ivory);letter-spacing:-0.03em;line-height:1;
+}
+.ph-s-d{font-size:8px;color:var(--smoke);margin-top:3px;}
+
+/* services */
+.ph-sec-hd{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:8px;font-weight:500;letter-spacing:3px;text-transform:uppercase;
+  color:var(--smoke);padding:0 18px 10px;
+}
+.ph-svcs{padding:0 16px;display:flex;flex-direction:column;gap:2px;margin-bottom:12px;}
+.ph-svc{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 14px;background:var(--void);
+}
+.ph-svc:first-child{border-radius:10px 10px 0 0;}
+.ph-svc:last-child{border-radius:0 0 10px 10px;}
+.ph-svc-l{display:flex;flex-direction:column;gap:2px;}
+.ph-svc-n{font-size:12px;font-weight:400;color:var(--ivory);}
+.ph-svc-s{font-size:9px;color:var(--graphite);}
+.ph-svc-a{color:var(--graphite);font-size:14px;font-weight:200;}
+
+/* nav */
+.ph-nav{
+  background:var(--void);border-top:1px solid var(--carbon);
+  display:flex;justify-content:space-around;padding:10px 0 20px;
+}
+.ph-n{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:7px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  color:var(--graphite);
+}
+.ph-n.on{color:var(--sand);}
+.ph-n-bar{width:14px;height:1px;background:var(--sand);}
+.ph-n-ico{font-size:13px;}
+
+/* ══ VOICE ══ */
+.voice-blocks{display:flex;flex-direction:column;gap:1px;}
+.vb{
+  background:var(--carbon);
+  padding:24px 22px;
+  display:flex;align-items:flex-start;gap:20px;
+}
+.vb:first-child{border-radius:4px 4px 0 0;}
+.vb:last-child{border-radius:0 0 4px 4px;}
+.vb-n{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:2px;
+  color:var(--graphite);padding-top:4px;
+  width:20px;flex-shrink:0;
+}
+.vb-body{}
+.vb-w{
+  font-family:'DM Serif Display',serif;
+  font-size:26px;font-weight:400;
+  color:var(--ivory);letter-spacing:-0.02em;
+  margin-bottom:6px;
+}
+.vb-w em{font-style:italic;color:var(--sand);}
+.vb-d{font-size:12px;color:var(--smoke);line-height:1.75;}
+
+/* ══ USAGE ══ */
+.usage-list{display:flex;flex-direction:column;gap:2px;}
+.u-row{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:28px 22px;border-radius:4px;
+}
+.u-mark{
+  font-family:'DM Serif Display',serif;
+  font-weight:400;letter-spacing:-0.04em;line-height:1;
+}
+.u-tag{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:8px;font-weight:500;letter-spacing:3px;text-transform:uppercase;
+  padding:5px 12px;border:1px solid currentColor;border-radius:2px;
+}
+
+/* ══ TAGLINE ══ */
+.tagline-pg{
+  min-height:70svh;
+  background:var(--carbon);
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+  padding:40px 24px;
+  border-top:1px solid #1E1E1E;
+  position:relative;
+  overflow:hidden;
+}
+.tpg-watermark{
+  position:absolute;
+  right:-20px;bottom:-20px;
+  font-family:'DM Serif Display',serif;
+  font-size:200px;font-weight:400;font-style:italic;
+  color:rgba(245,241,232,0.02);
+  letter-spacing:-0.04em;line-height:1;
+  pointer-events:none;user-select:none;
+}
+.tpg-top{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:8px;font-weight:500;letter-spacing:4px;text-transform:uppercase;
+  color:var(--graphite);
+}
+.tpg-quote{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(32px,8vw,56px);font-weight:400;
+  color:var(--ivory);line-height:1.15;
+  letter-spacing:-0.03em;
+}
+.tpg-quote em{font-style:italic;color:var(--sand);}
+.tpg-bottom{
+  display:flex;align-items:flex-end;
+  justify-content:space-between;
+}
+.tpg-brand{
+  font-family:'DM Serif Display',serif;
+  font-size:36px;font-weight:400;
+  color:var(--ivory);letter-spacing:-0.04em;
+}
+.tpg-meta{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:9px;font-weight:400;letter-spacing:2px;
+  text-transform:uppercase;color:var(--graphite);
+  text-align:right;
+}
+
+/* ══ FINAL ══ */
+.final{
+  min-height:100svh;
+  background:var(--ivory);
+  display:grid;
+  grid-template-rows:auto 1fr auto auto;
+  position:relative;
+  overflow:hidden;
+}
+.f-top{
+  padding:26px 24px;
+  border-bottom:1px solid var(--sand);
+  display:flex;justify-content:space-between;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:9px;font-weight:400;letter-spacing:4px;text-transform:uppercase;
+  color:var(--smoke);
+}
+.f-main{
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:0 24px 0;
+  overflow:hidden;
+}
+.f-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(112px,30vw,220px);
+  font-weight:400;line-height:0.82;
+  letter-spacing:-0.04em;
+  color:var(--void);display:block;
+}
+.f-bar{
+  background:var(--void);padding:18px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.f-bar-t{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;
+  color:var(--graphite);
+}
+.f-bottom{
+  padding:22px 24px 40px;
+  display:flex;justify-content:space-between;
+  font-size:9px;color:var(--smoke);letter-spacing:1px;
+  font-family:'Barlow Condensed',sans-serif;
+  text-transform:uppercase;
+}
+
+/* ══ ANIMATION ══ */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.cover-roman{animation:fadeIn 1.4s cubic-bezier(.16,1,.3,1) both;}
+.cover-footer{animation:fadeIn 1s ease 0.4s both;}
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div class="cover-lines"></div>
+  <div class="cover-header">
+    <span class="ch-left">Evae Digital · Brand Kit</span>
+    <span class="ch-right">IV · 2024</span>
+  </div>
+  <div class="cover-body">
+    <span class="cover-num">04</span>
+    <span class="cover-roman">Evae</span>
+  </div>
+  <div class="cover-footer">
+    <span class="cf-tag">Digital Infrastructure</span>
+    <div class="cf-divider"></div>
+    <span class="cf-tagline">Elevate your digital presence</span>
+  </div>
+</div>
+
+<!-- ═══ 01 LOGO ═══ -->
+<div class="sec on-void">
+  <p class="s-num">01 — Logotype</p>
+  <h2 class="s-title">The Mark</h2>
+
+  <div class="logo-giant">
+    <div class="lg-bg-text">Evae</div>
+    <div class="logo-word lw-xl">Evae</div>
+  </div>
+
+  <div class="logo-row-3">
+    <div class="lr-cell" style="background:var(--ivory);">
+      <div class="logo-word lw-md" style="color:var(--void);">Evae</div>
+      <span class="lr-label" style="color:var(--smoke);">Ivory</span>
+    </div>
+    <div class="lr-cell" style="background:var(--sand);">
+      <div class="logo-word lw-md" style="color:var(--void);">Evae</div>
+      <span class="lr-label" style="color:var(--smoke);">Sand</span>
+    </div>
+    <div class="lr-cell" style="background:var(--carbon);">
+      <div class="logo-word lw-md" style="color:var(--ivory);">Evae</div>
+      <span class="lr-label" style="color:var(--smoke);">Carbon</span>
+    </div>
+  </div>
+
+  <div class="logo-italic-strip">
+    <div class="lis-logo">Evae</div>
+    <div class="lis-tag">Italic Variant</div>
+  </div>
+
+  <div class="logo-note-box">
+    <p class="lnb-text">Set in DM Serif Display. The mark lives in the word alone — no icon, no symbol, no supporting graphic. Italic is reserved for campaign moments and editorial headlines. Always set at the correct optical weight. Never modified.</p>
+  </div>
+</div>
+
+<!-- ═══ 02 COLORS ═══ -->
+<div class="sec on-void">
+  <p class="s-num">02 — Color System</p>
+  <h2 class="s-title">Palette</h2>
+
+  <div class="pal-stack">
+    <div class="pal-item">
+      <div class="pi-chip" style="background:#0D0D0D;"></div>
+      <div class="pi-body">
+        <div class="pi-name" style="color:var(--ivory);">Void</div>
+        <div class="pi-right">
+          <div class="pi-hex">#0D0D0D</div>
+          <div class="pi-use">Background · Type</div>
+        </div>
+      </div>
+    </div>
+    <div class="pal-item">
+      <div class="pi-chip" style="background:var(--carbon);"></div>
+      <div class="pi-body light-bg">
+        <div class="pi-name" style="color:var(--ivory);">Carbon</div>
+        <div class="pi-right">
+          <div class="pi-hex">#2B2B2E</div>
+          <div class="pi-use">Cards · Surfaces</div>
+        </div>
+      </div>
+    </div>
+    <div class="pal-item">
+      <div class="pi-chip" style="background:var(--graphite);"></div>
+      <div class="pi-body light-bg">
+        <div class="pi-name" style="color:var(--ivory);">Graphite</div>
+        <div class="pi-right">
+          <div class="pi-hex">#3A3D41</div>
+          <div class="pi-use">Borders · Dividers</div>
+        </div>
+      </div>
+    </div>
+    <div class="pal-item">
+      <div class="pi-chip" style="background:var(--smoke);"></div>
+      <div class="pi-body light-bg">
+        <div class="pi-name" style="color:var(--ivory);">Smoke</div>
+        <div class="pi-right">
+          <div class="pi-hex">#6F7278</div>
+          <div class="pi-use">Secondary Text</div>
+        </div>
+      </div>
+    </div>
+    <div class="pal-item">
+      <div class="pi-chip" style="background:var(--sand);"></div>
+      <div class="pi-body light-bg">
+        <div class="pi-name" style="color:var(--void);">Sand</div>
+        <div class="pi-right">
+          <div class="pi-hex" style="color:var(--smoke);">#D8D3C8</div>
+          <div class="pi-use">Accents · Highlights</div>
+        </div>
+      </div>
+    </div>
+    <div class="pal-item">
+      <div class="pi-chip" style="background:var(--ivory);border-right:1px solid var(--sand);"></div>
+      <div class="pi-body light-bg">
+        <div class="pi-name" style="color:var(--ivory);">Ivory</div>
+        <div class="pi-right">
+          <div class="pi-hex">#F5F1E8</div>
+          <div class="pi-use">Light · Print</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 03 TYPOGRAPHY ═══ -->
+<div class="sec on-void">
+  <p class="s-num">03 — Typography</p>
+  <h2 class="s-title">Type Scale</h2>
+
+  <div class="type-panels">
+    <div class="tp">
+      <p class="tp-lbl">Display — DM Serif Display + Italic</p>
+      <div class="tt-display">Elevate<br><em>your world.</em></div>
+    </div>
+    <div class="tp">
+      <p class="tp-lbl">Heading — DM Serif Display Regular</p>
+      <div class="tt-heading">Digital infrastructure built for people who move fast.</div>
+    </div>
+    <div class="tp">
+      <p class="tp-lbl">Label — Barlow Condensed, Wide</p>
+      <div class="tt-condensed">Global Digital Products</div>
+    </div>
+    <div class="tp">
+      <p class="tp-lbl">Body — Barlow Light</p>
+      <div class="tt-body">Evae builds the digital infrastructure and products that elevate how people connect, create, and operate — everywhere in the world, every single day.</div>
+    </div>
+    <div class="tp" style="border-radius:0 0 4px 4px;">
+      <p class="tp-lbl">Micro — Barlow Condensed Medium</p>
+      <div class="tt-micro">Digital Presence · Elevated · Global</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 04 MOBILE UI ═══ -->
+<div class="sec on-carbon">
+  <p class="s-num">04 — Mobile Application</p>
+  <h2 class="s-title">Product UI</h2>
+
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="ph-island"></div>
+      <div class="ph-screen">
+
+        <div class="ph-status">
+          <span>9:41</span>
+          <span style="letter-spacing:2px;font-size:9px;">●●●</span>
+        </div>
+
+        <div class="ph-bar">
+          <div class="ph-brand">Evae</div>
+          <div class="ph-bar-right">Dashboard</div>
+        </div>
+
+        <div class="ph-hero">
+          <div class="ph-hero-watermark">Evae</div>
+          <p class="ph-h-lbl">Presence Score</p>
+          <div class="ph-h-val">94.2</div>
+          <div class="ph-h-sub">↑ 12.4% this month</div>
+          <div class="ph-h-track"><div class="ph-h-fill"></div></div>
+          <div class="ph-h-pill">Premium</div>
+        </div>
+
+        <div class="ph-stats">
+          <div class="ph-s">
+            <div class="ph-s-l">Reach</div>
+            <div class="ph-s-v">2.4M</div>
+            <div class="ph-s-d">↑ 8.2%</div>
+          </div>
+          <div class="ph-s">
+            <div class="ph-s-l">Uptime</div>
+            <div class="ph-s-v">99.9</div>
+            <div class="ph-s-d">% SLA</div>
+          </div>
+          <div class="ph-s">
+            <div class="ph-s-l">Active</div>
+            <div class="ph-s-v">47K</div>
+            <div class="ph-s-d">users</div>
+          </div>
+        </div>
+
+        <p class="ph-sec-hd">Your Services</p>
+        <div class="ph-svcs">
+          <div class="ph-svc">
+            <div class="ph-svc-l">
+              <div class="ph-svc-n">Cloud Infrastructure</div>
+              <div class="ph-svc-s">Active · 3 regions</div>
+            </div>
+            <div class="ph-svc-a">›</div>
+          </div>
+          <div class="ph-svc">
+            <div class="ph-svc-l">
+              <div class="ph-svc-n">Digital Identity</div>
+              <div class="ph-svc-s">Secured · Verified</div>
+            </div>
+            <div class="ph-svc-a">›</div>
+          </div>
+          <div class="ph-svc">
+            <div class="ph-svc-l">
+              <div class="ph-svc-n">Analytics Suite</div>
+              <div class="ph-svc-s">Last sync · 2m ago</div>
+            </div>
+            <div class="ph-svc-a">›</div>
+          </div>
+        </div>
+
+        <div class="ph-nav">
+          <div class="ph-n on">
+            <div class="ph-n-ico">⬡</div>
+            <div>Home</div>
+            <div class="ph-n-bar"></div>
+          </div>
+          <div class="ph-n">
+            <div class="ph-n-ico">◎</div>
+            <div>Explore</div>
+          </div>
+          <div class="ph-n">
+            <div class="ph-n-ico">▣</div>
+            <div>Build</div>
+          </div>
+          <div class="ph-n">
+            <div class="ph-n-ico">◉</div>
+            <div>Profile</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 05 VOICE ═══ -->
+<div class="sec on-void">
+  <p class="s-num">05 — Brand Voice</p>
+  <h2 class="s-title">Personality</h2>
+
+  <div class="voice-blocks">
+    <div class="vb">
+      <div class="vb-n">01</div>
+      <div class="vb-body">
+        <div class="vb-w"><em>Minimal</em></div>
+        <div class="vb-d">Every element earns its place. Restraint is the loudest thing Evae says.</div>
+      </div>
+    </div>
+    <div class="vb">
+      <div class="vb-n">02</div>
+      <div class="vb-body">
+        <div class="vb-w">Global</div>
+        <div class="vb-d">One voice, universally understood. Clean language, no borders, no jargon.</div>
+      </div>
+    </div>
+    <div class="vb">
+      <div class="vb-n">03</div>
+      <div class="vb-body">
+        <div class="vb-w">Bold</div>
+        <div class="vb-d">Quiet confidence. Evae declares — it doesn't ask for permission.</div>
+      </div>
+    </div>
+    <div class="vb">
+      <div class="vb-n">04</div>
+      <div class="vb-body">
+        <div class="vb-w"><em>Human</em></div>
+        <div class="vb-d">Technology with warmth. Behind every product is a real person with real ambitions.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 06 USAGE ═══ -->
+<div class="sec on-void">
+  <p class="s-num">06 — Logo Usage</p>
+  <h2 class="s-title">In Context</h2>
+
+  <div class="usage-list">
+    <div class="u-row" style="background:var(--void);border:1px solid #1E1E1E;border-radius:4px;">
+      <div class="u-mark" style="font-size:clamp(48px,12vw,72px);color:var(--ivory);">Evae</div>
+      <span class="u-tag" style="color:var(--smoke);">✓ Primary</span>
+    </div>
+    <div class="u-row" style="background:var(--ivory);border-radius:4px;">
+      <div class="u-mark" style="font-size:clamp(48px,12vw,72px);color:var(--void);">Evae</div>
+      <span class="u-tag" style="color:var(--smoke);">✓ Light</span>
+    </div>
+    <div class="u-row" style="background:var(--sand);border-radius:4px;">
+      <div class="u-mark" style="font-size:clamp(48px,12vw,72px);color:var(--void);">Evae</div>
+      <span class="u-tag" style="color:var(--smoke);">✓ Sand</span>
+    </div>
+    <div class="u-row" style="background:var(--graphite);border-radius:4px;">
+      <div class="u-mark" style="font-size:clamp(48px,12vw,72px);color:var(--ivory);font-style:italic;">Evae</div>
+      <span class="u-tag" style="color:var(--sand);">✓ Italic</span>
+    </div>
+    <div style="padding:22px 20px;border:1px solid #1E1E1E;border-radius:4px;margin-top:4px;">
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:8px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;color:var(--graphite);margin-bottom:10px;">× Never</p>
+      <p style="font-size:12px;color:var(--smoke);line-height:1.8;">Do not stretch, outline, shadow, recolor, rotate, or pair with an icon. Do not set in any weight other than Regular or Italic.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TAGLINE ═══ -->
+<div class="tagline-pg">
+  <div class="tpg-watermark">Evae</div>
+  <p class="tpg-top">Brand Tagline</p>
+  <div class="tpg-quote">"Elevate your<br><em>digital presence"</em></div>
+  <div class="tpg-bottom">
+    <div class="tpg-brand">Evae</div>
+    <div class="tpg-meta">Digital<br>Infrastructure<br>Global · 2024</div>
+  </div>
+</div>
+
+<!-- ═══ FINAL ═══ -->
+<div class="final">
+  <div class="f-top">
+    <span>Evae Digital</span>
+    <span>Brand Kit IV</span>
+  </div>
+  <div class="f-main">
+    <span class="f-logo">Evae</span>
+  </div>
+  <div class="f-bar">
+    <span class="f-bar-t">Elevate your digital presence</span>
+    <span class="f-bar-t">2024</span>
+  </div>
+  <div class="f-bottom">
+    <span>Digital Infrastructure</span>
+    <span>Global Brand</span>
+    <span>v1.0</span>
+  </div>
+</div>
+
+</body>
+</html>
