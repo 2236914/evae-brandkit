@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evae Digital — Brand Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c1: #0D0D0D;
+  --c2: #2B2B2E;
+  --c3: #3A3D41;
+  --c4: #6F7278;
+  --c5: #D8D3C8;
+  --c6: #F5F1E8;
+  --white: #FFFFFF;
+  --accent: #F5F1E8;
+  --accent-warm: #D8D3C8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--c1);
+  color: var(--c6);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 52px 28px 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(245,241,232,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,241,232,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cover-tag {
+  font-size: 9px;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--c4);
+  font-weight: 400;
+}
+.cover-year {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--c3);
+  font-weight: 400;
+}
+
+.cover-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 0 40px;
+}
+
+.cover-eyebrow {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c4);
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.cover-logotype {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  font-size: clamp(88px, 22vw, 148px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--c6);
+  position: relative;
+}
+
+.cover-logotype::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c5);
+  position: absolute;
+  right: -4px;
+  top: 12px;
+}
+
+.cover-sub {
+  margin-top: 32px;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--c4);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 240px;
+  border-left: 1px solid var(--c3);
+  padding-left: 16px;
+}
+
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.cover-desc {
+  font-size: 11px;
+  color: var(--c4);
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+  max-width: 180px;
+}
+.cover-version {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--c3);
+  text-align: right;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--c3), transparent);
+  margin: 0 28px;
+}
+
+/* ── SECTION ── */
+.section {
+  padding: 72px 28px;
+}
+.section + .section { border-top: 1px solid #1A1A1A; }
+
+.sec-num {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c4);
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 9vw, 56px);
+  font-weight: 300;
+  color: var(--c6);
+  line-height: 1.05;
+  margin-bottom: 44px;
+  letter-spacing: -0.02em;
+}
+
+/* ── LOGO SECTION ── */
+.logo-primary {
+  background: var(--c2);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px 40px;
+  gap: 28px;
+  margin-bottom: 2px;
+}
+
+.logotype {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.logotype-xl { font-size: clamp(72px, 18vw, 120px); color: var(--c6); }
+.logotype-md { font-size: 52px; color: var(--c6); }
+.logotype-sm { font-size: 36px; }
+
+.logo-meta {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c4);
+  font-weight: 400;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.logo-tile {
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px 28px;
+  gap: 16px;
+}
+
+.logo-tile-ivory { background: var(--c6); }
+.logo-tile-mid { background: var(--c3); }
+.logo-tile-warm { background: var(--c5); }
+.logo-tile-dark { background: #111; border: 1px solid #1E1E1E; }
+
+/* ── PALETTE ── */
+.palette {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 28px;
+}
+
+.swatch-row {
+  display: flex;
+  gap: 2px;
+}
+
+.swatch {
+  flex: 1;
+  height: 96px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.swatch.hero { height: 160px; flex: 2; }
+
+.sw-name {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+.sw-hex {
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  opacity: 0.55;
+  margin-top: 2px;
+}
+
+.sw-c1 { background: var(--c1); }
+.sw-c2 { background: var(--c2); }
+.sw-c3 { background: var(--c3); }
+.sw-c4 { background: var(--c4); }
+.sw-c5 { background: var(--c5); }
+.sw-c6 { background: var(--c6); border: 1px solid var(--c5); }
+.sw-white { background: #fff; border: 1px solid var(--c5); }
+
+.on-d { color: rgba(245,241,232,0.9); }
+.on-l { color: rgba(30,30,30,0.75); }
+.on-m { color: rgba(245,241,232,0.85); }
+
+.palette-note {
+  font-size: 12px;
+  color: var(--c4);
+  line-height: 1.8;
+  border-left: 1px solid var(--c3);
+  padding-left: 16px;
+}
+
+/* ── TYPOGRAPHY ── */
+.type-stack { display: flex; flex-direction: column; gap: 48px; }
+.type-unit { position: relative; }
+.type-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c4);
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+
+.td1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 12vw, 80px);
+  font-weight: 300;
+  color: var(--c6);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+}
+.td1 em { font-style: normal; color: var(--c5); }
+
+.th1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--c6);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.tl1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c4);
+}
+
+.tb1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--c4);
+  line-height: 1.85;
+  letter-spacing: 0.2px;
+}
+
+.tc1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--c4);
+}
+
+.type-rule {
+  width: 100%;
+  height: 1px;
+  background: #1E1E1E;
+  margin-top: 36px;
+}
+
+/* ── MOBILE UI ── */
+.device-shell {
+  display: flex;
+  justify-content: center;
+}
+
+.device {
+  width: min(320px, 100%);
+  background: var(--c2);
+  border-radius: 48px;
+  border: 1.5px solid #2E2E32;
+  overflow: hidden;
+  position: relative;
+}
+
+.device-pill {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 26px;
+  background: var(--c1);
+  border-radius: 0 0 18px 18px;
+  z-index: 10;
+}
+
+.screen {
+  background: var(--c1);
+  min-height: 700px;
+}
+
+/* Status bar */
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 38px 22px 14px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--c5);
+  letter-spacing: 0.3px;
+}
+
+.status-right {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.batt {
+  width: 22px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid var(--c4);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+.batt-fill {
+  width: 70%;
+  height: 100%;
+  background: var(--c5);
+  border-radius: 1px;
+}
+
+/* App nav bar */
+.app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 22px 18px;
+}
+.app-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--c6);
+  letter-spacing: -0.03em;
+}
+.app-brand span { color: var(--c4); }
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--c2);
+  border: 1px solid #252528;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+/* Hero card */
+.hero-card {
+  margin: 0 16px 14px;
+  background: var(--c2);
+  border-radius: 20px;
+  border: 1px solid #2E2E32;
+  padding: 24px 22px 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  border: 1px solid rgba(245,241,232,0.04);
+}
+.hero-card::after {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  border: 1px solid rgba(245,241,232,0.04);
+}
+
+.hc-label {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--c4);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.hc-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  font-weight: 300;
+  color: var(--c6);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.hc-unit {
+  font-size: 13px;
+  color: var(--c4);
+  font-weight: 300;
+  margin-bottom: 18px;
+  margin-top: 2px;
+}
+
+.hc-bar {
+  width: 100%;
+  height: 2px;
+  background: #2A2A2D;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.hc-bar-fill {
+  height: 100%;
+  width: 74%;
+  background: linear-gradient(90deg, var(--c4), var(--c5));
+  border-radius: 2px;
+}
+
+.hc-pill {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--c5);
+  border: 1px solid #3A3D41;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+/* Stat grid */
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin: 0 16px 20px;
+}
+.stat {
+  background: var(--c2);
+  border-radius: 14px;
+  border: 1px solid #252528;
+  padding: 14px 12px;
+}
+.stat-lbl {
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c4);
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+.stat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--c5);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.stat-delta {
+  font-size: 9px;
+  color: var(--c4);
+  margin-top: 4px;
+}
+
+/* Section header in app */
+.app-sec {
+  font-size: 8px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #333;
+  padding: 0 20px 12px;
+  font-weight: 400;
+}
+
+/* Product list */
+.product-list {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.product-row {
+  background: #0E0E10;
+  border-radius: 14px;
+  border: 1px solid #1A1A1E;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.prod-ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--c2);
+  border: 1px solid #2A2A2E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.prod-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.prod-name { font-size: 13px; font-weight: 400; color: var(--c6); letter-spacing: 0.1px; }
+.prod-sub { font-size: 9px; color: #555; margin-top: 2px; letter-spacing: 0.3px; }
+.prod-arrow { margin-left: auto; color: #333; font-size: 16px; font-weight: 200; }
+
+/* Bottom nav */
+.bottom-nav {
+  background: var(--c2);
+  border-top: 1px solid #252528;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0 24px;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #3A3D41;
+  font-weight: 400;
+}
+.nav-item.active { color: var(--c5); }
+.ni-ico { font-size: 14px; line-height: 1; }
+.ni-line {
+  width: 14px;
+  height: 1px;
+  background: var(--c5);
+  border-radius: 1px;
+}
+
+/* ── BRAND VOICE ── */
+.voice-stack { display: flex; flex-direction: column; gap: 12px; }
+.voice-card {
+  border: 1px solid #1E1E22;
+  border-radius: 10px;
+  padding: 22px 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  align-items: start;
+}
+.vc-word {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--c5);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.vc-num {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #333;
+  margin-bottom: 6px;
+}
+.vc-desc {
+  font-size: 12px;
+  color: var(--c4);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── LOGO USAGE ── */
+.usage-stack { display: flex; flex-direction: column; gap: 2px; }
+.usage-tile {
+  border-radius: 6px;
+  padding: 36px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── MOTION / SPACING ── */
+.spacing-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #1A1A1A;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sp-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #141418;
+}
+.sp-row:last-child { border-bottom: none; }
+.sp-box {
+  background: var(--c3);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.sp-val {
+  font-size: 11px;
+  color: var(--c4);
+  letter-spacing: 1px;
+  font-weight: 400;
+  min-width: 42px;
+  font-family: 'Outfit', monospace;
+}
+.sp-use { font-size: 11px; color: #333; letter-spacing: 0.3px; }
+
+/* ── FINAL ── */
+.final {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 28px;
+  text-align: center;
+  border-top: 1px solid #141414;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(245,241,232,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,241,232,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.final-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  font-size: clamp(72px, 20vw, 120px);
+  color: var(--c6);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.final-rule {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--c3), transparent);
+}
+
+.final-tagline {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c4);
+  font-weight: 300;
+}
+
+.final-footer {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #2A2A2E;
+  margin-top: 20px;
+}
+
+/* ── SCROLL ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.cover-logotype { animation: fadeUp 1.2s cubic-bezier(.16,1,.3,1) both; }
+.cover-sub { animation: fadeUp 1.2s cubic-bezier(.16,1,.3,1) 0.2s both; }
+.cover-bottom { animation: fadeUp 0.8s ease 0.4s both; }
+</style>
+</head>
+<body>
+
+<!-- ══════ COVER ══════ -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-top">
+    <span class="cover-tag">Brand Identity System</span>
+    <span class="cover-year">2024 — v1.0</span>
+  </div>
+
+  <div class="cover-center">
+    <p class="cover-eyebrow">Evae Digital</p>
+    <div class="cover-logotype">Evae</div>
+    <div class="cover-sub">
+      Elevate your<br>digital presence
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-desc">Digital infrastructure &<br>products for people.</div>
+    <div class="cover-version">Global<br>Brand</div>
+  </div>
+</div>
+
+<!-- ══════ 01 LOGO ══════ -->
+<div class="section">
+  <p class="sec-num">01 — Logotype</p>
+  <h2 class="sec-title">The Mark</h2>
+
+  <!-- Primary: dark -->
+  <div class="logo-primary">
+    <div class="logotype logotype-xl" style="color:var(--c6);">Evae</div>
+    <p class="logo-meta">Primary — Dark</p>
+  </div>
+
+  <!-- 2×2 grid -->
+  <div class="logo-grid">
+    <div class="logo-tile logo-tile-ivory">
+      <div class="logotype logotype-md" style="color:var(--c1);">Evae</div>
+      <p class="logo-meta" style="color:#888;">On Ivory</p>
+    </div>
+    <div class="logo-tile logo-tile-mid">
+      <div class="logotype logotype-md" style="color:var(--c6);">Evae</div>
+      <p class="logo-meta" style="color:rgba(245,241,232,0.4);">On Slate</p>
+    </div>
+    <div class="logo-tile logo-tile-warm">
+      <div class="logotype logotype-md" style="color:var(--c2);">Evae</div>
+      <p class="logo-meta" style="color:rgba(43,43,46,0.5);">On Sand</p>
+    </div>
+    <div class="logo-tile logo-tile-dark">
+      <div class="logotype logotype-md" style="color:var(--c5);">EVAE</div>
+      <p class="logo-meta" style="color:#333;">All Caps</p>
+    </div>
+  </div>
+
+  <div style="margin-top:28px;padding:20px 0;border-top:1px solid #1A1A1A;">
+    <p style="font-size:12px;color:var(--c4);line-height:1.85;font-weight:300;letter-spacing:0.2px;">
+      The Evae logotype is set exclusively in Playfair Display Light. Its editorial serif construction signals refinement and permanence. The logo is the word — no icon, no symbol. Its power comes from typographic purity.
+    </p>
+  </div>
+</div>
+
+<!-- ══════ 02 COLORS ══════ -->
+<div class="section">
+  <p class="sec-num">02 — Color System</p>
+  <h2 class="sec-title">Palette</h2>
+
+  <div class="palette">
+    <!-- Row 1: darks -->
+    <div class="swatch-row">
+      <div class="swatch hero sw-c1">
+        <div class="sw-name on-d">Void</div>
+        <div class="sw-hex on-d">#0D0D0D</div>
+      </div>
+      <div class="swatch sw-c2" style="flex:1;">
+        <div class="sw-name on-d">Carbon</div>
+        <div class="sw-hex on-d">#2B2B2E</div>
+      </div>
+      <div class="swatch sw-c3" style="flex:1;">
+        <div class="sw-name on-d">Graphite</div>
+        <div class="sw-hex on-d">#3A3D41</div>
+      </div>
+    </div>
+    <!-- Row 2: light -->
+    <div class="swatch-row">
+      <div class="swatch sw-c4">
+        <div class="sw-name on-m">Smoke</div>
+        <div class="sw-hex on-m">#6F7278</div>
+      </div>
+      <div class="swatch sw-c5">
+        <div class="sw-name on-l">Sand</div>
+        <div class="sw-hex on-l">#D8D3C8</div>
+      </div>
+      <div class="swatch sw-c6">
+        <div class="sw-name on-l">Ivory</div>
+        <div class="sw-hex on-l">#F5F1E8</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="palette-note">
+    A restrained monochromatic palette drawn from natural materials — carbon, graphite, smoke, sand, ivory. No primary colors. No distractions. The scale moves from absolute dark to warm light, creating depth through tonal relationships alone.
+  </p>
+</div>
+
+<!-- ══════ 03 TYPOGRAPHY ══════ -->
+<div class="section">
+  <p class="sec-num">03 — Typography</p>
+  <h2 class="sec-title">Type Scale</h2>
+
+  <div class="type-stack">
+
+    <div class="type-unit">
+      <p class="type-label">Display — Playfair Display Light</p>
+      <div class="td1">Elevate<br><span>your world.</span></div>
+    </div>
+
+    <div class="type-rule"></div>
+
+    <div class="type-unit">
+      <p class="type-label">Heading — Playfair Display Regular</p>
+      <div class="th1">Digital infrastructure built for people who demand more.</div>
+    </div>
+
+    <div class="type-rule"></div>
+
+    <div class="type-unit">
+      <p class="type-label">Label — Outfit Light, Wide Tracked</p>
+      <div class="tl1">Global Digital Products</div>
+    </div>
+
+    <div class="type-rule"></div>
+
+    <div class="type-unit">
+      <p class="type-label">Body — Outfit Light</p>
+      <div class="tb1">Evae builds the digital infrastructure and products that elevate how people connect, create, and operate — everywhere in the world, every day.</div>
+    </div>
+
+    <div class="type-rule"></div>
+
+    <div class="type-unit">
+      <p class="type-label">Caption — Outfit Regular, Wide Tracked</p>
+      <div class="tc1">Digital Presence · Elevated · Global</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════ 04 MOBILE UI ══════ -->
+<div class="section">
+  <p class="sec-num">04 — Mobile Application</p>
+  <h2 class="sec-title">Product UI</h2>
+
+  <div class="device-shell">
+    <div class="device">
+      <div class="device-pill"></div>
+      <div class="screen">
+
+        <!-- Status -->
+        <div class="status">
+          <span>9:41</span>
+          <div class="status-right">
+            <span style="letter-spacing:1px;">●●●●</span>
+            <div class="batt"><div class="batt-fill"></div></div>
+          </div>
+        </div>
+
+        <!-- App bar -->
+        <div class="app-bar">
+          <div class="app-brand">Evae<span>.</span></div>
+          <div style="display:flex;gap:8px;">
+            <div class="icon-btn" style="color:var(--c4);">⊘</div>
+            <div class="icon-btn" style="color:var(--c5);">◉</div>
+          </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero-card">
+          <p class="hc-label">Presence Score</p>
+          <div class="hc-num">94.2</div>
+          <div class="hc-unit">Digital index ↑ 12.4%</div>
+          <div class="hc-bar"><div class="hc-bar-fill"></div></div>
+          <div class="hc-pill">Premium</div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-lbl">Reach</div>
+            <div class="stat-val">2.4M</div>
+            <div class="stat-delta">↑ 8.2%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-lbl">Uptime</div>
+            <div class="stat-val">99.9</div>
+            <div class="stat-delta">% SLA</div>
+          </div>
+          <div class="stat">
+            <div class="stat-lbl">Active</div>
+            <div class="stat-val">47K</div>
+            <div class="stat-delta">users</div>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <p class="app-sec">Your Services</p>
+        <div class="product-list">
+          <div class="product-row">
+            <div class="prod-ico"><div class="prod-dot" style="background:var(--c5);"></div></div>
+            <div>
+              <div class="prod-name">Cloud Infrastructure</div>
+              <div class="prod-sub">Active · 3 regions · 99.9% uptime</div>
+            </div>
+            <div class="prod-arrow">›</div>
+          </div>
+          <div class="product-row">
+            <div class="prod-ico"><div class="prod-dot" style="background:var(--c4);"></div></div>
+            <div>
+              <div class="prod-name">Digital Identity</div>
+              <div class="prod-sub">Secured · Globally verified</div>
+            </div>
+            <div class="prod-arrow">›</div>
+          </div>
+          <div class="product-row">
+            <div class="prod-ico"><div class="prod-dot" style="background:var(--c3);"></div></div>
+            <div>
+              <div class="prod-name">Analytics Suite</div>
+              <div class="prod-sub">Last sync · 2 min ago</div>
+            </div>
+            <div class="prod-arrow">›</div>
+          </div>
+        </div>
+
+        <!-- Bottom nav -->
+        <div class="bottom-nav">
+          <div class="nav-item active">
+            <div class="ni-ico">⬡</div>
+            <div>Home</div>
+            <div class="ni-line"></div>
+          </div>
+          <div class="nav-item">
+            <div class="ni-ico">◎</div>
+            <div>Explore</div>
+          </div>
+          <div class="nav-item">
+            <div class="ni-ico">▣</div>
+            <div>Build</div>
+          </div>
+          <div class="nav-item">
+            <div class="ni-ico">◉</div>
+            <div>Profile</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ 05 BRAND VOICE ══════ -->
+<div class="section">
+  <p class="sec-num">05 — Brand Voice</p>
+  <h2 class="sec-title">Tone & Personality</h2>
+
+  <div class="voice-stack">
+    <div class="voice-card">
+      <div>
+        <div class="vc-num">01</div>
+        <div class="vc-word">Minimal</div>
+      </div>
+      <div>
+        <div class="vc-desc">Say more with less. Every word, every pixel earns its place. Evae communicates through restraint — silence is a design choice.</div>
+      </div>
+    </div>
+    <div class="voice-card">
+      <div>
+        <div class="vc-num">02</div>
+        <div class="vc-word">Global</div>
+      </div>
+      <div>
+        <div class="vc-desc">One voice, universally understood. Clean language stripped of jargon — accessible to anyone, anywhere on the planet.</div>
+      </div>
+    </div>
+    <div class="voice-card">
+      <div>
+        <div class="vc-num">03</div>
+        <div class="vc-word">Bold</div>
+      </div>
+      <div>
+        <div class="vc-desc">Quiet confidence. Evae doesn't shout — it declares. Statements, not questions. Presence, not persuasion.</div>
+      </div>
+    </div>
+    <div class="voice-card">
+      <div>
+        <div class="vc-num">04</div>
+        <div class="vc-word">Human</div>
+      </div>
+      <div>
+        <div class="vc-desc">Technology with warmth. Behind every product is a person. Evae builds for real lives, with precision and genuine care.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ 06 SPACING ══════ -->
+<div class="section">
+  <p class="sec-num">06 — Spacing System</p>
+  <h2 class="sec-title">Grid & Space</h2>
+
+  <div class="spacing-demo">
+    <div class="sp-row">
+      <div class="sp-box" style="width:4px;height:16px;"></div>
+      <span class="sp-val">4px</span>
+      <span class="sp-use">Fine detail, borders, lines</span>
+    </div>
+    <div class="sp-row">
+      <div class="sp-box" style="width:8px;height:16px;"></div>
+      <span class="sp-val">8px</span>
+      <span class="sp-use">Component internal gap</span>
+    </div>
+    <div class="sp-row">
+      <div class="sp-box" style="width:16px;height:16px;"></div>
+      <span class="sp-val">16px</span>
+      <span class="sp-use">Card padding, list gap</span>
+    </div>
+    <div class="sp-row">
+      <div class="sp-box" style="width:24px;height:16px;"></div>
+      <span class="sp-val">24px</span>
+      <span class="sp-use">Section rhythm</span>
+    </div>
+    <div class="sp-row">
+      <div class="sp-box" style="width:48px;height:16px;"></div>
+      <span class="sp-val">48px</span>
+      <span class="sp-use">Mobile screen margin</span>
+    </div>
+    <div class="sp-row">
+      <div class="sp-box" style="width:72px;height:16px;"></div>
+      <span class="sp-val">72px</span>
+      <span class="sp-use">Major section separation</span>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div style="background:#0E0E10;border:1px solid #1A1A1A;border-radius:10px;padding:18px;">
+      <p style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#333;margin-bottom:8px;">Screen margin</p>
+      <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:300;color:var(--c5);letter-spacing:-0.02em;">28px</p>
+    </div>
+    <div style="background:#0E0E10;border:1px solid #1A1A1A;border-radius:10px;padding:18px;">
+      <p style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#333;margin-bottom:8px;">Base grid</p>
+      <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:300;color:var(--c5);letter-spacing:-0.02em;">8px</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ TAGLINE ══════ -->
+<div style="padding:80px 28px;text-align:center;border-top:1px solid #141414;">
+  <p style="font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(--c4);margin-bottom:24px;font-weight:400;">Brand Tagline</p>
+  <div style="font-family:'Playfair Display',serif;font-size:clamp(30px,8vw,52px);font-weight:300;color:var(--c6);line-height:1.2;letter-spacing:-0.02em;">
+    "Elevate your<br><span style="color:var(--c5);">digital presence"</span>
+  </div>
+  <div style="width:1px;height:44px;background:linear-gradient(to bottom,var(--c3),transparent);margin:36px auto;"></div>
+  <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#2E2E32;">Evae Digital · Global · 2024</p>
+</div>
+
+<!-- ══════ FINAL ══════ -->
+<div class="final">
+  <div class="final-grid"></div>
+  <div class="final-logo">Evae</div>
+  <div class="final-rule"></div>
+  <p class="final-tagline">Elevate your digital presence</p>
+  <p class="final-footer">Brand Kit v1.0 · Evae Digital · Confidential</p>
+</div>
+
+</body>
+</html>
