@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collagen IQ™ — Platform Architecture v1.0</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #12110F;
+    --ink-soft: #4A4740;
+    --ink-muted: #8A8780;
+    --page: #F7F5F0;
+    --white: #FFFFFF;
+    --gold: #B8966A;
+    --gold-light: #F0E8D8;
+
+    --purple: #4C3B8A;
+    --purple-mid: #7B6DBF;
+    --purple-light: #EAE6F8;
+    --purple-faint: #F5F3FC;
+
+    --blue: #1E4C8A;
+    --blue-mid: #4A7DC4;
+    --blue-light: #E0EAF8;
+    --blue-faint: #F2F6FD;
+
+    --green: #1D5C3A;
+    --green-mid: #3D9B65;
+    --green-light: #D8F0E4;
+    --green-faint: #F2FBF6;
+
+    --orange: #B85A1A;
+    --orange-mid: #E08040;
+    --orange-light: #FAEADE;
+    --orange-faint: #FDF5EE;
+
+    --red: #8A1C1C;
+    --red-mid: #C94040;
+    --red-light: #FAE0E0;
+    --red-faint: #FDF2F2;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+
+    --shadow-sm: 0 1px 3px rgba(18,17,15,0.08);
+    --shadow-md: 0 4px 16px rgba(18,17,15,0.10);
+    --shadow-lg: 0 8px 32px rgba(18,17,15,0.12);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── PAGE LAYOUT ─────────────────────────── */
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  /* ── HEADER ──────────────────────────────── */
+  .doc-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(18,17,15,0.10);
+  }
+  .doc-header-left h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .doc-header-left h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .doc-header-left p {
+    margin-top: 8px;
+    color: var(--ink-muted);
+    font-size: 13px;
+    font-weight: 300;
+  }
+  .doc-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .doc-meta span {
+    font-size: 11px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .doc-meta strong {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* ── SECTION LABELS ─────────────────────── */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .label-diagram { background: var(--gold-light); color: var(--orange); }
+  .label-docs { background: var(--blue-light); color: var(--blue); }
+
+  /* ── DIAGRAM WRAPPER ─────────────────────── */
+  .diagram-wrapper {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .diagram-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--blue-mid), var(--green-mid), var(--orange-mid));
+  }
+
+  .diagram-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .diagram-subtitle {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  /* ── LEGEND ─────────────────────────────── */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN ARCHITECTURE GRID ──────────────── */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    gap: 16px;
+    align-items: start;
+  }
+  .arch-main { display: flex; flex-direction: column; gap: 12px; }
+
+  /* ── LAYER BLOCK ─────────────────────────── */
+  .layer {
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    position: relative;
+  }
+  .layer-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .layer-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .layer-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+  }
+  .layer-desc {
+    font-size: 11px;
+    font-weight: 300;
+    margin-left: 42px;
+    margin-top: -10px;
+    margin-bottom: 4px;
+    opacity: 0.7;
+  }
+
+  /* ── NODES GRID ─────────────────────────── */
+  .nodes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .node {
+    border-radius: var(--radius-md);
+    padding: 9px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s;
+  }
+  .node:hover { box-shadow: var(--shadow-md); }
+  .node-icon { font-size: 13px; flex-shrink: 0; }
+
+  /* SPECIAL — AI Avatar node */
+  .node-avatar {
+    background: linear-gradient(135deg, #4C3B8A 0%, #7B4EB8 100%);
+    color: white;
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(76,59,138,0.35);
+  }
+
+  /* Layer-specific node styles */
+  .layer-presentation .node { background: var(--purple-faint); color: var(--purple); border: 1px solid rgba(76,59,138,0.15); }
+  .layer-logic .node        { background: var(--blue-faint);   color: var(--blue);   border: 1px solid rgba(30,76,138,0.15); }
+  .layer-data .node         { background: var(--green-faint);  color: var(--green);  border: 1px solid rgba(29,92,58,0.15); }
+  .layer-infra .node        { background: var(--orange-faint); color: var(--orange); border: 1px solid rgba(184,90,26,0.15); }
+
+  .layer-presentation { background: var(--purple-light); border: 1.5px solid rgba(76,59,138,0.18); }
+  .layer-logic        { background: var(--blue-light);   border: 1.5px solid rgba(30,76,138,0.18); }
+  .layer-data         { background: var(--green-light);  border: 1.5px solid rgba(29,92,58,0.18); }
+  .layer-infra        { background: var(--orange-light); border: 1.5px solid rgba(184,90,26,0.18); }
+
+  .layer-presentation .layer-title { color: var(--purple); }
+  .layer-logic .layer-title        { color: var(--blue); }
+  .layer-data .layer-title         { color: var(--green); }
+  .layer-infra .layer-title        { color: var(--orange); }
+
+  .layer-presentation .layer-icon { background: rgba(76,59,138,0.15); color: var(--purple); }
+  .layer-logic .layer-icon        { background: rgba(30,76,138,0.15);  color: var(--blue); }
+  .layer-data .layer-icon         { background: rgba(29,92,58,0.15);   color: var(--green); }
+  .layer-infra .layer-icon        { background: rgba(184,90,26,0.15);  color: var(--orange); }
+
+  /* ── DATA FLOW STRIP ─────────────────────── */
+  .flow-strip {
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 0;
+  }
+  .flow-node {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-md);
+    padding: 8px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    min-width: 80px;
+  }
+  .flow-node.active { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .flow-arrow {
+    color: rgba(255,255,255,0.35);
+    font-size: 16px;
+    padding: 0 6px;
+    flex-shrink: 0;
+  }
+  .flow-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    margin-top: 3px;
+    text-align: center;
+  }
+  .flow-step-inner { display: flex; flex-direction: column; align-items: center; }
+
+  /* ── SECURITY SIDE PANEL ─────────────────── */
+  .security-panel {
+    background: var(--red-faint);
+    border: 1.5px solid rgba(138,28,28,0.18);
+    border-radius: var(--radius-lg);
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-self: stretch;
+  }
+  .security-panel .layer-title { color: var(--red); font-size: 10px; }
+  .security-panel .layer-icon { background: rgba(138,28,28,0.12); color: var(--red); }
+  .security-panel .layer-header { margin-bottom: 8px; }
+  .sec-item {
+    background: var(--red-light);
+    border: 1px solid rgba(138,28,28,0.15);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--red);
+    text-align: center;
+    line-height: 1.35;
+  }
+
+  /* ── FLOW DIVIDER ─────────────────────────── */
+  .flow-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 4px 0;
+  }
+  .flow-divider-line { flex: 1; height: 1px; background: rgba(18,17,15,0.08); }
+  .flow-divider-text { font-size: 10px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .flow-arrow-down {
+    text-align: center;
+    font-size: 18px;
+    color: var(--ink-muted);
+    padding: 2px 0;
+    opacity: 0.5;
+  }
+
+  /* ─────────────────────────────────────────── */
+  /*  PART 2 — DOCUMENTATION                     */
+  /* ─────────────────────────────────────────── */
+  .docs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .doc-section {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 36px 40px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(18,17,15,0.06);
+  }
+
+  .doc-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .doc-section .section-intro {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 24px;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 720px;
+  }
+
+  /* Layer cards in docs */
+  .layer-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .layer-card {
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    border: 1px solid transparent;
+  }
+  .layer-card.purple { background: var(--purple-faint); border-color: rgba(76,59,138,0.15); }
+  .layer-card.blue   { background: var(--blue-faint);   border-color: rgba(30,76,138,0.15); }
+  .layer-card.green  { background: var(--green-faint);  border-color: rgba(29,92,58,0.15); }
+  .layer-card.orange { background: var(--orange-faint); border-color: rgba(184,90,26,0.15); }
+  .layer-card.red    { background: var(--red-faint);    border-color: rgba(138,28,28,0.15); }
+
+  .layer-card .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .layer-card h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .layer-card.purple h3 { color: var(--purple); }
+  .layer-card.blue h3   { color: var(--blue); }
+  .layer-card.green h3  { color: var(--green); }
+  .layer-card.orange h3 { color: var(--orange); }
+  .layer-card.red h3    { color: var(--red); }
+  .layer-card p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; font-weight: 300; }
+  .layer-card .card-connects {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  /* Flow steps in docs */
+  .flow-steps { display: flex; flex-direction: column; gap: 0; }
+  .flow-doc-step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(18,17,15,0.06);
+  }
+  .flow-doc-step:last-child { border-bottom: none; }
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .step-content p { font-size: 13px; color: var(--ink-soft); line-height: 1.6; font-weight: 300; }
+  .step-content .step-db {
+    margin-top: 6px;
+    display: inline-block;
+    background: var(--green-faint);
+    border: 1px solid rgba(29,92,58,0.15);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--green);
+  }
+
+  /* Feature cards */
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .feature-card {
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    background: var(--page);
+    border: 1px solid rgba(18,17,15,0.08);
+  }
+  .feature-card .feat-icon { font-size: 24px; margin-bottom: 10px; }
+  .feature-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+  .feature-card p { font-size: 12px; color: var(--ink-soft); line-height: 1.6; font-weight: 300; }
+
+  /* Compliance table */
+  .compliance-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .compliance-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--red-faint);
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1.5px solid rgba(138,28,28,0.15);
+  }
+  .compliance-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(18,17,15,0.06);
+    color: var(--ink-soft);
+    vertical-align: top;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .compliance-table td:first-child { font-weight: 500; color: var(--ink); }
+  .compliance-table tr:last-child td { border-bottom: none; }
+  .compliance-table .check { color: var(--green); font-weight: 600; }
+
+  /* Scalability pills */
+  .scale-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .scale-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--page);
+    border: 1px solid rgba(18,17,15,0.10);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .scale-pill span { font-size: 15px; }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(18,17,15,0.10);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-footer p { font-size: 11px; color: var(--ink-muted); font-weight: 300; }
+
+  @media (max-width: 900px) {
+    .arch-grid { grid-template-columns: 1fr; }
+    .security-panel { flex-direction: row; flex-wrap: wrap; }
+    .flow-strip { flex-wrap: wrap; }
+    .doc-section { padding: 24px 20px; }
+    .diagram-wrapper { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h1>Collagen IQ™<br><em>Platform Architecture</em></h1>
+      <p>iOS Mobile App v1.0 · System Architecture & Documentation · Prepared for Client Review</p>
+    </div>
+    <div class="doc-meta">
+      <span>Document version</span>
+      <strong>v1.0 · Draft</strong>
+      <span style="margin-top:8px">Prepared</span>
+      <strong>April 2026</strong>
+      <span style="margin-top:8px">Status</span>
+      <strong style="color: var(--orange)">Awaiting Confirmation</strong>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PART 1 — VISUAL DIAGRAM                     -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <div class="section-label label-diagram">⬡ Part 1 — Visual Architecture Diagram</div>
+
+  <div class="diagram-wrapper">
+    <div class="diagram-title">Collagen IQ™ — iOS Platform Architecture</div>
+    <div class="diagram-subtitle">AI-Powered Collagen Skin Analysis · Multi-tenant SaaS · Practitioner + Patient Flows</div>
+
+    <!-- LEGEND -->
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div> Presentation (iOS UI)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div> Business Logic (Core Engine)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Data Layer (Database)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div> Infrastructure (External Services)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Security & Compliance</div>
+    </div>
+
+    <!-- ARCHITECTURE GRID -->
+    <div class="arch-grid">
+      <div class="arch-main">
+
+        <!-- ── LAYER 1: PRESENTATION ── -->
+        <div class="layer layer-presentation">
+          <div class="layer-header">
+            <div class="layer-icon">📱</div>
+            <span class="layer-title">Layer 1 — Presentation · iOS App (Practitioner + Patient)</span>
+          </div>
+          <div class="nodes">
+            <div class="node"><span class="node-icon">🏠</span> Dashboard</div>
+            <div class="node"><span class="node-icon">📋</span> Patient List</div>
+            <div class="node"><span class="node-icon">👤</span> Patient Profile</div>
+            <div class="node"><span class="node-icon">📷</span> Scan Capture</div>
+            <div class="node"><span class="node-icon">⏳</span> Processing Screen</div>
+            <div class="node"><span class="node-icon">📊</span> Score Results</div>
+            <div class="node"><span class="node-icon">🗺️</span> Zone + Layer View</div>
+            <div class="node"><span class="node-icon">💊</span> Treatment Plan</div>
+            <div class="node"><span class="node-icon">📄</span> Report & Sharing</div>
+            <div class="node"><span class="node-icon">📈</span> Progress Tracker</div>
+            <div class="node"><span class="node-icon">⚙️</span> Settings</div>
+            <div class="node node-avatar"><span class="node-icon">🤖</span> AI Doctor Avatar</div>
+          </div>
+        </div>
+
+        <!-- Flow arrow -->
+        <div class="flow-arrow-down">↓</div>
+
+        <!-- ── LAYER 2: BUSINESS LOGIC ── -->
+        <div class="layer layer-logic">
+          <div class="layer-header">
+            <div class="layer-icon">⚙️</div>
+            <span class="layer-title">Layer 2 — Business Logic · Core Processing Engine</span>
+          </div>
+          <div class="nodes">
+            <div class="node"><span class="node-icon">🔄</span> Session State Machine</div>
+            <div class="node"><span class="node-icon">🖼️</span> Image Processing Pipeline</div>
+            <div class="node"><span class="node-icon">🤖</span> AI Analysis Engine</div>
+            <div class="node"><span class="node-icon">🧬</span> Collagen Analysis Module</div>
+            <div class="node"><span class="node-icon">🗺️</span> Zone + Layer Scoring</div>
+            <div class="node"><span class="node-icon">💡</span> Treatment Plan Generator</div>
+            <div class="node"><span class="node-icon">📑</span> Report Generator (PDF)</div>
+            <div class="node"><span class="node-icon">🔔</span> Notification Service</div>
+            <div class="node"><span class="node-icon">💳</span> Subscription Enforcement</div>
+            <div class="node"><span class="node-icon">🎙️</span> Avatar Video Controller</div>
+          </div>
+        </div>
+
+        <!-- Flow arrow -->
+        <div class="flow-arrow-down">↓</div>
+
+        <!-- ── LAYER 3: DATA ── -->
+        <div class="layer layer-data">
+          <div class="layer-header">
+            <div class="layer-icon">🗄️</div>
+            <span class="layer-title">Layer 3 — Data Layer · Supabase PostgreSQL Database</span>
+          </div>
+          <div class="nodes">
+            <div class="node"><span class="node-icon">👥</span> users</div>
+            <div class="node"><span class="node-icon">🏥</span> clinics</div>
+            <div class="node"><span class="node-icon">🧑</span> patients</div>
+            <div class="node"><span class="node-icon">📸</span> sessions</div>
+            <div class="node"><span class="node-icon">🖼️</span> images</div>
+            <div class="node"><span class="node-icon">📊</span> analyses</div>
+            <div class="node"><span class="node-icon">🗺️</span> zone_scores</div>
+            <div class="node"><span class="node-icon">📐</span> layer_scores</div>
+            <div class="node"><span class="node-icon">💊</span> treatment_plans</div>
+            <div class="node"><span class="node-icon">🔖</span> plan_templates</div>
+            <div class="node"><span class="node-icon">📄</span> reports + share_token</div>
+            <div class="node"><span class="node-icon">🔔</span> notifications</div>
+            <div class="node"><span class="node-icon">💳</span> subscriptions</div>
+            <div class="node"><span class="node-icon">✅</span> consent_records</div>
+            <div class="node"><span class="node-icon">📝</span> audit_logs</div>
+            <div class="node"><span class="node-icon">🏷️</span> manual_labels</div>
+            <div class="node"><span class="node-icon">🤖</span> model_versions</div>
+          </div>
+        </div>
+
+        <!-- Flow arrow -->
+        <div class="flow-arrow-down">↓</div>
+
+        <!-- ── LAYER 4: INFRASTRUCTURE ── -->
+        <div class="layer layer-infra">
+          <div class="layer-header">
+            <div class="layer-icon">☁️</div>
+            <span class="layer-title">Layer 4 — Infrastructure · External Services</span>
+          </div>
+          <div class="nodes">
+            <div class="node"><span class="node-icon">🤖</span> AI Model Service</div>
+            <div class="node"><span class="node-icon">🗃️</span> Cloud Storage (Images)</div>
+            <div class="node"><span class="node-icon">⚡</span> WebSocket / Realtime</div>
+            <div class="node"><span class="node-icon">📧</span> Email / Push Notifications</div>
+            <div class="node"><span class="node-icon">🔐</span> Auth System (Supabase)</div>
+            <div class="node"><span class="node-icon">💳</span> Payment System (Stripe)</div>
+            <div class="node"><span class="node-icon">📋</span> PDF Generator (Edge Fn)</div>
+            <div class="node"><span class="node-icon">🎬</span> Avatar Video CDN</div>
+          </div>
+        </div>
+
+        <!-- ── DATA FLOW STRIP ── -->
+        <div style="margin-top: 20px;">
+          <div class="flow-divider">
+            <div class="flow-divider-line"></div>
+            <div class="flow-divider-text">Core data flow</div>
+            <div class="flow-divider-line"></div>
+          </div>
+          <div class="flow-strip" style="margin-top: 10px;">
+            <div class="flow-step">
+              <div class="flow-step-inner">
+                <div class="flow-node">📷<br>Scan</div>
+                <div class="flow-label">capture</div>
+              </div>
+              <div class="flow-arrow">→</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-inner">
+                <div class="flow-node active">Session<br>Created</div>
+                <div class="flow-label">DB write</div>
+              </div>
+              <div class="flow-arrow">→</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-inner">
+                <div class="flow-node">🖼️<br>Images ×5</div>
+                <div class="flow-label">upload</div>
+              </div>
+              <div class="flow-arrow">→</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-inner">
+                <div class="flow-node active">AI<br>Analysis</div>
+                <div class="flow-label">engine</div>
+              </div>
+              <div class="flow-arrow">→</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-inner">
+                <div class="flow-node">📊<br>Scores</div>
+                <div class="flow-label">zones + layers</div>
+              </div>
+              <div class="flow-arrow">→</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-inner">
+                <div class="flow-node active">Treatment<br>Plan</div>
+                <div class="flow-label">generated</div>
+              </div>
+              <div class="flow-arrow">→</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-inner">
+                <div class="flow-node">📄<br>Report</div>
+                <div class="flow-label">PDF export</div>
+              </div>
+              <div class="flow-arrow">→</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-inner">
+                <div class="flow-node active">Patient<br>Share</div>
+                <div class="flow-label">secure link</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end arch-main -->
+
+      <!-- ── SECURITY SIDE PANEL ── -->
+      <div class="security-panel">
+        <div class="layer-header">
+          <div class="layer-icon">🔐</div>
+          <span class="layer-title" style="writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.15em;">Security & Compliance</span>
+        </div>
+        <div class="sec-item">Audit Logs<br>HIPAA · GDPR</div>
+        <div class="sec-item">Token-based<br>Sharing</div>
+        <div class="sec-item">Role-based<br>Access (RLS)</div>
+        <div class="sec-item">AES-256<br>Encryption</div>
+        <div class="sec-item">MFA<br>Practitioners</div>
+        <div class="sec-item">Consent<br>Records</div>
+        <div class="sec-item">Data<br>Isolation</div>
+      </div>
+
+    </div><!-- end arch-grid -->
+  </div><!-- end diagram-wrapper -->
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PART 2 — DOCUMENTATION                      -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <div class="section-label label-docs">📄 Part 2 — Platform Documentation</div>
+
+  <div class="docs-wrapper">
+
+    <!-- 1. System Overview -->
+    <div class="doc-section">
+      <h2>1. System Overview</h2>
+      <p class="section-intro">Collagen IQ™ is an AI-powered skin analysis platform built for aesthetic practitioners and their patients. In simple terms: a practitioner photographs a patient's skin using the iOS app, the AI analyses the images in seconds, and the system produces a detailed collagen health score, zone-by-zone breakdown, and a personalized treatment plan — all of which can be securely shared with the patient through their own app experience.</p>
+
+      <p class="section-intro" style="margin-bottom:0">The platform is built as a multi-tenant SaaS system — meaning multiple clinics can each use the platform independently, with their patient data kept completely separate and secure. Think of it like how each restaurant on Uber Eats manages its own menu and orders — all on the same platform, but fully isolated from each other.</p>
+    </div>
+
+    <!-- 2. Layer-by-Layer -->
+    <div class="doc-section">
+      <h2>2. Layer-by-Layer Explanation</h2>
+      <p class="section-intro">The platform is organized into four stacked layers, each with a specific role. Data flows downward through the layers during a scan, and back upward to display results.</p>
+
+      <div class="layer-cards">
+        <div class="layer-card purple">
+          <div class="card-icon">📱</div>
+          <h3>Presentation Layer — The iOS App</h3>
+          <p>Everything the practitioner and patient actually see and touch. This includes the scan camera, results screens, treatment plan view, progress charts, report sharing, and the AI Doctor Avatar. It is the face of the platform — clean, clinical, and designed for both speed and clarity.</p>
+          <p class="card-connects">↓ Sends actions to the Business Logic Layer</p>
+        </div>
+        <div class="layer-card blue">
+          <div class="card-icon">⚙️</div>
+          <h3>Business Logic Layer — The Brain</h3>
+          <p>The engine that processes everything behind the scenes. It manages the scan session lifecycle (from capture to complete), runs images through the AI analysis pipeline, calculates zone and layer scores, generates treatment plans, builds PDF reports, and enforces subscription limits. Nothing happens without this layer deciding it should.</p>
+          <p class="card-connects">↓ Reads and writes to the Data Layer · ↑ Sends results to Presentation</p>
+        </div>
+        <div class="layer-card green">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Layer — The Memory</h3>
+          <p>A structured PostgreSQL database (via Supabase) that stores everything permanently: patient records, scan sessions, images, AI analysis results, treatment plans, reports, consent records, and audit logs. Every piece of data is tagged with a clinic ID so that no clinic can ever see another clinic's information — enforced at the database level, not just in the app.</p>
+          <p class="card-connects">↓ Connected to Infrastructure · ↑ Provides data to Business Logic</p>
+        </div>
+        <div class="layer-card orange">
+          <div class="card-icon">☁️</div>
+          <h3>Infrastructure Layer — The Foundation</h3>
+          <p>The external services the platform runs on: the AI model that analyses images, cloud storage for patient photos, real-time updates (WebSocket) for the processing screen, email and push notifications, the authentication system, Stripe for payments, and the CDN that delivers the AI Doctor Avatar video. These are proven, enterprise-grade services — not built from scratch.</p>
+          <p class="card-connects">↑ Powers the Data and Business Logic layers</p>
+        </div>
+        <div class="layer-card red">
+          <div class="card-icon">🔐</div>
+          <h3>Security & Compliance — The Shield</h3>
+          <p>Running alongside all layers is a dedicated security system: row-level data isolation, encrypted storage, MFA for practitioners, audit logs recording every action, GDPR consent tracking, and the token-based sharing system that lets patients access results securely without a password. This is not optional — it is built into the architecture from the start.</p>
+          <p class="card-connects">⟺ Wraps all other layers</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Core Flow -->
+    <div class="doc-section">
+      <h2>3. Core Flow — From Scan to Patient</h2>
+      <p class="section-intro">Here is exactly what happens, step by step, when a practitioner scans a patient and shares their results.</p>
+
+      <div class="flow-steps">
+        <div class="flow-doc-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Practitioner opens the patient profile and taps "New Scan"</h4>
+            <p>The app confirms patient consent is on record before allowing the scan to begin. A new session record is created in the database with a status of "pending".</p>
+            <span class="step-db">DB: INSERT sessions (status = 'pending')</span>
+          </div>
+        </div>
+        <div class="flow-doc-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Camera captures 5 standardized photos</h4>
+            <p>The app guides the practitioner through 5 shots — front face, left profile, right profile, neck, and hands. An alignment guide and lighting indicator assist with quality. Each image is uploaded to secure cloud storage immediately after capture.</p>
+            <span class="step-db">DB: INSERT images ×5 · Storage: encrypted upload</span>
+          </div>
+        </div>
+        <div class="flow-doc-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Practitioner taps "Analyse Now" — AI processing begins</h4>
+            <p>The AI Analysis Engine receives the 5 images and begins scoring. The session status updates to "processing". The practitioner sees an animated processing screen with live stage updates — no manual refresh needed (powered by real-time WebSocket).</p>
+            <span class="step-db">DB: UPDATE sessions (status = 'processing')</span>
+          </div>
+        </div>
+        <div class="flow-doc-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>AI produces the Collagen IQ Score and full analysis</h4>
+            <p>The AI engine scores 6 collagen layers and 6 facial zones, calculates the overall Collagen IQ score (0–100), estimates the biological skin age, and builds the deficit index. All results are written to the analyses table.</p>
+            <span class="step-db">DB: INSERT analyses (total_score, layer_scores, zone_scores, deficit_index)</span>
+          </div>
+        </div>
+        <div class="flow-doc-step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h4>App auto-redirects to Score Results — practitioner reviews</h4>
+            <p>The full analysis is displayed: the score gauge, age comparison, radar chart, zone map, and collagen deficit bars. The AI Doctor Avatar explains the results in plain language, as if presenting to a colleague. The practitioner can tap into any zone for a deeper breakdown.</p>
+            <span class="step-db">DB: READ analyses + zone_scores + layer_scores</span>
+          </div>
+        </div>
+        <div class="flow-doc-step">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <h4>Treatment Plan is generated and customized</h4>
+            <p>The AI suggests a ranked list of treatments based on the worst-scoring zones and deficit types. The practitioner can drag to reorder, add or remove treatments, attach a skincare protocol, and write their own clinical notes. The plan can be saved as a reusable template.</p>
+            <span class="step-db">DB: INSERT treatment_plans · INSERT treatment_items</span>
+          </div>
+        </div>
+        <div class="flow-doc-step">
+          <div class="step-num">7</div>
+          <div class="step-content">
+            <h4>PDF Report is generated and shared with the patient</h4>
+            <p>A branded PDF is generated covering the score, zone map, treatment plan, and clinical notes. The practitioner taps "Share with patient" — a unique secure link is created that expires in 24 hours. The patient receives this link by email.</p>
+            <span class="step-db">DB: INSERT reports (share_token, expires_at)</span>
+          </div>
+        </div>
+        <div class="flow-doc-step">
+          <div class="step-num">8</div>
+          <div class="step-content">
+            <h4>Patient opens their secure link — views results in plain language</h4>
+            <p>The patient sees their Collagen IQ score, age comparison, treatment plan, and progress — all in plain, encouraging language with no clinical jargon. They give digital consent before any data is shown. They can optionally set a password to return later. The AI Doctor Avatar explains their results in a friendly, accessible way.</p>
+            <span class="step-db">DB: INSERT consent_records · READ analyses (patient-scoped)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Key Features -->
+    <div class="doc-section">
+      <h2>4. Key Features</h2>
+      <p class="section-intro">The platform is built around five core capabilities that make it distinct from any general analytics tool.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feat-icon">🧬</div>
+          <h4>AI Collagen Analysis</h4>
+          <p>5 photographs analyzed by a trained AI model that scores 6 collagen layers, 6 facial zones, 5 collagen types, and produces a single 0–100 Collagen IQ score with biological age estimation. Results in under 60 seconds.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">⚡</div>
+          <h4>Real-Time Processing</h4>
+          <p>The processing screen updates live using WebSocket technology — the practitioner sees each analysis stage complete in real time without reloading the page. No waiting, no uncertainty.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">🤖</div>
+          <h4>AI Doctor Avatar</h4>
+          <p>An animated AI video assistant that explains analysis results and treatment recommendations in plain, personable language — both for practitioners reviewing results and patients viewing their score. Brings the data to life in a human way.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">💊</div>
+          <h4>Treatment Plan System</h4>
+          <p>AI-generated, fully editable treatment plans with clinical and patient-friendly naming, priority ranking, skincare protocols, and practitioner notes. Plans can be saved as reusable clinic templates for efficiency.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">🔗</div>
+          <h4>Secure Report Sharing</h4>
+          <p>Practitioners share results via a time-limited secure link — no patient account required. Patients view a beautifully designed, plain-language version of their results. Consent is collected digitally before any data is displayed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">📈</div>
+          <h4>Progress Tracking</h4>
+          <p>Every scan is stored so patients and practitioners can see how collagen health changes over time. Multi-line charts show overall and per-layer progress, with before/after comparisons and treatment effectiveness bands.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Security -->
+    <div class="doc-section">
+      <h2>5. Security & Compliance</h2>
+      <p class="section-intro">The platform is designed from the ground up to meet GDPR (Europe), HIPAA (US), and UAE health data regulations. Security is not added on top — it is built into every layer of the database architecture.</p>
+
+      <table class="compliance-table">
+        <thead>
+          <tr>
+            <th>Protection</th>
+            <th>How It Works</th>
+            <th>Regulation Met</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data Isolation</td>
+            <td>Every database record is tagged with a clinic_id. Row-Level Security (RLS) rules prevent any clinic from ever reading another clinic's data — enforced at the database level, not just the app.</td>
+            <td class="check">HIPAA · GDPR</td>
+          </tr>
+          <tr>
+            <td>Consent Records</td>
+            <td>Patient consent is digitally recorded with an exact timestamp, IP address, and consent version before any data is shown. Consent records are never deleted — withdrawals are recorded, not erased.</td>
+            <td class="check">GDPR Art. 6 · UAE</td>
+          </tr>
+          <tr>
+            <td>Audit Logs</td>
+            <td>Every action — who viewed a patient, who exported a report, who changed consent — is logged with a timestamp and IP address. Downloadable as CSV from clinic Settings.</td>
+            <td class="check">HIPAA · GDPR Art. 30</td>
+          </tr>
+          <tr>
+            <td>Token-Based Sharing</td>
+            <td>Patient report links use a unique random token that expires in 24 hours. No patient password is required to view results — and no unauthorized party can guess the link.</td>
+            <td class="check">GDPR · Best Practice</td>
+          </tr>
+          <tr>
+            <td>Encryption</td>
+            <td>All data is encrypted at rest (AES-256) and in transit (TLS 1.3). Patient images stored in cloud storage have matching access policies — only the owning clinic can retrieve them.</td>
+            <td class="check">HIPAA · UAE</td>
+          </tr>
+          <tr>
+            <td>Role-Based Access</td>
+            <td>Admin, Practitioner, and Patient roles each see only the data appropriate to their role. Patients never see clinical values. Practitioners never see other clinics' data. Admins never see individual patient health records.</td>
+            <td class="check">HIPAA Minimum Necessary</td>
+          </tr>
+          <tr>
+            <td>MFA for Practitioners</td>
+            <td>Multi-factor authentication is available for all practitioner accounts. When enabled, a 6-digit code from an authenticator app is required at every login.</td>
+            <td class="check">Best Practice</td>
+          </tr>
+          <tr>
+            <td>AI Disclaimer</td>
+            <td>All AI analysis screens and exported PDFs carry a mandatory disclaimer: results are AI-assisted estimates based on visible skin markers and do not replace medical diagnosis.</td>
+            <td class="check">UAE AI Regulation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6. Scalability -->
+    <div class="doc-section">
+      <h2>6. Scalability Notes</h2>
+      <p class="section-intro">The architecture is designed to grow with the platform. What works for 10 clinics will work for 1,000 — without needing to rebuild.</p>
+
+      <div class="scale-pills">
+        <div class="scale-pill"><span>⚡</span> Real-time updates via WebSocket — no polling, instant status changes across devices</div>
+        <div class="scale-pill"><span>🧩</span> Modular layers — the AI model, PDF generator, and notification service can each be upgraded independently</div>
+        <div class="scale-pill"><span>🏥</span> Multi-tenant from day one — adding a new clinic is a single database record, no new infrastructure needed</div>
+        <div class="scale-pill"><span>📦</span> Shared database with tenant isolation — cost-efficient at MVP, upgradeable to dedicated databases per clinic for enterprise tier</div>
+        <div class="scale-pill"><span>🤖</span> AI training layer built in — every practitioner correction improves the model over time (flywheel effect)</div>
+        <div class="scale-pill"><span>📱</span> Mobile-first with web fallback — the iOS app is the primary experience; web works for image upload and report preview where camera is not required</div>
+        <div class="scale-pill"><span>🔌</span> Serverless edge functions — PDF generation, email sending, and AI triggers run as serverless functions that scale automatically with load</div>
+      </div>
+    </div>
+
+  </div><!-- end docs-wrapper -->
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <p>Collagen IQ™ · Platform Architecture Proposal v1.0 · Confidential · Prepared April 2026</p>
+    <p>Not for distribution · Awaiting client confirmation before development begins</p>
+  </div>
+
+</div><!-- end page -->
+</body>
+</html>
