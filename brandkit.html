@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Hasia — Brand Kit</title>
+<style>
+:root {
+  --obsidian: #0E0E0C;
+  --graphite: #2E2E2A;
+  --silver: #A8A8A0;
+  --silver-light: #D4D4CC;
+  --pearl: #F0EEE8;
+  --pearl-warm: #E8E4DC;
+  --warm-white: #FAFAF8;
+  --ink: #1A1A18;
+  --rule: rgba(0,0,0,0.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #EEEDE9;
+  color: var(--ink);
+}
+
+/* ── PAGE SHELL ── */
+.page { max-width: 900px; margin: 0 auto; padding: 56px 32px 80px; }
+
+/* ── COVER ── */
+.cover {
+  background: var(--obsidian);
+  border-radius: 16px;
+  padding: 56px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+}
+.cover-left {}
+.cover-wordmark { font-family: Georgia, serif; font-size: 42px; font-weight: 400; color: var(--pearl); letter-spacing: 0.02em; margin-bottom: 6px; }
+.cover-sub { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #3A3A38; }
+.cover-right { text-align: right; }
+.cover-doc { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #3A3A38; margin-bottom: 4px; }
+.cover-version { font-size: 11px; color: #686860; }
+.cover-monogram {
+  width: 72px; height: 72px;
+  border: 0.5px solid #2E2E2A;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; margin-left: auto;
+}
+
+/* ── SECTION DIVIDER ── */
+.section-block { margin-bottom: 56px; }
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid var(--silver-light);
+  margin-bottom: 24px;
+}
+.section-num { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--silver); }
+.section-title { font-family: Georgia, serif; font-size: 22px; font-weight: 400; color: var(--obsidian); }
+
+/* ── ROW LABEL ── */
+.row-label {
+  font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--silver); margin: 24px 0 12px;
+}
+.row-label:first-child { margin-top: 0; }
+
+/* ── CARDS ── */
+.flex-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.logo-cell {
+  flex: 1; min-width: 200px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 28px 20px 16px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--silver-light); border-radius: 12px;
+}
+.logo-cell-dark {
+  flex: 1; min-width: 200px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 28px 20px 16px;
+  background: var(--obsidian);
+  border: 0.5px solid var(--graphite); border-radius: 12px;
+}
+.logo-cell-pearl {
+  flex: 1; min-width: 200px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 28px 20px 16px;
+  background: var(--pearl);
+  border: 0.5px solid var(--silver-light); border-radius: 12px;
+}
+.logo-cell-silver {
+  flex: 1; min-width: 160px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 28px 20px 16px;
+  background: var(--silver);
+  border: 0.5px solid var(--silver); border-radius: 12px;
+}
+.cell-lbl { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver); }
+.cell-lbl-dk { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #3A3A38; }
+.cell-lbl-mid { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #888880; }
+
+.h-card {
+  flex: 1; min-width: 300px;
+  display: flex; flex-direction: row; align-items: center;
+  gap: 16px; padding: 24px 28px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--silver-light); border-radius: 12px;
+}
+.h-card-dark {
+  flex: 1; min-width: 300px;
+  display: flex; flex-direction: row; align-items: center;
+  gap: 16px; padding: 24px 28px;
+  background: var(--obsidian);
+  border: 0.5px solid var(--graphite); border-radius: 12px;
+}
+
+/* ── PALETTE ── */
+.swatch-row { display: flex; gap: 0; border-radius: 12px; overflow: hidden; height: 80px; margin-bottom: 6px; }
+.swatch { flex: 1; }
+.swatch-meta { display: flex; gap: 12px; }
+.swatch-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.swatch-sq { width: 52px; height: 52px; border-radius: 8px; }
+.swatch-name { font-size: 9px; color: var(--silver); text-align: center; }
+.swatch-hex { font-size: 9px; font-family: monospace; color: var(--graphite); text-align: center; }
+
+/* ── TYPOGRAPHY ── */
+.type-table { width: 100%; border-collapse: collapse; }
+.type-table tr { border-bottom: 0.5px solid var(--rule); }
+.type-table tr:last-child { border-bottom: none; }
+.type-table td { padding: 14px 12px; vertical-align: middle; }
+.type-table td:first-child { width: 110px; }
+.type-table td:last-child { width: 180px; }
+.type-meta-name { font-size: 11px; font-weight: 500; color: var(--obsidian); margin-bottom: 3px; }
+.type-meta-spec { font-size: 9px; font-family: monospace; color: var(--silver); line-height: 1.7; }
+.type-usage { font-size: 10px; color: var(--silver); line-height: 1.6; }
+
+/* ── ICON ── */
+.icon-row { display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap; }
+.icon-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.icon-sz { font-size: 9px; color: var(--silver); text-align: center; font-family: monospace; }
+.icon-sz-bad { font-size: 9px; color: #C04040; text-align: center; font-family: monospace; }
+
+.splash-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.splash-phone {
+  width: 150px; height: 280px;
+  border-radius: 26px; border: 1.5px solid var(--graphite);
+  overflow: hidden; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; flex-shrink: 0;
+}
+.splash-lbl { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver); text-align: center; margin-top: 8px; }
+
+/* ── WIREFRAMES ── */
+.wf-stage {
+  background: #E8E6E2;
+  border-radius: 14px;
+  padding: 24px 16px 28px;
+}
+.wf-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.phone {
+  width: 175px; background: var(--warm-white);
+  border-radius: 28px; border: 1.5px solid var(--graphite);
+  overflow: hidden; flex-shrink: 0;
+}
+.phone-dark {
+  width: 175px; background: var(--obsidian);
+  border-radius: 28px; border: 1.5px solid var(--graphite);
+  overflow: hidden; flex-shrink: 0;
+}
+.notch { width: 48px; height: 16px; background: var(--obsidian); border-radius: 0 0 9px 9px; margin: 0 auto; }
+.notch-lt { width: 48px; height: 16px; background: #1A1A18; border-radius: 0 0 9px 9px; margin: 0 auto; }
+.sbar { display: flex; justify-content: space-between; padding: 3px 12px 1px; }
+.st { font-size: 8px; font-weight: 500; color: var(--ink); }
+.si { font-size: 8px; color: var(--ink); letter-spacing: -1px; }
+.st-d { font-size: 8px; font-weight: 500; color: #4A4A48; }
+.si-d { font-size: 8px; color: #4A4A48; letter-spacing: -1px; }
+.screen-lbl { font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: #888880; text-align: center; margin-top: 7px; }
+.body { padding: 10px 12px; }
+.sec-lbl { font-size: 7px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--silver); margin-bottom: 7px; }
+.top-nav { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px 6px; border-bottom: 0.5px solid var(--rule); }
+.top-logo { font-size: 12px; font-family: Georgia, serif; font-weight: 400; color: var(--obsidian); }
+.ham { display: flex; flex-direction: column; gap: 3px; }
+.ham-line { width: 13px; height: 0.5px; background: var(--obsidian); }
+.card { background: var(--warm-white); border: 0.5px solid var(--pearl-warm); border-radius: 9px; padding: 8px; }
+.card-pearl { background: var(--pearl); border: 0.5px solid var(--silver-light); border-radius: 9px; padding: 8px; }
+.card-obs { background: var(--obsidian); border-radius: 9px; padding: 8px; }
+.card-row { display: flex; gap: 5px; margin-bottom: 7px; }
+.ct { font-size: 8px; font-weight: 500; color: var(--obsidian); margin-bottom: 2px; }
+.ct-l { font-size: 8px; font-weight: 500; color: var(--pearl); margin-bottom: 2px; }
+.cs { font-size: 7px; color: var(--silver); }
+.btn { background: var(--obsidian); color: var(--pearl); border-radius: 18px; font-size: 7px; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; padding: 5px 0; margin-top: 4px; }
+.btn-o { background: transparent; color: var(--obsidian); border: 0.5px solid var(--obsidian); border-radius: 18px; font-size: 7px; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; padding: 5px 0; margin-top: 4px; }
+.rule-line { height: 0.5px; background: var(--rule); margin: 7px 0; }
+.list-item { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 0.5px solid var(--rule); }
+.list-item:last-child { border-bottom: none; }
+.list-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--silver); margin-right: 5px; flex-shrink: 0; }
+.list-txt { font-size: 7px; color: var(--ink); display: flex; align-items: center; flex: 1; }
+.list-arr { font-size: 7px; color: var(--silver); }
+.input-fld { width: 100%; background: var(--pearl); border: 0.5px solid var(--silver-light); border-radius: 6px; padding: 6px 8px; font-size: 7px; color: var(--silver); margin-bottom: 5px; }
+.bot-nav { display: flex; background: var(--warm-white); border-top: 0.5px solid var(--rule); padding: 6px 0 8px; }
+.bn { flex: 1; text-align: center; font-size: 5.5px; color: var(--silver); letter-spacing: 0.06em; text-transform: uppercase; }
+.bn.on { color: var(--obsidian); }
+.bn-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--obsidian); margin: 2px auto 0; }
+.hero-block { background: var(--pearl-warm); }
+.hero-img { width: 100%; height: 110px; background: var(--pearl); display: flex; align-items: center; justify-content: center; }
+.hero-mono { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--silver-light); background: var(--warm-white); display: flex; align-items: center; justify-content: center; font-family: Georgia,serif; font-size: 19px; color: var(--obsidian); }
+.hero-cap { padding: 8px 12px; background: var(--warm-white); border-top: 0.5px solid var(--rule); }
+.hero-name { font-family: Georgia,serif; font-size: 14px; color: var(--obsidian); margin-bottom: 2px; }
+.hero-sub { font-size: 7px; color: var(--silver); letter-spacing: 0.08em; text-transform: uppercase; }
+.award-pill { display: inline-block; margin-top: 5px; font-size: 6px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--obsidian); border: 0.5px solid var(--obsidian); border-radius: 16px; padding: 2px 8px; }
+.mem-card { background: var(--obsidian); border-radius: 9px; padding: 10px; margin-bottom: 7px; position: relative; overflow: hidden; }
+.mem-ring { position: absolute; right: -8px; top: -8px; width: 50px; height: 50px; border-radius: 50%; border: 16px solid rgba(255,255,255,0.02); }
+.mem-lbl { font-size: 6px; color: #585854; letter-spacing: 0.1em; text-transform: uppercase; }
+.mem-name { font-size: 11px; font-family: Georgia,serif; color: #D4D4CC; margin: 3px 0; }
+.mem-tier { font-size: 6px; color: #686860; letter-spacing: 0.08em; text-transform: uppercase; }
+.mem-mono { position: absolute; right: 10px; top: 10px; width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid #2E2E2A; display: flex; align-items: center; justify-content: center; font-family: Georgia,serif; font-size: 10px; color: #686860; }
+.step-row { display: flex; gap: 4px; margin-bottom: 9px; }
+.step-chip { flex: 1; border-radius: 5px; font-size: 6px; letter-spacing: 0.05em; text-transform: uppercase; text-align: center; padding: 5px 2px; border: 0.5px solid var(--rule); background: var(--pearl); color: var(--silver); }
+.step-chip.on { background: var(--obsidian); color: var(--pearl); border-color: var(--obsidian); }
+.cal-row { display: flex; gap: 3px; margin-bottom: 4px; }
+.cal-day { flex: 1; text-align: center; font-size: 6.5px; color: var(--silver); padding: 4px 1px; border-radius: 4px; background: var(--pearl); }
+.cal-day.on { background: var(--obsidian); color: var(--pearl); }
+.vid-thumb { width: 100%; background: var(--pearl-warm); border-radius: 6px; height: 38px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; }
+.play-btn { width: 18px; height: 18px; border-radius: 50%; border: 0.5px solid var(--graphite); background: var(--warm-white); display: flex; align-items: center; justify-content: center; }
+.play-tri { width: 0; height: 0; border-left: 5px solid var(--obsidian); border-top: 3px solid transparent; border-bottom: 3px solid transparent; margin-left: 2px; }
+.tag { display: inline-block; font-size: 6px; border: 0.5px solid var(--silver-light); color: var(--silver); border-radius: 7px; padding: 2px 6px; letter-spacing: 0.05em; text-transform: uppercase; margin-right: 3px; }
+.lock-b { display: inline-block; font-size: 6px; background: var(--obsidian); color: var(--pearl); border-radius: 7px; padding: 2px 6px; letter-spacing: 0.05em; text-transform: uppercase; float: right; }
+.free-b { display: inline-block; font-size: 6px; border: 0.5px solid var(--obsidian); color: var(--obsidian); border-radius: 7px; padding: 2px 6px; letter-spacing: 0.05em; text-transform: uppercase; float: right; }
+.prod-img { width: 100%; background: var(--pearl); border-radius: 6px; height: 44px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; }
+.post { background: var(--warm-white); border: 0.5px solid var(--rule); border-radius: 7px; padding: 7px; margin-bottom: 5px; }
+.post-hdr { display: flex; align-items: center; gap: 5px; margin-bottom: 4px; }
+.post-av { width: 18px; height: 18px; border-radius: 50%; background: var(--obsidian); display: flex; align-items: center; justify-content: center; font-family: Georgia,serif; font-size: 8px; color: var(--pearl); flex-shrink: 0; }
+.post-nm { font-size: 7px; font-weight: 500; color: var(--ink); }
+.post-tm { font-size: 6.5px; color: var(--silver); margin-left: auto; }
+.post-body { font-size: 7px; color: var(--graphite); line-height: 1.5; }
+.prog-bar { width: 100%; height: 2px; background: var(--pearl-warm); border-radius: 1px; overflow: hidden; margin-bottom: 10px; }
+.prog-fill { height: 100%; background: var(--obsidian); border-radius: 1px; }
+.pill-dots { display: flex; gap: 4px; justify-content: center; margin-bottom: 10px; }
+.pd-on { width: 14px; height: 3px; background: var(--obsidian); border-radius: 2px; }
+.pd-off { width: 5px; height: 3px; background: var(--silver-light); border-radius: 2px; }
+.av-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 5px; margin-bottom: 9px; }
+.av-ch { background: var(--pearl); border: 0.5px solid var(--silver-light); border-radius: 7px; padding: 7px 3px; text-align: center; }
+.av-ch.on { background: var(--obsidian); border-color: var(--obsidian); }
+.av-lbl { font-size: 6px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--graphite); margin-top: 3px; }
+.av-lbl-l { font-size: 6px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--pearl); margin-top: 3px; }
+.type-row-mini { background: var(--warm-white); border: 0.5px solid var(--silver-light); border-radius: 12px; padding: 14px 18px; margin-bottom: 8px; }
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 48px; padding-top: 20px;
+  border-top: 0.5px solid var(--silver-light);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-brand { font-family: Georgia, serif; font-size: 14px; color: var(--obsidian); }
+.footer-note { font-size: 10px; color: var(--silver); letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ COVER ══ -->
+  <div class="cover">
+    <div class="cover-left">
+      <div class="cover-wordmark">Doctor Hasia</div>
+      <div class="cover-sub">Aesthetics &amp; Wellness · Dubai · Birmingham</div>
+    </div>
+    <div class="cover-right">
+      <div class="cover-monogram">
+        <svg width="40" height="40" viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="#3A3A38" stroke-width="0.8"/>
+          <circle cx="20" cy="20" r="14" fill="none" stroke="#3A3A38" stroke-width="0.3" opacity="0.4"/>
+          <text x="20" y="26" font-family="Georgia,serif" font-size="17" font-weight="400" fill="#686860" text-anchor="middle">H</text>
+        </svg>
+      </div>
+      <div class="cover-doc">Brand Kit</div>
+      <div class="cover-version">Obsidian Pearl · iOS App · 2026</div>
+    </div>
+  </div>
+
+  <!-- ══ 01 PALETTE ══ -->
+  <div class="section-block">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title">Colour palette — Obsidian Pearl</div>
+    </div>
+
+    <div class="row-label">Primary swatch strip</div>
+    <div class="swatch-row" style="margin-bottom:10px;">
+      <div class="swatch" style="background:#0E0E0C;"></div>
+      <div class="swatch" style="background:#2E2E2A;"></div>
+      <div class="swatch" style="background:#A8A8A0;"></div>
+      <div class="swatch" style="background:#D4D4CC;"></div>
+      <div class="swatch" style="background:#E8E4DC;"></div>
+      <div class="swatch" style="background:#F0EEE8;"></div>
+      <div class="swatch" style="background:#FAFAF8;"></div>
+    </div>
+    <div class="swatch-meta" style="margin-bottom:24px;">
+      <div class="swatch-item">
+        <div class="swatch-sq" style="background:#0E0E0C; border:0.5px solid #2E2E2A;"></div>
+        <div class="swatch-name">Obsidian</div>
+        <div class="swatch-hex">#0E0E0C</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch-sq" style="background:#2E2E2A; border:0.5px solid #3A3A38;"></div>
+        <div class="swatch-name">Graphite</div>
+        <div class="swatch-hex">#2E2E2A</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch-sq" style="background:#A8A8A0; border:0.5px solid #C0C0B8;"></div>
+        <div class="swatch-name">Silver</div>
+        <div class="swatch-hex">#A8A8A0</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch-sq" style="background:#D4D4CC; border:0.5px solid #C0C0B8;"></div>
+        <div class="swatch-name">Silver light</div>
+        <div class="swatch-hex">#D4D4CC</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch-sq" style="background:#E8E4DC; border:0.5px solid #D0CCC4;"></div>
+        <div class="swatch-name">Pearl warm</div>
+        <div class="swatch-hex">#E8E4DC</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch-sq" style="background:#F0EEE8; border:0.5px solid #D4D4CC;"></div>
+        <div class="swatch-name">Pearl</div>
+        <div class="swatch-hex">#F0EEE8</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch-sq" style="background:#FAFAF8; border:0.5px solid #E0E0D8;"></div>
+        <div class="swatch-name">Warm white</div>
+        <div class="swatch-hex">#FAFAF8</div>
+      </div>
+    </div>
+
+    <div class="row-label">Usage preview</div>
+    <div class="flex-row">
+      <div style="flex:1;min-width:240px;background:var(--warm-white);border:0.5px solid var(--silver-light);border-radius:12px;padding:20px;">
+        <div style="font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--silver);margin-bottom:8px;">Light surface</div>
+        <div style="font-family:Georgia,serif;font-size:20px;color:var(--obsidian);margin-bottom:4px;">Doctor Hasia</div>
+        <div style="font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--silver);margin-bottom:12px;">Aesthetics &amp; Wellness</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;">
+          <div style="background:var(--obsidian);color:var(--pearl);border-radius:18px;font-size:9px;padding:7px 16px;letter-spacing:0.06em;text-transform:uppercase;">Book now</div>
+          <div style="border:0.5px solid var(--obsidian);color:var(--obsidian);border-radius:18px;font-size:9px;padding:7px 16px;letter-spacing:0.06em;text-transform:uppercase;">Inquire</div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:240px;background:var(--obsidian);border:0.5px solid var(--graphite);border-radius:12px;padding:20px;">
+        <div style="font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:#3A3A38;margin-bottom:8px;">Dark surface</div>
+        <div style="font-family:Georgia,serif;font-size:20px;color:var(--pearl);margin-bottom:4px;">Doctor Hasia</div>
+        <div style="font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#3A3A38;margin-bottom:12px;">Aesthetics &amp; Wellness</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;">
+          <div style="background:var(--pearl);color:var(--obsidian);border-radius:18px;font-size:9px;padding:7px 16px;letter-spacing:0.06em;text-transform:uppercase;">Book now</div>
+          <div style="border:0.5px solid #3A3A38;color:var(--silver);border-radius:18px;font-size:9px;padding:7px 16px;letter-spacing:0.06em;text-transform:uppercase;">Inquire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 02 LOGO LOCKUPS ══ -->
+  <div class="section-block">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title">Logo lockups</div>
+    </div>
+
+    <div class="row-label">Primary — wordmark + descriptor</div>
+    <div class="flex-row">
+      <div class="logo-cell">
+        <svg width="200" height="56" viewBox="0 0 200 56">
+          <text x="0" y="38" font-family="Georgia,serif" font-size="34" font-weight="400" fill="#0E0E0C" letter-spacing="1">Doctor Hasia</text>
+          <line x1="0" y1="46" x2="200" y2="46" stroke="#A8A8A0" stroke-width="0.5"/>
+          <text x="0" y="56" font-family="Arial,sans-serif" font-size="8" fill="#A8A8A0" letter-spacing="4.5">AESTHETICS &amp; WELLNESS</text>
+        </svg>
+        <div class="cell-lbl">On light</div>
+      </div>
+      <div class="logo-cell-dark">
+        <svg width="200" height="56" viewBox="0 0 200 56">
+          <text x="0" y="38" font-family="Georgia,serif" font-size="34" font-weight="400" fill="#F0EEE8" letter-spacing="1">Doctor Hasia</text>
+          <line x1="0" y1="46" x2="200" y2="46" stroke="#3A3A38" stroke-width="0.5"/>
+          <text x="0" y="56" font-family="Arial,sans-serif" font-size="8" fill="#4A4A48" letter-spacing="4.5">AESTHETICS &amp; WELLNESS</text>
+        </svg>
+        <div class="cell-lbl-dk">On obsidian</div>
+      </div>
+      <div class="logo-cell-pearl">
+        <svg width="200" height="56" viewBox="0 0 200 56">
+          <text x="0" y="38" font-family="Georgia,serif" font-size="34" font-weight="400" fill="#0E0E0C" letter-spacing="1">Doctor Hasia</text>
+          <line x1="0" y1="46" x2="200" y2="46" stroke="#A8A8A0" stroke-width="0.5"/>
+          <text x="0" y="56" font-family="Arial,sans-serif" font-size="8" fill="#888884" letter-spacing="4.5">AESTHETICS &amp; WELLNESS</text>
+        </svg>
+        <div class="cell-lbl-mid">On pearl</div>
+      </div>
+    </div>
+
+    <div class="row-label">Stacked — centred</div>
+    <div class="flex-row">
+      <div class="logo-cell">
+        <svg width="180" height="68" viewBox="0 0 180 68">
+          <text x="90" y="30" font-family="Georgia,serif" font-size="26" font-weight="400" fill="#0E0E0C" text-anchor="middle" letter-spacing="0.5">Doctor Hasia</text>
+          <line x1="20" y1="39" x2="160" y2="39" stroke="#A8A8A0" stroke-width="0.5"/>
+          <text x="90" y="52" font-family="Arial,sans-serif" font-size="7.5" fill="#A8A8A0" text-anchor="middle" letter-spacing="5">AESTHETICS</text>
+          <text x="90" y="64" font-family="Arial,sans-serif" font-size="7.5" fill="#A8A8A0" text-anchor="middle" letter-spacing="5">&amp; WELLNESS</text>
+        </svg>
+        <div class="cell-lbl">On light</div>
+      </div>
+      <div class="logo-cell-dark">
+        <svg width="180" height="68" viewBox="0 0 180 68">
+          <text x="90" y="30" font-family="Georgia,serif" font-size="26" font-weight="400" fill="#F0EEE8" text-anchor="middle" letter-spacing="0.5">Doctor Hasia</text>
+          <line x1="20" y1="39" x2="160" y2="39" stroke="#3A3A38" stroke-width="0.5"/>
+          <text x="90" y="52" font-family="Arial,sans-serif" font-size="7.5" fill="#4A4A48" text-anchor="middle" letter-spacing="5">AESTHETICS</text>
+          <text x="90" y="64" font-family="Arial,sans-serif" font-size="7.5" fill="#4A4A48" text-anchor="middle" letter-spacing="5">&amp; WELLNESS</text>
+        </svg>
+        <div class="cell-lbl-dk">On obsidian</div>
+      </div>
+      <div class="logo-cell-pearl">
+        <svg width="180" height="68" viewBox="0 0 180 68">
+          <text x="90" y="30" font-family="Georgia,serif" font-size="26" font-weight="400" fill="#0E0E0C" text-anchor="middle" letter-spacing="0.5">Doctor Hasia</text>
+          <line x1="20" y1="39" x2="160" y2="39" stroke="#B0B0A8" stroke-width="0.5"/>
+          <text x="90" y="52" font-family="Arial,sans-serif" font-size="7.5" fill="#888884" text-anchor="middle" letter-spacing="5">AESTHETICS</text>
+          <text x="90" y="64" font-family="Arial,sans-serif" font-size="7.5" fill="#888884" text-anchor="middle" letter-spacing="5">&amp; WELLNESS</text>
+        </svg>
+        <div class="cell-lbl-mid">On pearl</div>
+      </div>
+    </div>
+
+    <div class="row-label">Icon mark — monogram</div>
+    <div class="flex-row">
+      <div class="logo-cell" style="max-width:180px;">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="29" fill="none" stroke="#0E0E0C" stroke-width="0.9"/>
+          <circle cx="32" cy="32" r="23" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.25"/>
+          <text x="32" y="42" font-family="Georgia,serif" font-size="28" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+        </svg>
+        <div class="cell-lbl">On light</div>
+      </div>
+      <div class="logo-cell-dark" style="max-width:180px;">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="29" fill="none" stroke="#F0EEE8" stroke-width="0.9"/>
+          <circle cx="32" cy="32" r="23" fill="none" stroke="#F0EEE8" stroke-width="0.3" opacity="0.2"/>
+          <text x="32" y="42" font-family="Georgia,serif" font-size="28" font-weight="400" fill="#F0EEE8" text-anchor="middle">H</text>
+        </svg>
+        <div class="cell-lbl-dk">On obsidian</div>
+      </div>
+      <div class="logo-cell-pearl" style="max-width:180px;">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="29" fill="none" stroke="#0E0E0C" stroke-width="0.9"/>
+          <circle cx="32" cy="32" r="23" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.2"/>
+          <text x="32" y="42" font-family="Georgia,serif" font-size="28" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+        </svg>
+        <div class="cell-lbl-mid">On pearl</div>
+      </div>
+      <div class="logo-cell-silver" style="max-width:180px;">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="29" fill="none" stroke="#0E0E0C" stroke-width="0.9"/>
+          <circle cx="32" cy="32" r="23" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.25"/>
+          <text x="32" y="42" font-family="Georgia,serif" font-size="28" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+        </svg>
+        <div style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#2E2E2A;">On silver</div>
+      </div>
+    </div>
+
+    <div class="row-label">Horizontal compact — app nav use</div>
+    <div class="flex-row">
+      <div class="h-card">
+        <svg width="38" height="38" viewBox="0 0 38 38">
+          <circle cx="19" cy="19" r="17" fill="none" stroke="#0E0E0C" stroke-width="0.8"/>
+          <circle cx="19" cy="19" r="13" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.2"/>
+          <text x="19" y="24.5" font-family="Georgia,serif" font-size="16" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+        </svg>
+        <div>
+          <div style="font-family:Georgia,serif;font-size:17px;color:#0E0E0C;letter-spacing:0.03em;margin-bottom:2px;">Doctor Hasia</div>
+          <div style="font-size:7px;letter-spacing:0.13em;color:#A8A8A0;text-transform:uppercase;">Aesthetics &amp; Wellness</div>
+        </div>
+        <div style="margin-left:auto;"><span style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#A8A8A0;">On light</span></div>
+      </div>
+      <div class="h-card-dark">
+        <svg width="38" height="38" viewBox="0 0 38 38">
+          <circle cx="19" cy="19" r="17" fill="none" stroke="#F0EEE8" stroke-width="0.8"/>
+          <circle cx="19" cy="19" r="13" fill="none" stroke="#F0EEE8" stroke-width="0.3" opacity="0.15"/>
+          <text x="19" y="24.5" font-family="Georgia,serif" font-size="16" font-weight="400" fill="#F0EEE8" text-anchor="middle">H</text>
+        </svg>
+        <div>
+          <div style="font-family:Georgia,serif;font-size:17px;color:#F0EEE8;letter-spacing:0.03em;margin-bottom:2px;">Doctor Hasia</div>
+          <div style="font-size:7px;letter-spacing:0.13em;color:#3A3A38;text-transform:uppercase;">Aesthetics &amp; Wellness</div>
+        </div>
+        <div style="margin-left:auto;"><span style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#3A3A38;">On obsidian</span></div>
+      </div>
+    </div>
+
+    <div class="row-label">Minimum sizes</div>
+    <div style="background:var(--warm-white);border:0.5px solid var(--silver-light);border-radius:12px;padding:24px 28px;display:flex;gap:24px;align-items:flex-end;flex-wrap:wrap;">
+      <div class="icon-item">
+        <svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="36" r="32" fill="none" stroke="#0E0E0C" stroke-width="0.9"/><text x="36" y="47" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+        <div class="icon-sz">72px · recommended</div>
+      </div>
+      <div class="icon-item">
+        <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="none" stroke="#0E0E0C" stroke-width="0.8"/><text x="24" y="31" font-family="Georgia,serif" font-size="20" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+        <div class="icon-sz">48px · min for icon</div>
+      </div>
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="#0E0E0C" stroke-width="0.7"/><text x="16" y="21" font-family="Georgia,serif" font-size="13" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+        <div class="icon-sz">32px · min for UI</div>
+      </div>
+      <div class="icon-item" style="opacity:0.35;">
+        <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="none" stroke="#0E0E0C" stroke-width="0.7"/><text x="10" y="13.5" font-family="Georgia,serif" font-size="8" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+        <div class="icon-sz-bad">20px · too small</div>
+      </div>
+      <div style="flex:1;min-width:200px;padding-left:24px;border-left:0.5px solid var(--silver-light);">
+        <div style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver);margin-bottom:10px;">Rules</div>
+        <div style="font-size:11px;color:var(--graphite);line-height:1.9;">
+          — Always maintain clear space = height of H<br>
+          — Never stretch, rotate, or recolour outside the palette<br>
+          — The inner ring must not be removed from the monogram<br>
+          — Wordmark without monogram is acceptable in body text
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 03 TYPOGRAPHY ══ -->
+  <div class="section-block">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title">Typography</div>
+    </div>
+
+    <div style="background:var(--warm-white);border:0.5px solid var(--silver-light);border-radius:12px;overflow:hidden;">
+      <table class="type-table">
+        <tr>
+          <td><div class="type-meta-name">Display</div><div class="type-meta-spec">Georgia, serif<br>40px / 400<br>+0.02em tracking</div></td>
+          <td><div style="font-family:Georgia,serif;font-size:40px;font-weight:400;color:#0E0E0C;letter-spacing:0.02em;line-height:1.1;">Doctor Hasia</div></td>
+          <td><div class="type-usage">Hero screen. Splash. App Store hero. Once per screen maximum.</div></td>
+        </tr>
+        <tr>
+          <td><div class="type-meta-name">Heading 1</div><div class="type-meta-spec">Georgia, serif<br>26px / 400<br>+0.02em tracking</div></td>
+          <td><div style="font-family:Georgia,serif;font-size:26px;font-weight:400;color:#0E0E0C;line-height:1.2;">Collagen Infusion</div></td>
+          <td><div class="type-usage">Screen titles. Service names. Product names.</div></td>
+        </tr>
+        <tr>
+          <td><div class="type-meta-name">Heading 2</div><div class="type-meta-spec">Georgia, serif<br>20px / 400<br>+0.01em tracking</div></td>
+          <td><div style="font-family:Georgia,serif;font-size:20px;font-weight:400;color:#0E0E0C;line-height:1.3;">Award winning aesthetics</div></td>
+          <td><div class="type-usage">Card titles. Course headings. Community headers.</div></td>
+        </tr>
+        <tr>
+          <td><div class="type-meta-name">Overline</div><div class="type-meta-spec">System sans<br>9px / 500<br>+0.14em · ALL CAPS</div></td>
+          <td><div style="font-size:9px;font-weight:500;color:#A8A8A0;letter-spacing:0.14em;text-transform:uppercase;">Aesthetics &amp; Wellness · Dubai</div></td>
+          <td><div class="type-usage">Section labels. Nav items. Tags. Descriptors above headings.</div></td>
+        </tr>
+        <tr>
+          <td><div class="type-meta-name">Subheading</div><div class="type-meta-spec">System sans<br>11px / 500<br>+0.08em · ALL CAPS</div></td>
+          <td><div style="font-size:11px;font-weight:500;color:#2E2E2A;letter-spacing:0.08em;text-transform:uppercase;">UK &amp; American Board Certified</div></td>
+          <td><div class="type-usage">Buttons. Badges. Tab labels. Form fields.</div></td>
+        </tr>
+        <tr>
+          <td><div class="type-meta-name">Body</div><div class="type-meta-spec">System sans<br>14px / 400<br>lh 1.65</div></td>
+          <td><div style="font-size:14px;color:#2E2E2A;line-height:1.65;max-width:280px;">Doctor-led aesthetics bringing science and safety to every treatment.</div></td>
+          <td><div class="type-usage">Service copy. Product descriptions. Course body.</div></td>
+        </tr>
+        <tr>
+          <td><div class="type-meta-name">Body small</div><div class="type-meta-spec">System sans<br>12px / 400<br>lh 1.5</div></td>
+          <td><div style="font-size:12px;color:#686860;line-height:1.5;">Capsule 7 · Dubai · In-person · 60 minutes</div></td>
+          <td><div class="type-usage">Metadata. Timestamps. Secondary card info.</div></td>
+        </tr>
+        <tr>
+          <td><div class="type-meta-name">Caption</div><div class="type-meta-spec">System sans<br>10px / 400<br>+0.04em tracking</div></td>
+          <td><div style="font-size:10px;color:#A8A8A0;letter-spacing:0.04em;">Results may vary. Doctors Dose™ products. Always consult a qualified practitioner.</div></td>
+          <td><div class="type-usage">Legal copy. Image captions. Footnotes.</div></td>
+        </tr>
+        <tr>
+          <td><div class="type-meta-name">Price</div><div class="type-meta-spec">Georgia, serif<br>18px / 400</div></td>
+          <td><div style="display:flex;align-items:baseline;gap:4px;"><span style="font-family:Georgia,serif;font-size:18px;color:#0E0E0C;">£48</span><span style="font-size:10px;color:#A8A8A0;letter-spacing:0.06em;text-transform:uppercase;">/ bottle</span></div></td>
+          <td><div class="type-usage">Products. Courses. Membership tiers. Always serif.</div></td>
+        </tr>
+        <tr>
+          <td><div class="type-meta-name">Quote</div><div class="type-meta-spec">Georgia, serif<br>15px / italic<br>lh 1.6</div></td>
+          <td><div style="font-family:Georgia,serif;font-size:15px;font-style:italic;color:#2E2E2A;line-height:1.6;max-width:280px;">"Safe aesthetics. Science-led. Doctor-first — always."</div></td>
+          <td><div class="type-usage">Doctor Hasia posts. Testimonials. Pull quotes.</div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ 04 APP ICON + SPLASH ══ -->
+  <div class="section-block">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title">App icon &amp; splash screen</div>
+    </div>
+
+    <div class="row-label">iOS icon sizes</div>
+    <div style="background:var(--warm-white);border:0.5px solid var(--silver-light);border-radius:12px;padding:24px 28px;">
+      <div class="icon-row">
+        <div class="icon-item">
+          <svg width="108" height="108" viewBox="0 0 108 108"><rect width="108" height="108" rx="24" fill="#F0EEE8"/><circle cx="54" cy="54" r="40" fill="none" stroke="#0E0E0C" stroke-width="1.1"/><circle cx="54" cy="54" r="32" fill="none" stroke="#0E0E0C" stroke-width="0.35" opacity="0.3"/><text x="54" y="70" font-family="Georgia,serif" font-size="40" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+          <div class="icon-sz">1024px<br>App Store</div>
+        </div>
+        <div class="icon-item">
+          <svg width="72" height="72" viewBox="0 0 72 72"><rect width="72" height="72" rx="16" fill="#F0EEE8"/><circle cx="36" cy="36" r="27" fill="none" stroke="#0E0E0C" stroke-width="0.9"/><circle cx="36" cy="36" r="21" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.3"/><text x="36" y="47" font-family="Georgia,serif" font-size="28" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+          <div class="icon-sz">180px<br>iPhone @3x</div>
+        </div>
+        <div class="icon-item">
+          <svg width="52" height="52" viewBox="0 0 52 52"><rect width="52" height="52" rx="11" fill="#F0EEE8"/><circle cx="26" cy="26" r="19" fill="none" stroke="#0E0E0C" stroke-width="0.7"/><circle cx="26" cy="26" r="15" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.3"/><text x="26" y="33.5" font-family="Georgia,serif" font-size="19" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+          <div class="icon-sz">120px<br>iPhone @2x</div>
+        </div>
+        <div class="icon-item">
+          <svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#F0EEE8"/><circle cx="20" cy="20" r="14" fill="none" stroke="#0E0E0C" stroke-width="0.6"/><text x="20" y="26" font-family="Georgia,serif" font-size="14" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+          <div class="icon-sz">87px<br>Spotlight</div>
+        </div>
+        <div class="icon-item">
+          <svg width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="6" fill="#F0EEE8"/><circle cx="14" cy="14" r="10" fill="none" stroke="#0E0E0C" stroke-width="0.6"/><text x="14" y="18.5" font-family="Georgia,serif" font-size="10" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+          <div class="icon-sz">60px<br>Settings</div>
+        </div>
+        <div class="icon-item">
+          <svg width="20" height="20" viewBox="0 0 20 20"><rect width="20" height="20" rx="5" fill="#0E0E0C"/><circle cx="10" cy="10" r="7" fill="none" stroke="#F0EEE8" stroke-width="0.6"/><text x="10" y="13.5" font-family="Georgia,serif" font-size="7" font-weight="400" fill="#F0EEE8" text-anchor="middle">H</text></svg>
+          <div class="icon-sz">40px<br>Notification</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-label" style="margin-top:20px;">Splash screens — first moment on open</div>
+    <div class="splash-row">
+      <div>
+        <div class="splash-phone" style="background:#FAFAF8;">
+          <svg width="60" height="60" viewBox="0 0 60 60" style="margin-bottom:16px;"><circle cx="30" cy="30" r="27" fill="none" stroke="#0E0E0C" stroke-width="0.8"/><circle cx="30" cy="30" r="21" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.25"/><text x="30" y="39" font-family="Georgia,serif" font-size="24" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+          <div style="font-family:Georgia,serif;font-size:16px;color:#0E0E0C;letter-spacing:0.03em;margin-bottom:4px;">Doctor Hasia</div>
+          <div style="font-size:7px;letter-spacing:0.14em;text-transform:uppercase;color:#A8A8A0;">Aesthetics &amp; Wellness</div>
+          <div style="position:absolute;bottom:24px;width:28px;height:0.5px;background:#D4D4CC;"></div>
+        </div>
+        <div class="splash-lbl">Pearl light ✓ Default</div>
+      </div>
+      <div>
+        <div class="splash-phone" style="background:#0E0E0C;border-color:#2E2E2A;">
+          <svg width="60" height="60" viewBox="0 0 60 60" style="margin-bottom:16px;"><circle cx="30" cy="30" r="27" fill="none" stroke="#F0EEE8" stroke-width="0.8"/><circle cx="30" cy="30" r="21" fill="none" stroke="#F0EEE8" stroke-width="0.3" opacity="0.2"/><text x="30" y="39" font-family="Georgia,serif" font-size="24" font-weight="400" fill="#F0EEE8" text-anchor="middle">H</text></svg>
+          <div style="font-family:Georgia,serif;font-size:16px;color:#F0EEE8;letter-spacing:0.03em;margin-bottom:4px;">Doctor Hasia</div>
+          <div style="font-size:7px;letter-spacing:0.14em;text-transform:uppercase;color:#3A3A38;">Aesthetics &amp; Wellness</div>
+          <div style="position:absolute;bottom:24px;width:28px;height:0.5px;background:#2E2E2A;"></div>
+        </div>
+        <div class="splash-lbl">Obsidian dark</div>
+      </div>
+      <div>
+        <div class="splash-phone" style="background:#F0EEE8;border-color:#D4D4CC;">
+          <svg width="60" height="60" viewBox="0 0 60 60" style="margin-bottom:16px;"><circle cx="30" cy="30" r="27" fill="none" stroke="#0E0E0C" stroke-width="0.8"/><circle cx="30" cy="30" r="21" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.2"/><text x="30" y="39" font-family="Georgia,serif" font-size="24" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text></svg>
+          <div style="font-family:Georgia,serif;font-size:16px;color:#0E0E0C;letter-spacing:0.03em;margin-bottom:4px;">Doctor Hasia</div>
+          <div style="font-size:7px;letter-spacing:0.14em;text-transform:uppercase;color:#A8A8A0;">Aesthetics &amp; Wellness</div>
+          <div style="position:absolute;bottom:24px;width:28px;height:0.5px;background:#C8C8C0;"></div>
+        </div>
+        <div class="splash-lbl">Pearl warm</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 05 CORE SCREENS ══ -->
+  <div class="section-block">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title">Core app screens — light mode</div>
+    </div>
+    <div class="wf-stage">
+      <div class="wf-row">
+
+        <!-- HOME -->
+        <div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+            <div class="top-nav">
+              <div class="ham"><div class="ham-line"></div><div class="ham-line"></div></div>
+              <div class="top-logo">Doctor Hasia</div>
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--pearl);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:8px;color:var(--obsidian);border:0.5px solid var(--silver-light);">H</div>
+            </div>
+            <div class="hero-block">
+              <div class="hero-img"><div class="hero-mono">H</div></div>
+              <div class="hero-cap">
+                <div class="hero-name">Doctor Hasia</div>
+                <div class="hero-sub">Award winning · Dubai · Birmingham</div>
+                <div class="award-pill">UK &amp; US Board Certified</div>
+              </div>
+            </div>
+            <div class="body">
+              <div class="sec-lbl">Quick access</div>
+              <div class="card-row">
+                <div class="card" style="flex:1;"><div class="ct">Collagen Call</div><div class="cs">Phone · Free</div><div class="btn">Book</div></div>
+                <div class="card-pearl" style="flex:1;"><div class="ct">In Person</div><div class="cs">Capsule 7</div><div class="btn">Book</div></div>
+              </div>
+              <div class="rule-line"></div>
+              <div class="sec-lbl">Membership</div>
+              <div class="mem-card">
+                <div class="mem-ring"></div>
+                <div class="mem-lbl">Hasia member</div>
+                <div class="mem-name">Unlock all access</div>
+                <div class="mem-tier">Priority · Exclusive content</div>
+                <div class="mem-mono">H</div>
+              </div>
+            </div>
+          </div>
+          <div class="screen-lbl">Home</div>
+        </div>
+
+        <!-- BOOKING -->
+        <div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+            <div class="top-nav">
+              <div style="font-size:8px;color:var(--silver);">← Back</div>
+              <div class="top-logo" style="font-size:10px;">Book a session</div>
+              <div style="width:20px;"></div>
+            </div>
+            <div class="body">
+              <div class="step-row">
+                <div class="step-chip on">Type</div>
+                <div class="step-chip">Service</div>
+                <div class="step-chip">Time</div>
+                <div class="step-chip">Confirm</div>
+              </div>
+              <div class="sec-lbl">Session type</div>
+              <div class="card-row">
+                <div class="card" style="flex:1;border:0.5px solid var(--obsidian);">
+                  <div style="font-size:6px;letter-spacing:0.08em;text-transform:uppercase;background:var(--obsidian);color:var(--pearl);border-radius:4px;text-align:center;padding:2px 3px;margin-bottom:4px;">Selected</div>
+                  <div class="ct">Collagen Call</div><div class="cs">Phone · Free</div>
+                </div>
+                <div class="card-pearl" style="flex:1;"><div class="ct">In Person</div><div class="cs">Capsule 7</div></div>
+              </div>
+              <div class="rule-line"></div>
+              <div class="sec-lbl">Service</div>
+              <div class="list-item"><div class="list-txt"><div class="list-dot"></div>Collagen boosting protocol</div><div class="list-arr">›</div></div>
+              <div class="list-item"><div class="list-txt"><div class="list-dot"></div>Skin consultation</div><div class="list-arr">›</div></div>
+              <div class="list-item"><div class="list-txt"><div class="list-dot"></div>Injectable peptides</div><div class="list-arr">›</div></div>
+              <div class="rule-line"></div>
+              <div class="sec-lbl">Select date</div>
+              <div class="cal-row">
+                <div class="cal-day">M<br>14</div><div class="cal-day">T<br>15</div>
+                <div class="cal-day on">W<br>16</div>
+                <div class="cal-day">T<br>17</div><div class="cal-day">F<br>18</div>
+              </div>
+              <div class="btn" style="width:100%;margin-top:8px;border-radius:18px;padding:7px 0;">Continue</div>
+            </div>
+          </div>
+          <div class="screen-lbl">Booking</div>
+        </div>
+
+        <!-- SERVICES -->
+        <div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+            <div class="top-nav">
+              <div class="ham"><div class="ham-line"></div><div class="ham-line"></div></div>
+              <div class="top-logo" style="font-size:10px;">Services</div>
+              <div style="width:20px;"></div>
+            </div>
+            <div class="body">
+              <div class="sec-lbl">What we offer</div>
+              <div class="card" style="margin-bottom:7px;padding:9px;">
+                <div class="vid-thumb"><div class="play-btn"><div class="play-tri"></div></div></div>
+                <div class="ct">Collagen infusion</div>
+                <div class="cs" style="margin-bottom:4px;">Pro-ageing · Rejuvenation</div>
+                <div><span class="tag">Collagen</span><span class="tag">Injectables</span></div>
+                <div class="btn-o" style="border-radius:16px;padding:5px 0;">Book this service</div>
+              </div>
+              <div class="card" style="padding:9px;">
+                <div class="vid-thumb"><div class="play-btn"><div class="play-tri"></div></div></div>
+                <div class="ct">Whitening peptides</div>
+                <div class="cs" style="margin-bottom:4px;">Injectable · Protocol</div>
+                <div><span class="tag">Peptides</span><span class="tag">Glow</span></div>
+                <div class="btn-o" style="border-radius:16px;padding:5px 0;">Book this service</div>
+              </div>
+            </div>
+          </div>
+          <div class="screen-lbl">Services</div>
+        </div>
+
+      </div>
+
+      <div class="wf-row" style="margin-top:16px;">
+
+        <!-- SHOP -->
+        <div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+            <div class="top-nav">
+              <div class="ham"><div class="ham-line"></div><div class="ham-line"></div></div>
+              <div class="top-logo" style="font-size:10px;">Doctors Dose</div>
+              <div style="font-size:8px;color:var(--silver);">Cart (2)</div>
+            </div>
+            <div class="body">
+              <div class="sec-lbl">Doctor Hasia recommends</div>
+              <div class="card-row">
+                <div class="card" style="flex:1;padding:8px;">
+                  <div class="prod-img"><div style="width:24px;height:24px;border-radius:50%;border:0.5px solid var(--silver-light);background:var(--warm-white);display:flex;align-items:center;justify-content:center;font-size:10px;">△</div></div>
+                  <div class="ct">Collagen serum</div><div class="cs">Doctors Dose™</div>
+                  <div style="font-size:9px;font-family:Georgia,serif;color:var(--obsidian);margin:3px 0;">£48</div>
+                  <div class="btn">Add</div>
+                </div>
+                <div class="card" style="flex:1;padding:8px;">
+                  <div class="prod-img"><div style="width:24px;height:24px;border-radius:50%;border:0.5px solid var(--silver-light);background:var(--warm-white);display:flex;align-items:center;justify-content:center;font-size:10px;">○</div></div>
+                  <div class="ct">Matcha supps</div><div class="cs">Doctors Dose™</div>
+                  <div style="font-size:9px;font-family:Georgia,serif;color:var(--obsidian);margin:3px 0;">£35</div>
+                  <div class="btn">Add</div>
+                </div>
+              </div>
+              <div class="card-pearl" style="text-align:center;padding:12px 8px;">
+                <div class="ct" style="font-family:Georgia,serif;font-size:10px;margin-bottom:3px;">Have a question?</div>
+                <div class="cs" style="margin-bottom:6px;">Ask Doctor Hasia directly</div>
+                <div class="btn" style="border-radius:16px;">Inquire</div>
+              </div>
+            </div>
+          </div>
+          <div class="screen-lbl">Shop</div>
+        </div>
+
+        <!-- COMMUNITY -->
+        <div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+            <div class="top-nav">
+              <div class="ham"><div class="ham-line"></div><div class="ham-line"></div></div>
+              <div class="top-logo" style="font-size:10px;">Community</div>
+              <div style="font-size:8px;color:var(--silver);">+ Post</div>
+            </div>
+            <div class="body">
+              <div class="mem-card" style="padding:9px;">
+                <div class="mem-ring"></div>
+                <div class="mem-lbl">From Doctor Hasia</div>
+                <div style="font-size:9px;color:#D4D4CC;font-family:Georgia,serif;margin:3px 0;line-height:1.4;">"Best foods for collagen production"</div>
+                <div class="mem-tier">Latest · 2h ago</div>
+                <div class="mem-mono">H</div>
+              </div>
+              <div class="sec-lbl">Recent posts</div>
+              <div class="post">
+                <div class="post-hdr">
+                  <div class="post-av">S</div>
+                  <div class="post-nm">Sarah M.</div>
+                  <div class="post-tm">1d</div>
+                </div>
+                <div class="post-body">Results after 4 weeks on the whitening peptide protocol…</div>
+              </div>
+              <div class="post">
+                <div class="post-hdr">
+                  <div class="post-av" style="background:var(--pearl);color:var(--graphite);">A</div>
+                  <div class="post-nm">Aisha K.</div>
+                  <div class="post-tm">2d</div>
+                </div>
+                <div class="post-body">Fungal vs hormonal acne — Doctor Hasia's post was life-changing</div>
+              </div>
+            </div>
+          </div>
+          <div class="screen-lbl">Community</div>
+        </div>
+
+        <!-- ACADEMY -->
+        <div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+            <div class="top-nav">
+              <div class="ham"><div class="ham-line"></div><div class="ham-line"></div></div>
+              <div class="top-logo" style="font-size:10px;">Hasia Academy</div>
+              <div style="width:20px;"></div>
+            </div>
+            <div class="body">
+              <div class="sec-lbl">Teaching</div>
+              <div class="card" style="margin-bottom:6px;padding:9px;">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
+                  <div class="ct" style="font-family:Georgia,serif;font-size:9px;">Intro to pro-ageing</div>
+                  <span class="free-b">Free</span>
+                </div>
+                <div class="vid-thumb" style="height:30px;"><div class="play-btn"><div class="play-tri"></div></div></div>
+                <div class="cs">15 min · Beginner</div>
+              </div>
+              <div class="card-pearl" style="margin-bottom:6px;padding:9px;opacity:0.75;">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
+                  <div class="ct" style="font-family:Georgia,serif;font-size:9px;">Advanced collagen</div>
+                  <span class="lock-b">Paid</span>
+                </div>
+                <div class="vid-thumb" style="height:30px;opacity:0.45;"><div class="play-btn" style="opacity:0.4;"><div class="play-tri"></div></div></div>
+                <div class="cs">45 min · Advanced</div>
+              </div>
+              <div class="card-pearl" style="padding:9px;opacity:0.75;">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
+                  <div class="ct" style="font-family:Georgia,serif;font-size:9px;">Peptide masterclass</div>
+                  <span class="lock-b">Paid</span>
+                </div>
+                <div class="vid-thumb" style="height:30px;opacity:0.45;"><div class="play-btn" style="opacity:0.4;"><div class="play-tri"></div></div></div>
+                <div class="cs">60 min · Pro</div>
+              </div>
+              <div class="btn" style="width:100%;margin-top:8px;border-radius:18px;padding:7px 0;">Unlock all courses</div>
+            </div>
+          </div>
+          <div class="screen-lbl">Academy</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 06 ONBOARDING ══ -->
+  <div class="section-block">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title">Onboarding flow</div>
+    </div>
+    <div class="wf-stage">
+      <div class="wf-row">
+
+        <!-- SPLASH -->
+        <div>
+          <div class="phone-dark">
+            <div class="notch-lt"></div>
+            <div class="sbar"><span class="st-d">9:41</span><span class="si-d">●●●</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:380px;padding:0 14px;">
+              <svg width="68" height="68" viewBox="0 0 68 68" style="margin-bottom:18px;">
+                <circle cx="34" cy="34" r="30" fill="none" stroke="#F0EEE8" stroke-width="0.8"/>
+                <circle cx="34" cy="34" r="24" fill="none" stroke="#F0EEE8" stroke-width="0.3" opacity="0.2"/>
+                <text x="34" y="43" font-family="Georgia,serif" font-size="27" font-weight="400" fill="#F0EEE8" text-anchor="middle">H</text>
+              </svg>
+              <div style="font-family:Georgia,serif;font-size:20px;color:#F0EEE8;letter-spacing:0.03em;margin-bottom:5px;">Doctor Hasia</div>
+              <div style="font-size:7px;letter-spacing:0.15em;text-transform:uppercase;color:#3A3A38;">Aesthetics &amp; Wellness</div>
+              <div style="margin-top:36px;width:24px;height:0.5px;background:#2E2E2A;"></div>
+              <div style="margin-top:10px;font-size:6.5px;letter-spacing:0.1em;text-transform:uppercase;color:#2E2E2A;">Dubai · Birmingham</div>
+            </div>
+          </div>
+          <div class="screen-lbl">01 — Splash</div>
+        </div>
+
+        <!-- VALUE PROP 1 -->
+        <div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+            <div class="body" style="padding-top:10px;">
+              <div class="pill-dots"><div class="pd-on"></div><div class="pd-off"></div><div class="pd-off"></div></div>
+              <div style="height:130px;background:var(--pearl);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                <svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="24" fill="none" stroke="var(--obsidian)" stroke-width="0.6"/><line x1="28" y1="8" x2="28" y2="48" stroke="var(--obsidian)" stroke-width="0.3" opacity="0.2"/><line x1="8" y1="28" x2="48" y2="28" stroke="var(--obsidian)" stroke-width="0.3" opacity="0.2"/><circle cx="28" cy="28" r="7" fill="none" stroke="var(--obsidian)" stroke-width="0.6"/><circle cx="28" cy="28" r="2" fill="var(--obsidian)"/></svg>
+              </div>
+              <div style="font-size:7px;letter-spacing:0.1em;text-transform:uppercase;color:var(--obsidian);border:0.5px solid var(--obsidian);border-radius:16px;padding:2px 9px;display:inline-block;margin-bottom:7px;">Doctor-led</div>
+              <div style="font-family:Georgia,serif;font-size:18px;color:var(--obsidian);line-height:1.2;margin-bottom:7px;">Science-led aesthetics, not trends</div>
+              <div style="font-size:10px;color:var(--silver);line-height:1.6;margin-bottom:10px;">Every treatment, product and lesson is rooted in evidence and designed by a board-certified doctor.</div>
+              <div class="btn" style="width:100%;border-radius:18px;padding:8px 0;">Get started</div>
+              <div style="text-align:center;margin-top:7px;font-size:7px;letter-spacing:0.06em;text-transform:uppercase;color:var(--silver);">Already a member? Sign in</div>
+            </div>
+          </div>
+          <div class="screen-lbl">02 — Value prop</div>
+        </div>
+
+        <!-- SIGN UP -->
+        <div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+            <div class="body" style="padding-top:10px;">
+              <div class="pill-dots"><div class="pd-off"></div><div class="pd-off"></div><div class="pd-on"></div></div>
+              <div style="margin-bottom:12px;">
+                <div style="font-family:Georgia,serif;font-size:18px;color:var(--obsidian);margin-bottom:3px;">Create account</div>
+                <div style="font-size:9px;color:var(--silver);">Join the Doctor Hasia community</div>
+              </div>
+              <div class="input-fld">Full name</div>
+              <div class="input-fld">Email address</div>
+              <div class="input-fld">Password</div>
+              <div class="rule-line"></div>
+              <div style="font-size:7px;letter-spacing:0.08em;text-transform:uppercase;color:var(--silver);margin-bottom:7px;">Or continue with</div>
+              <div style="display:flex;align-items:center;gap:7px;background:var(--obsidian);border-radius:18px;padding:8px 12px;margin-bottom:6px;justify-content:center;">
+                <svg width="11" height="11" viewBox="0 0 11 11"><path d="M8.5 5.5c0-1.7-1.4-3-3-3C4 2.5 2.5 3.8 2.5 5.5c0 1.3.9 2.4 2 2.9V6.5H3.5V5.5h1V4.7C4.5 3.7 5 3.3 5.8 3.3c.4 0 .8.03.8.03V4.3H6.1c-.4 0-.6.3-.6.6V5.5H6.5l-.2.9H5.5V8.4C7.1 8 8.5 6.9 8.5 5.5z" fill="#F0EEE8"/></svg>
+                <span style="font-size:8px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#F0EEE8;">Sign in with Apple</span>
+              </div>
+              <div class="btn-o" style="border-radius:18px;padding:8px 0;">Create with email</div>
+              <div style="text-align:center;margin-top:7px;font-size:7px;color:var(--silver);line-height:1.5;">By continuing you agree to our<br>Privacy Policy and Terms of Service</div>
+            </div>
+          </div>
+          <div class="screen-lbl">03 — Sign up</div>
+        </div>
+
+        <!-- PROFILE SETUP -->
+        <div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+            <div class="body" style="padding-top:10px;">
+              <div style="margin-bottom:12px;">
+                <div style="font-size:7px;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver);margin-bottom:3px;">Step 1 of 2</div>
+                <div class="prog-bar"><div class="prog-fill" style="width:50%;"></div></div>
+              </div>
+              <div style="font-family:Georgia,serif;font-size:17px;color:var(--obsidian);margin-bottom:3px;">Tell us about you</div>
+              <div style="font-size:9px;color:var(--silver);margin-bottom:11px;">So Doctor Hasia can personalise your experience</div>
+              <div style="font-size:7px;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver);margin-bottom:5px;">I'm here for</div>
+              <div class="av-grid">
+                <div class="av-ch on">
+                  <div style="width:18px;height:18px;margin:0 auto 2px;background:#2E2E2A;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <svg width="9" height="9" viewBox="0 0 9 9"><circle cx="4.5" cy="3" r="1.8" fill="#A8A8A0"/><path d="M1 8c0-2 1.6-3.5 3.5-3.5S8 6 8 8" fill="none" stroke="#A8A8A0" stroke-width="0.7"/></svg>
+                  </div>
+                  <div class="av-lbl-l">Treatments</div>
+                </div>
+                <div class="av-ch">
+                  <div style="width:18px;height:18px;margin:0 auto 2px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <svg width="9" height="9" viewBox="0 0 9 9"><rect x="1" y="1.5" width="7" height="6" rx="1" fill="none" stroke="var(--graphite)" stroke-width="0.7"/><line x1="3" y1="3.5" x2="6" y2="3.5" stroke="var(--graphite)" stroke-width="0.6"/><line x1="3" y1="5" x2="5" y2="5" stroke="var(--graphite)" stroke-width="0.6"/></svg>
+                  </div>
+                  <div class="av-lbl">Learning</div>
+                </div>
+                <div class="av-ch">
+                  <div style="width:18px;height:18px;margin:0 auto 2px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <svg width="9" height="9" viewBox="0 0 9 9"><path d="M1.5 7L4.5 1.5L7.5 7Z" fill="none" stroke="var(--graphite)" stroke-width="0.7"/></svg>
+                  </div>
+                  <div class="av-lbl">Products</div>
+                </div>
+                <div class="av-ch">
+                  <div style="width:18px;height:18px;margin:0 auto 2px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <svg width="9" height="9" viewBox="0 0 9 9"><circle cx="4.5" cy="4.5" r="3" fill="none" stroke="var(--graphite)" stroke-width="0.7"/><circle cx="4.5" cy="4.5" r="1" fill="var(--graphite)"/></svg>
+                  </div>
+                  <div class="av-lbl">Community</div>
+                </div>
+                <div class="av-ch">
+                  <div style="width:18px;height:18px;margin:0 auto 2px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <svg width="9" height="9" viewBox="0 0 9 9"><rect x="1.5" y="1.5" width="6" height="6" rx="1" fill="none" stroke="var(--graphite)" stroke-width="0.7"/><line x1="3.5" y1="4.5" x2="5.5" y2="4.5" stroke="var(--graphite)" stroke-width="0.6"/><line x1="4.5" y1="3.5" x2="4.5" y2="5.5" stroke="var(--graphite)" stroke-width="0.6"/></svg>
+                  </div>
+                  <div class="av-lbl">All of it</div>
+                </div>
+                <div class="av-ch">
+                  <div style="width:18px;height:18px;margin:0 auto 2px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <svg width="9" height="9" viewBox="0 0 9 9"><path d="M1.5 1.5L7.5 7.5M7.5 1.5L1.5 7.5" stroke="var(--graphite)" stroke-width="0.7"/></svg>
+                  </div>
+                  <div class="av-lbl">Just browse</div>
+                </div>
+              </div>
+              <div class="btn" style="width:100%;border-radius:18px;padding:8px 0;">Continue</div>
+            </div>
+          </div>
+          <div class="screen-lbl">04 — Profile setup</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Doctor Hasia · Brand Kit</div>
+    <div class="footer-note">Obsidian Pearl · iOS App · v1.0 · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
