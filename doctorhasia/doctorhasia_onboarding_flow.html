@@ -1,0 +1,219 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+:root {
+  --pearl: #F0EEE8; --pearl-warm: #E8E4DC; --warm-white: #FAFAF8;
+  --obsidian: #0E0E0C; --graphite: #2E2E2A; --silver: #A8A8A0;
+  --silver-light: #D4D4CC; --ink: #1A1A18; --rule: rgba(0,0,0,0.07);
+}
+.stage { background: #EDECE8; border-radius: 16px; padding: 24px 16px 32px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.flow-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.phone { width: 185px; background: var(--warm-white); border-radius: 30px; border: 1.5px solid var(--graphite); overflow: hidden; flex-shrink: 0; }
+.phone-dark { width: 185px; background: var(--obsidian); border-radius: 30px; border: 1.5px solid var(--graphite); overflow: hidden; flex-shrink: 0; }
+.notch { width: 52px; height: 17px; background: var(--obsidian); border-radius: 0 0 10px 10px; margin: 0 auto; }
+.notch-light { width: 52px; height: 17px; background: var(--graphite); border-radius: 0 0 10px 10px; margin: 0 auto; }
+.sbar { display: flex; justify-content: space-between; padding: 3px 14px 2px; }
+.st { font-size: 9px; font-weight: 500; color: var(--ink); }
+.si { font-size: 9px; color: var(--ink); letter-spacing: -1px; }
+.st-light { font-size: 9px; font-weight: 500; color: #4A4A48; }
+.si-light { font-size: 9px; color: #4A4A48; letter-spacing: -1px; }
+.screen-label { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #888884; text-align: center; margin-top: 8px; }
+.body { padding: 14px; }
+.rule { height: 0.5px; background: var(--rule); margin: 8px 0; }
+.pill-dots { display: flex; gap: 5px; justify-content: center; margin-bottom: 12px; }
+.dot-active { width: 16px; height: 3px; background: var(--obsidian); border-radius: 2px; }
+.dot-inactive { width: 6px; height: 3px; background: var(--silver-light); border-radius: 2px; }
+.tag { display: inline-block; font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--obsidian); border: 0.5px solid var(--obsidian); border-radius: 20px; padding: 2px 9px; margin-bottom: 8px; }
+.tag-light { display: inline-block; font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: #4A4A48; border: 0.5px solid #3A3A38; border-radius: 20px; padding: 2px 9px; margin-bottom: 8px; }
+.btn-full { width: 100%; background: var(--obsidian); color: var(--pearl); border-radius: 22px; font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; padding: 10px 0; margin-top: 10px; }
+.btn-outline { width: 100%; background: transparent; color: var(--obsidian); border: 0.5px solid var(--graphite); border-radius: 22px; font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; padding: 10px 0; margin-top: 6px; }
+.input { width: 100%; background: var(--pearl); border: 0.5px solid var(--silver-light); border-radius: 8px; padding: 9px 10px; font-size: 10px; color: var(--silver); margin-bottom: 7px; }
+.checkbox-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.checkbox { width: 14px; height: 14px; border: 0.5px solid var(--silver-light); border-radius: 3px; background: var(--pearl); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.checkbox-label { font-size: 9px; color: var(--graphite); line-height: 1.4; }
+.avatar-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-bottom: 10px; }
+.avatar-choice { background: var(--pearl); border: 0.5px solid var(--silver-light); border-radius: 8px; padding: 8px 4px; text-align: center; }
+.avatar-choice.sel { background: var(--obsidian); border-color: var(--obsidian); }
+.avatar-icon { font-size: 14px; margin-bottom: 3px; }
+.avatar-label { font-size: 7px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--graphite); }
+.avatar-label-light { font-size: 7px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--pearl); }
+.progress-bar { width: 100%; height: 2px; background: var(--pearl-warm); border-radius: 1px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--obsidian); border-radius: 1px; }
+</style>
+
+<div class="stage">
+  <div style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#888884;margin-bottom:12px;">Onboarding flow — 5 screens</div>
+
+  <div class="flow-row">
+
+    <!-- SCREEN 1: SPLASH -->
+    <div>
+      <div class="phone-dark">
+        <div class="notch-light"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:3px 14px 2px;">
+          <span class="st-light">9:41</span><span class="si-light">●●●</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:360px;gap:0;padding:0 14px;">
+          <svg width="72" height="72" viewBox="0 0 72 72" style="margin-bottom:20px;">
+            <circle cx="36" cy="36" r="32" fill="none" stroke="#F0EEE8" stroke-width="0.8"/>
+            <circle cx="36" cy="36" r="26" fill="none" stroke="#F0EEE8" stroke-width="0.3" opacity="0.25"/>
+            <text x="36" y="46" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#F0EEE8" text-anchor="middle">H</text>
+          </svg>
+          <div style="font-family:Georgia,serif;font-size:22px;color:#F0EEE8;letter-spacing:0.04em;margin-bottom:5px;">Dr Hasia</div>
+          <div style="font-size:7px;letter-spacing:0.16em;text-transform:uppercase;color:#4A4A48;">Aesthetics &amp; Wellness</div>
+          <div style="margin-top:40px;width:28px;height:0.5px;background:#2E2E2A;"></div>
+          <div style="margin-top:12px;font-size:7px;letter-spacing:0.1em;text-transform:uppercase;color:#3A3A38;">Dubai · Birmingham</div>
+        </div>
+      </div>
+      <div class="screen-label">01 — Splash</div>
+    </div>
+
+    <!-- SCREEN 2: VALUE PROP 1 -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+        <div class="body" style="padding-top:10px;">
+          <div class="pill-dots">
+            <div class="dot-active"></div>
+            <div class="dot-inactive"></div>
+            <div class="dot-inactive"></div>
+          </div>
+          <div style="height:140px;background:var(--pearl);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+              <circle cx="30" cy="30" r="26" fill="none" stroke="var(--obsidian)" stroke-width="0.7"/>
+              <line x1="30" y1="8" x2="30" y2="52" stroke="var(--obsidian)" stroke-width="0.3" opacity="0.2"/>
+              <line x1="8" y1="30" x2="52" y2="30" stroke="var(--obsidian)" stroke-width="0.3" opacity="0.2"/>
+              <circle cx="30" cy="30" r="8" fill="none" stroke="var(--obsidian)" stroke-width="0.7"/>
+              <circle cx="30" cy="30" r="2" fill="var(--obsidian)"/>
+            </svg>
+          </div>
+          <div class="tag">Doctor-led</div>
+          <div style="font-family:Georgia,serif;font-size:20px;color:var(--obsidian);line-height:1.2;margin-bottom:8px;">Science-led aesthetics, not trends</div>
+          <div style="font-size:11px;color:var(--silver);line-height:1.6;">Every treatment, product, and lesson is rooted in evidence and designed by a board-certified doctor.</div>
+          <div class="btn-full">Get started</div>
+          <div style="text-align:center;margin-top:8px;font-size:8px;letter-spacing:0.06em;text-transform:uppercase;color:var(--silver);">Already a member? Sign in</div>
+        </div>
+      </div>
+      <div class="screen-label">02 — Value prop</div>
+    </div>
+
+    <!-- SCREEN 3: VALUE PROP 2 -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+        <div class="body" style="padding-top:10px;">
+          <div class="pill-dots">
+            <div class="dot-inactive"></div>
+            <div class="dot-active"></div>
+            <div class="dot-inactive"></div>
+          </div>
+          <div style="height:140px;background:var(--obsidian);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg width="80" height="50" viewBox="0 0 80 50">
+              <rect x="4" y="4" width="72" height="42" rx="6" fill="none" stroke="#2E2E2A" stroke-width="0.6"/>
+              <text x="40" y="22" font-family="Georgia,serif" font-size="14" fill="#D4D4CC" text-anchor="middle" font-weight="400">Hasia Member</text>
+              <line x1="10" y1="29" x2="70" y2="29" stroke="#2E2E2A" stroke-width="0.5"/>
+              <text x="10" y="40" font-family="Arial,sans-serif" font-size="7" fill="#4A4A48" letter-spacing="3">PRIORITY · PERKS</text>
+            </svg>
+          </div>
+          <div class="tag">Membership</div>
+          <div style="font-family:Georgia,serif;font-size:20px;color:var(--obsidian);line-height:1.2;margin-bottom:8px;">Your all-access pass to Dr Hasia</div>
+          <div style="font-size:11px;color:var(--silver);line-height:1.6;">Book, shop, learn, and connect — all in one place. Members get priority booking and exclusive content.</div>
+          <div class="btn-full">Continue</div>
+        </div>
+      </div>
+      <div class="screen-label">03 — Value prop 2</div>
+    </div>
+
+    <!-- SCREEN 4: SIGN UP -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+        <div class="body" style="padding-top:10px;">
+          <div class="pill-dots">
+            <div class="dot-inactive"></div>
+            <div class="dot-inactive"></div>
+            <div class="dot-active"></div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="font-family:Georgia,serif;font-size:20px;color:var(--obsidian);margin-bottom:4px;">Create account</div>
+            <div style="font-size:10px;color:var(--silver);">Join the Dr Hasia community</div>
+          </div>
+          <div class="input">Full name</div>
+          <div class="input">Email address</div>
+          <div class="input">Password</div>
+          <div class="rule"></div>
+          <div style="font-size:8px;letter-spacing:0.08em;text-transform:uppercase;color:var(--silver);margin-bottom:8px;">Or continue with</div>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--obsidian);border-radius:22px;padding:9px 14px;margin-bottom:6px;justify-content:center;">
+            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M9.5 6c0-1.9-1.6-3.5-3.5-3.5C4.1 2.5 2.5 4.1 2.5 6c0 1.5 1 2.8 2.3 3.3v-2.3H3.7V6h1.1V5c0-1.1.6-1.6 1.6-1.6.5 0 .9.04.9.04v1H6.7c-.5 0-.7.3-.7.7V6h1.2l-.2 1H6V9.3C7.9 8.9 9.5 7.6 9.5 6z" fill="#F0EEE8"/></svg>
+            <span style="font-size:9px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#F0EEE8;">Sign in with Apple</span>
+          </div>
+          <div class="btn-outline">Create with email</div>
+          <div style="text-align:center;margin-top:8px;font-size:8px;color:var(--silver);line-height:1.5;">By continuing you agree to our<br>Privacy Policy and Terms of Service</div>
+        </div>
+      </div>
+      <div class="screen-label">04 — Sign up</div>
+    </div>
+
+    <!-- SCREEN 5: PROFILE SETUP -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="sbar"><span class="st">9:41</span><span class="si">●●●</span></div>
+        <div class="body" style="padding-top:10px;">
+          <div style="margin-bottom:12px;">
+            <div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver);margin-bottom:3px;">Step 1 of 2</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:50%;"></div></div>
+          </div>
+          <div style="font-family:Georgia,serif;font-size:18px;color:var(--obsidian);margin-bottom:4px;">Tell us about you</div>
+          <div style="font-size:10px;color:var(--silver);margin-bottom:12px;">So Dr Hasia can personalise your experience</div>
+          <div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver);margin-bottom:6px;">I'm here for</div>
+          <div class="avatar-grid">
+            <div class="avatar-choice sel">
+              <div class="avatar-icon" style="width:20px;height:20px;margin:0 auto 3px;background:#2E2E2A;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="3.5" r="2" fill="#A8A8A0"/><path d="M1 9c0-2.2 1.8-4 4-4s4 1.8 4 4" fill="none" stroke="#A8A8A0" stroke-width="0.8"/></svg>
+              </div>
+              <div class="avatar-label-light">Treatments</div>
+            </div>
+            <div class="avatar-choice">
+              <div style="width:20px;height:20px;margin:0 auto 3px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <svg width="10" height="10" viewBox="0 0 10 10"><rect x="1.5" y="2" width="7" height="6" rx="1" fill="none" stroke="var(--graphite)" stroke-width="0.7"/><line x1="3.5" y1="4" x2="6.5" y2="4" stroke="var(--graphite)" stroke-width="0.6"/><line x1="3.5" y1="5.5" x2="5.5" y2="5.5" stroke="var(--graphite)" stroke-width="0.6"/></svg>
+              </div>
+              <div class="avatar-label">Learning</div>
+            </div>
+            <div class="avatar-choice">
+              <div style="width:20px;height:20px;margin:0 auto 3px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 7.5 L5 2 L8 7.5Z" fill="none" stroke="var(--graphite)" stroke-width="0.7"/></svg>
+              </div>
+              <div class="avatar-label">Products</div>
+            </div>
+            <div class="avatar-choice">
+              <div style="width:20px;height:20px;margin:0 auto 3px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" fill="none" stroke="var(--graphite)" stroke-width="0.7"/><circle cx="5" cy="5" r="1" fill="var(--graphite)"/></svg>
+              </div>
+              <div class="avatar-label">Community</div>
+            </div>
+            <div class="avatar-choice">
+              <div style="width:20px;height:20px;margin:0 auto 3px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" fill="none" stroke="var(--graphite)" stroke-width="0.7"/><line x1="4" y1="5" x2="6" y2="5" stroke="var(--graphite)" stroke-width="0.6"/><line x1="5" y1="4" x2="5" y2="6" stroke="var(--graphite)" stroke-width="0.6"/></svg>
+              </div>
+              <div class="avatar-label">All of it</div>
+            </div>
+            <div class="avatar-choice">
+              <div style="width:20px;height:20px;margin:0 auto 3px;background:var(--pearl-warm);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 2L8 8M8 2L2 8" stroke="var(--graphite)" stroke-width="0.7"/></svg>
+              </div>
+              <div class="avatar-label">Just browse</div>
+            </div>
+          </div>
+          <div class="btn-full">Continue</div>
+        </div>
+      </div>
+      <div class="screen-label">05 — Profile setup</div>
+    </div>
+
+  </div>
+</div>

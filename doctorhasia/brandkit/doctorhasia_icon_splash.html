@@ -1,0 +1,170 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.row-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-secondary); padding: 10px 0 8px; border-top: 0.5px solid var(--color-border-tertiary); margin-top: 8px; }
+.row-label:first-child { border-top: none; margin-top: 0; }
+.icon-row { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 12px; }
+.icon-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.icon-size { font-size: 9px; color: var(--color-text-secondary); font-family: var(--font-mono); }
+.splash-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.phone-splash {
+  width: 160px;
+  height: 300px;
+  border-radius: 28px;
+  border: 1.5px solid #2E2E2A;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-shrink: 0;
+  position: relative;
+}
+.phone-splash-label {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: 8px;
+}
+</style>
+
+<div>
+
+  <div class="row-label">App icon — iOS sizes</div>
+  <div class="icon-row">
+    <div class="icon-item">
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <rect width="120" height="120" rx="26" fill="#F0EEE8"/>
+        <circle cx="60" cy="60" r="44" fill="none" stroke="#0E0E0C" stroke-width="1.2"/>
+        <circle cx="60" cy="60" r="36" fill="none" stroke="#0E0E0C" stroke-width="0.4" opacity="0.35"/>
+        <text x="60" y="76" font-family="Georgia,serif" font-size="44" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+      </svg>
+      <div class="icon-size">1024px<br>App Store</div>
+    </div>
+    <div class="icon-item">
+      <svg width="76" height="76" viewBox="0 0 76 76">
+        <rect width="76" height="76" rx="17" fill="#F0EEE8"/>
+        <circle cx="38" cy="38" r="28" fill="none" stroke="#0E0E0C" stroke-width="0.9"/>
+        <circle cx="38" cy="38" r="23" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.35"/>
+        <text x="38" y="48" font-family="Georgia,serif" font-size="28" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+      </svg>
+      <div class="icon-size">180px<br>iPhone @3x</div>
+    </div>
+    <div class="icon-item">
+      <svg width="54" height="54" viewBox="0 0 54 54">
+        <rect width="54" height="54" rx="12" fill="#F0EEE8"/>
+        <circle cx="27" cy="27" r="20" fill="none" stroke="#0E0E0C" stroke-width="0.7"/>
+        <circle cx="27" cy="27" r="16" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.35"/>
+        <text x="27" y="34" font-family="Georgia,serif" font-size="20" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+      </svg>
+      <div class="icon-size">120px<br>iPhone @2x</div>
+    </div>
+    <div class="icon-item">
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <rect width="40" height="40" rx="9" fill="#F0EEE8"/>
+        <circle cx="20" cy="20" r="14" fill="none" stroke="#0E0E0C" stroke-width="0.6"/>
+        <text x="20" y="25.5" font-family="Georgia,serif" font-size="14" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+      </svg>
+      <div class="icon-size">87px<br>Spotlight</div>
+    </div>
+    <div class="icon-item">
+      <svg width="29" height="29" viewBox="0 0 29 29">
+        <rect width="29" height="29" rx="7" fill="#F0EEE8"/>
+        <circle cx="14.5" cy="14.5" r="10" fill="none" stroke="#0E0E0C" stroke-width="0.6"/>
+        <text x="14.5" y="19" font-family="Georgia,serif" font-size="10" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+      </svg>
+      <div class="icon-size">60px<br>Settings</div>
+    </div>
+    <div class="icon-item">
+      <svg width="20" height="20" viewBox="0 0 20 20">
+        <rect width="20" height="20" rx="5" fill="#F0EEE8"/>
+        <circle cx="10" cy="10" r="7" fill="none" stroke="#0E0E0C" stroke-width="0.5"/>
+        <text x="10" y="13.5" font-family="Georgia,serif" font-size="7" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+      </svg>
+      <div class="icon-size">40px<br>Notification</div>
+    </div>
+  </div>
+
+  <div class="row-label">Dark variant — for dark home screen wallpapers</div>
+  <div class="icon-row">
+    <div class="icon-item">
+      <svg width="76" height="76" viewBox="0 0 76 76">
+        <rect width="76" height="76" rx="17" fill="#0E0E0C"/>
+        <circle cx="38" cy="38" r="28" fill="none" stroke="#F0EEE8" stroke-width="0.9"/>
+        <circle cx="38" cy="38" r="23" fill="none" stroke="#F0EEE8" stroke-width="0.3" opacity="0.3"/>
+        <text x="38" y="48" font-family="Georgia,serif" font-size="28" font-weight="400" fill="#F0EEE8" text-anchor="middle">H</text>
+      </svg>
+      <div class="icon-size">Dark pearl</div>
+    </div>
+    <div class="icon-item">
+      <svg width="76" height="76" viewBox="0 0 76 76">
+        <rect width="76" height="76" rx="17" fill="#2E2E2A"/>
+        <circle cx="38" cy="38" r="28" fill="none" stroke="#D4D4CC" stroke-width="0.9"/>
+        <circle cx="38" cy="38" r="23" fill="none" stroke="#D4D4CC" stroke-width="0.3" opacity="0.3"/>
+        <text x="38" y="48" font-family="Georgia,serif" font-size="28" font-weight="400" fill="#D4D4CC" text-anchor="middle">H</text>
+      </svg>
+      <div class="icon-size">Dark graphite</div>
+    </div>
+    <div class="icon-item">
+      <svg width="76" height="76" viewBox="0 0 76 76">
+        <rect width="76" height="76" rx="17" fill="#F0EEE8"/>
+        <circle cx="38" cy="38" r="28" fill="none" stroke="#A8A8A0" stroke-width="0.9"/>
+        <circle cx="38" cy="38" r="23" fill="none" stroke="#A8A8A0" stroke-width="0.3" opacity="0.3"/>
+        <text x="38" y="48" font-family="Georgia,serif" font-size="28" font-weight="400" fill="#A8A8A0" text-anchor="middle">H</text>
+      </svg>
+      <div class="icon-size">Silver muted</div>
+    </div>
+  </div>
+
+  <div class="row-label">Splash screens — the first moment</div>
+  <div class="splash-row">
+
+    <div>
+      <div class="phone-splash" style="background:#FAFAF8;">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="29" fill="none" stroke="#0E0E0C" stroke-width="0.8"/>
+          <circle cx="32" cy="32" r="23" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.3"/>
+          <text x="32" y="41" font-family="Georgia,serif" font-size="26" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+        </svg>
+        <div style="margin-top:16px;font-family:Georgia,serif;font-size:18px;color:#0E0E0C;letter-spacing:0.04em;">Dr Hasia</div>
+        <div style="margin-top:4px;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:#A8A8A0;">Aesthetics &amp; Wellness</div>
+        <div style="position:absolute;bottom:28px;width:32px;height:1px;background:#D4D4CC;"></div>
+      </div>
+      <div class="phone-splash-label">Pearl light</div>
+    </div>
+
+    <div>
+      <div class="phone-splash" style="background:#0E0E0C; border-color:#2E2E2A;">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="29" fill="none" stroke="#F0EEE8" stroke-width="0.8"/>
+          <circle cx="32" cy="32" r="23" fill="none" stroke="#F0EEE8" stroke-width="0.3" opacity="0.25"/>
+          <text x="32" y="41" font-family="Georgia,serif" font-size="26" font-weight="400" fill="#F0EEE8" text-anchor="middle">H</text>
+        </svg>
+        <div style="margin-top:16px;font-family:Georgia,serif;font-size:18px;color:#F0EEE8;letter-spacing:0.04em;">Dr Hasia</div>
+        <div style="margin-top:4px;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:#4A4A48;">Aesthetics &amp; Wellness</div>
+        <div style="position:absolute;bottom:28px;width:32px;height:1px;background:#2E2E2A;"></div>
+      </div>
+      <div class="phone-splash-label">Obsidian dark</div>
+    </div>
+
+    <div>
+      <div class="phone-splash" style="background:#F0EEE8; border-color:#D4D4CC;">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="29" fill="none" stroke="#0E0E0C" stroke-width="0.8"/>
+          <circle cx="32" cy="32" r="23" fill="none" stroke="#0E0E0C" stroke-width="0.3" opacity="0.25"/>
+          <text x="32" y="41" font-family="Georgia,serif" font-size="26" font-weight="400" fill="#0E0E0C" text-anchor="middle">H</text>
+        </svg>
+        <div style="margin-top:16px;font-family:Georgia,serif;font-size:18px;color:#0E0E0C;letter-spacing:0.04em;">Dr Hasia</div>
+        <div style="margin-top:4px;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:#A8A8A0;">Aesthetics &amp; Wellness</div>
+        <div style="position:absolute;bottom:28px;width:32px;height:1px;background:#C8C8C0;"></div>
+      </div>
+      <div class="phone-splash-label">Pearl warm</div>
+    </div>
+
+  </div>
+
+</div>

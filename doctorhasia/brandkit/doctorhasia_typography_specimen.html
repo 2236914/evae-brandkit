@@ -1,0 +1,183 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.specimen { display: flex; flex-direction: column; gap: 0; }
+.row {
+  display: grid;
+  grid-template-columns: 100px minmax(0,1fr) 160px;
+  gap: 16px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+}
+.row:last-child { border-bottom: none; }
+.row-meta { display: flex; flex-direction: column; gap: 3px; }
+.meta-name { font-size: 10px; font-weight: 500; color: var(--color-text-primary); letter-spacing: 0.04em; }
+.meta-spec { font-size: 9px; color: var(--color-text-tertiary); font-family: var(--font-mono); line-height: 1.6; }
+.row-sample { }
+.row-usage { font-size: 10px; color: var(--color-text-secondary); line-height: 1.6; }
+
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 8px 0; }
+
+.pair-section { margin-top: 24px; }
+.pair-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 12px; }
+.pair-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pair-card {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 16px;
+}
+.pair-card-dark {
+  background: #0E0E0C;
+  border-radius: var(--border-radius-md);
+  padding: 16px;
+}
+</style>
+
+<div class="specimen">
+
+  <!-- DISPLAY -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Display</div>
+      <div class="meta-spec">Georgia, serif<br>40px / 400<br>tracking +0.02em<br>lh 1.1</div>
+    </div>
+    <div class="row-sample">
+      <div style="font-family:Georgia,serif; font-size:40px; font-weight:400; color:#0E0E0C; letter-spacing:0.02em; line-height:1.1;">Dr Hasia</div>
+    </div>
+    <div class="row-usage">Hero screen heading. Splash screen. App Store hero. Used once per screen max.</div>
+  </div>
+
+  <!-- H1 -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Heading 1</div>
+      <div class="meta-spec">Georgia, serif<br>26px / 400<br>tracking +0.02em<br>lh 1.2</div>
+    </div>
+    <div class="row-sample">
+      <div style="font-family:Georgia,serif; font-size:26px; font-weight:400; color:#0E0E0C; letter-spacing:0.02em; line-height:1.2;">Collagen Infusion</div>
+    </div>
+    <div class="row-usage">Screen titles. Service names. Product names. Section intros.</div>
+  </div>
+
+  <!-- H2 -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Heading 2</div>
+      <div class="meta-spec">Georgia, serif<br>20px / 400<br>tracking +0.01em<br>lh 1.3</div>
+    </div>
+    <div class="row-sample">
+      <div style="font-family:Georgia,serif; font-size:20px; font-weight:400; color:#0E0E0C; letter-spacing:0.01em; line-height:1.3;">Award winning aesthetics</div>
+    </div>
+    <div class="row-usage">Card titles. Course titles. Community post headers.</div>
+  </div>
+
+  <!-- OVERLINE -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Overline</div>
+      <div class="meta-spec">System sans<br>9px / 500<br>tracking +0.14em<br>ALL CAPS</div>
+    </div>
+    <div class="row-sample">
+      <div style="font-size:9px; font-weight:500; color:#A8A8A0; letter-spacing:0.14em; text-transform:uppercase;">Aesthetics &amp; Wellness · Dubai</div>
+    </div>
+    <div class="row-usage">Section labels. Nav items. Tags. Descriptors above headings. The workhorse label style.</div>
+  </div>
+
+  <!-- SUBHEADING -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Subheading</div>
+      <div class="meta-spec">System sans<br>11px / 500<br>tracking +0.08em<br>ALL CAPS</div>
+    </div>
+    <div class="row-sample">
+      <div style="font-size:11px; font-weight:500; color:#2E2E2A; letter-spacing:0.08em; text-transform:uppercase;">UK &amp; American Board Certified</div>
+    </div>
+    <div class="row-usage">Button text. Badge text. Tab labels. Form field labels. Pill text.</div>
+  </div>
+
+  <!-- BODY -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Body</div>
+      <div class="meta-spec">System sans<br>14px / 400<br>tracking 0<br>lh 1.65</div>
+    </div>
+    <div class="row-sample">
+      <div style="font-size:14px; font-weight:400; color:#2E2E2A; line-height:1.65; max-width:280px;">Doctor-led aesthetics bringing science and safety to every treatment. Pro-ageing, not anti-ageing.</div>
+    </div>
+    <div class="row-usage">Service descriptions. Product copy. Course descriptions. Community post body.</div>
+  </div>
+
+  <!-- BODY SMALL -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Body small</div>
+      <div class="meta-spec">System sans<br>12px / 400<br>tracking 0<br>lh 1.5</div>
+    </div>
+    <div class="row-sample">
+      <div style="font-size:12px; font-weight:400; color:#686860; line-height:1.5; max-width:280px;">Capsule 7 · Dubai · In-person appointment · 60 minutes</div>
+    </div>
+    <div class="row-usage">Metadata. Timestamps. Secondary info under card titles. Price labels.</div>
+  </div>
+
+  <!-- CAPTION -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Caption</div>
+      <div class="meta-spec">System sans<br>10px / 400<br>tracking +0.04em<br>lh 1.5</div>
+    </div>
+    <div class="row-sample">
+      <div style="font-size:10px; font-weight:400; color:#A8A8A0; letter-spacing:0.04em; line-height:1.5;">Results may vary. Always consult a qualified practitioner. Doctors Dose™ products.</div>
+    </div>
+    <div class="row-usage">Legal disclaimers. Image captions. Footnotes. Timestamps in community.</div>
+  </div>
+
+  <!-- PRICE -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Price</div>
+      <div class="meta-spec">Georgia, serif<br>18px / 400<br>tracking 0<br>lh 1</div>
+    </div>
+    <div class="row-sample">
+      <div style="display:flex;align-items:baseline;gap:3px;">
+        <span style="font-family:Georgia,serif; font-size:18px; font-weight:400; color:#0E0E0C;">£48</span>
+        <span style="font-size:10px; color:#A8A8A0; letter-spacing:0.06em; text-transform:uppercase;">/ bottle</span>
+      </div>
+    </div>
+    <div class="row-usage">Product prices. Course fees. Membership tier costs. Always serif for authority.</div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="row">
+    <div class="row-meta">
+      <div class="meta-name">Quote</div>
+      <div class="meta-spec">Georgia, serif<br>15px / 400 italic<br>tracking 0<br>lh 1.6</div>
+    </div>
+    <div class="row-sample">
+      <div style="font-family:Georgia,serif; font-size:15px; font-weight:400; font-style:italic; color:#2E2E2A; line-height:1.6; max-width:260px;">"Safe aesthetics. Science-led. Doctor-first — always."</div>
+    </div>
+    <div class="row-usage">Dr Hasia community posts. Testimonials. Pull quotes. Onboarding value props.</div>
+  </div>
+
+</div>
+
+<div class="pair-section">
+  <div class="pair-label">Type in context — light vs dark surface</div>
+  <div class="pair-grid">
+    <div class="pair-card">
+      <div style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#A8A8A0;margin-bottom:8px;">Service card</div>
+      <div style="font-family:Georgia,serif;font-size:18px;color:#0E0E0C;margin-bottom:3px;">Collagen Infusion</div>
+      <div style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#A8A8A0;margin-bottom:8px;">Pro-ageing · Injectables</div>
+      <div style="font-size:12px;color:#686860;line-height:1.5;">A targeted collagen boosting protocol designed to restore skin density and luminosity.</div>
+      <div style="margin-top:10px;font-family:Georgia,serif;font-size:16px;color:#0E0E0C;">From £320</div>
+    </div>
+    <div class="pair-card-dark">
+      <div style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#4A4A48;margin-bottom:8px;">Membership</div>
+      <div style="font-family:Georgia,serif;font-size:18px;color:#D4D4CC;margin-bottom:3px;">Hasia Member</div>
+      <div style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#4A4A48;margin-bottom:8px;">Priority · Exclusive · Community</div>
+      <div style="font-size:12px;color:#686860;line-height:1.5;">Unlock all academy content, priority booking, and member-only posts from Dr Hasia.</div>
+      <div style="margin-top:10px;font-family:Georgia,serif;font-size:16px;color:#A8A8A0;">£29 / month</div>
+    </div>
+  </div>
+</div>
