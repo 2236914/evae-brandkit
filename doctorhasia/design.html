@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Hasia — Design Document</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ob: #0C0C0A;
+  --ob2: #1C1C18;
+  --ob3: #2E2E28;
+  --si: #9A9A90;
+  --si2: #CCCCC0;
+  --pe: #EEEAE2;
+  --pe2: #E4E0D6;
+  --ww: #F8F8F4;
+  --mv: #9E7E96;
+  --gr: #4A4A44;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Montserrat', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webkit-font-smoothing: antialiased; }
+
+/* PAGE BREAKS */
+.page { max-width: 960px; margin: 0 auto; padding: 80px 64px; min-height: 100vh; position: relative; }
+.page + .page { border-top: 0.5px solid var(--si2); }
+@media print {
+  .page { page-break-after: always; padding: 60px 48px; }
+}
+
+/* COVER */
+.cover { display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh; }
+.cover-top {}
+.cover-logo { font-family: var(--serif); font-size: 72px; font-weight: 300; color: var(--ob); letter-spacing: -0.02em; line-height: 1; margin-bottom: 8px; }
+.cover-sub { font-size: 9px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--si); margin-bottom: 40px; }
+.cover-rule { width: 48px; height: 1px; background: var(--mv); margin-bottom: 40px; }
+.cover-title { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--ob); margin-bottom: 12px; }
+.cover-desc { font-size: 13px; font-weight: 300; color: var(--si); line-height: 1.7; max-width: 480px; }
+.cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 0.5px solid var(--si2); padding-top: 32px; margin-top: 80px; }
+.cover-meta-item { padding: 20px 0; border-bottom: 0.5px solid var(--si2); }
+.cover-meta-item:nth-child(even) { padding-left: 32px; border-left: 0.5px solid var(--si2); }
+.meta-label { font-size: 8px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--si); margin-bottom: 6px; }
+.meta-value { font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--ob); }
+
+/* SECTION HEADERS */
+.sec-eyebrow { font-size: 8px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mv); margin-bottom: 8px; }
+.sec-title { font-family: var(--serif); font-size: 48px; font-weight: 300; color: var(--ob); letter-spacing: -0.01em; margin-bottom: 16px; line-height: 1.1; }
+.sec-desc { font-size: 13px; font-weight: 300; color: var(--si); line-height: 1.7; max-width: 560px; margin-bottom: 48px; }
+
+/* DIVIDER */
+.divider { height: 0.5px; background: var(--si2); margin: 48px 0; }
+.divider-sm { height: 0.5px; background: var(--si2); margin: 24px 0; }
+
+/* COLOUR SECTION */
+.swatch-strip { display: flex; height: 80px; border-radius: 4px; overflow: hidden; margin-bottom: 32px; }
+.swatch-strip div { flex: 1; }
+.swatch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
+.swatch-card { }
+.swatch-block { height: 80px; border-radius: 4px; margin-bottom: 10px; }
+.swatch-name { font-size: 11px; font-weight: 500; color: var(--ob); margin-bottom: 3px; }
+.swatch-hex { font-size: 10px; font-weight: 300; color: var(--si); font-family: monospace; margin-bottom: 3px; }
+.swatch-use { font-size: 10px; font-weight: 300; color: var(--si); line-height: 1.5; }
+
+/* MAUVE RULE SECTION */
+.mauve-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.mauve-do { background: var(--pe); border: 0.5px solid var(--si2); border-radius: 4px; padding: 24px; }
+.mauve-dont { background: var(--ww); border: 0.5px solid var(--si2); border-radius: 4px; padding: 24px; }
+.rule-label { font-size: 8px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 14px; }
+.rule-item { font-size: 12px; font-weight: 300; color: var(--gr); padding: 7px 0; border-bottom: 0.5px solid var(--si2); line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
+.rule-item:last-child { border-bottom: none; }
+
+/* TYPOGRAPHY */
+.type-table { width: 100%; border-collapse: collapse; }
+.type-table tr { border-bottom: 0.5px solid var(--si2); }
+.type-table tr:last-child { border-bottom: none; }
+.type-table td { padding: 20px 16px; vertical-align: middle; }
+.type-table td:first-child { width: 120px; }
+.type-table td:last-child { width: 200px; }
+.type-meta { font-size: 10px; font-weight: 300; color: var(--si); line-height: 1.8; font-family: monospace; }
+.type-name { font-size: 11px; font-weight: 500; color: var(--ob); margin-bottom: 4px; }
+.type-use { font-size: 10px; font-weight: 300; color: var(--si); line-height: 1.6; }
+
+/* SPACING */
+.spacing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.spacing-item { }
+.spacing-vis { background: var(--pe2); border-radius: 2px; margin-bottom: 10px; }
+.spacing-label { font-size: 11px; font-weight: 500; color: var(--ob); margin-bottom: 3px; }
+.spacing-val { font-size: 10px; font-weight: 300; color: var(--si); font-family: monospace; margin-bottom: 3px; }
+.spacing-use { font-size: 10px; font-weight: 300; color: var(--si); line-height: 1.5; }
+
+/* RADIUS */
+.radius-grid { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+.radius-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.radius-box { width: 80px; height: 80px; background: var(--pe); border: 0.5px solid var(--si2); }
+.radius-label { font-size: 10px; font-weight: 300; color: var(--si); text-align: center; line-height: 1.6; }
+
+/* BUTTONS */
+.btn-grid { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 32px; }
+.btn-demo { font-size: 9px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; padding: 12px 28px; border-radius: 20px; display: inline-block; }
+
+/* COMPONENT SPECS */
+.comp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px; align-items: start; }
+.comp-demo { background: var(--pe); border-radius: 4px; padding: 32px; display: flex; align-items: center; justify-content: center; }
+.comp-spec { }
+.spec-title { font-size: 13px; font-weight: 500; color: var(--ob); margin-bottom: 16px; }
+.spec-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 0.5px solid var(--si2); font-size: 11px; }
+.spec-row:last-child { border-bottom: none; }
+.spec-key { font-weight: 300; color: var(--si); }
+.spec-val { font-weight: 400; color: var(--ob); font-family: monospace; font-size: 10px; }
+
+/* SCREEN SPECS */
+.screen-spec { background: var(--ww); border: 0.5px solid var(--si2); border-radius: 4px; padding: 32px; margin-bottom: 24px; }
+.screen-num { font-size: 8px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mv); margin-bottom: 6px; }
+.screen-name { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--ob); margin-bottom: 8px; }
+.screen-desc { font-size: 12px; font-weight: 300; color: var(--si); line-height: 1.6; margin-bottom: 20px; }
+.screen-elements { }
+.el-group { margin-bottom: 16px; }
+.el-group-title { font-size: 9px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ob); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 0.5px solid var(--si2); }
+.el-item { font-size: 11px; font-weight: 300; color: var(--gr); padding: 5px 0; display: flex; gap: 10px; line-height: 1.5; border-bottom: 0.5px solid rgba(0,0,0,0.04); }
+.el-item:last-child { border-bottom: none; }
+.el-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--si2); margin-top: 5px; flex-shrink: 0; }
+
+/* PHONE MOCKUP */
+.phone-row { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; background: var(--pe); border-radius: 8px; padding: 40px 24px; margin-bottom: 32px; }
+.phone-frame { width: 160px; background: var(--ww); border-radius: 28px; border: 1.5px solid var(--ob); overflow: hidden; flex-shrink: 0; }
+.ph-notch { width: 48px; height: 14px; background: var(--ob); border-radius: 0 0 8px 8px; margin: 0 auto; }
+.ph-sb { display: flex; justify-content: space-between; padding: 2px 12px; font-size: 7px; color: var(--ob2); }
+.ph-nav { display: flex; align-items: center; justify-content: space-between; padding: 7px 12px 5px; border-bottom: 0.5px solid rgba(0,0,0,0.06); }
+.ph-logo { font-family: var(--serif); font-size: 10px; font-weight: 300; color: var(--ob); }
+.ph-body { padding: 10px 12px; }
+.ph-ol { font-size: 6px; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; color: var(--si); margin-bottom: 5px; }
+.ph-h { font-family: var(--serif); font-size: 13px; font-weight: 300; color: var(--ob); line-height: 1.2; margin-bottom: 4px; }
+.ph-b { font-size: 7px; font-weight: 300; color: var(--gr); line-height: 1.5; margin-bottom: 8px; }
+.ph-img { width: 100%; height: 80px; background: var(--pe2); border-radius: 10px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; }
+.ph-img-text { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--si); }
+.ph-btn { background: var(--ob); color: var(--pe); border-radius: 16px; font-size: 6px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; padding: 5px 0; margin-bottom: 6px; }
+.ph-btn-mv { background: var(--mv); color: #fff; border-radius: 16px; font-size: 6px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; padding: 5px 0; margin-bottom: 6px; }
+.ph-card { background: var(--pe); border: 0.5px solid var(--si2); border-radius: 8px; padding: 7px; margin-bottom: 5px; }
+.ph-card-title { font-size: 7px; font-weight: 500; color: var(--ob); margin-bottom: 2px; }
+.ph-card-sub { font-size: 6px; font-weight: 300; color: var(--si); }
+.ph-row { display: flex; gap: 4px; margin-bottom: 5px; }
+.ph-bnav { display: flex; background: var(--ww); border-top: 0.5px solid rgba(0,0,0,0.06); padding: 5px 0 8px; }
+.ph-bn { flex: 1; text-align: center; font-size: 5px; font-weight: 300; color: var(--si); letter-spacing: 0.06em; text-transform: uppercase; }
+.ph-bn.on { color: var(--ob); }
+.ph-bn-d { width: 3px; height: 3px; border-radius: 50%; background: var(--ob); margin: 2px auto 0; }
+.ph-lbl { font-size: 8px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--si); text-align: center; margin-top: 8px; }
+.ph-id-card { background: var(--pe2); border-radius: 8px; padding: 8px; margin-bottom: 8px; }
+.ph-rule { height: 0.5px; background: var(--si2); margin: 6px 0; }
+.mv-rule { height: 0.5px; background: var(--mv); width: 16px; margin: 4px 0; }
+.ph-li { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 0.5px solid rgba(0,0,0,0.05); font-size: 6.5px; color: var(--gr); }
+.ph-li:last-child { border-bottom: none; }
+.ph-quote { border-left: 2px solid var(--mv); padding-left: 6px; font-family: var(--serif); font-size: 8px; font-style: italic; color: var(--mv); margin: 6px 0; }
+
+/* DO DONT */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.do-card { background: #F4FAF6; border: 0.5px solid #C8E0D0; border-radius: 4px; padding: 20px; }
+.dont-card { background: #FDF4F4; border: 0.5px solid #E0C8C8; border-radius: 4px; padding: 20px; }
+.dd-label { font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; }
+.dd-item { font-size: 11px; font-weight: 300; color: var(--gr); padding: 5px 0; border-bottom: 0.5px solid rgba(0,0,0,0.06); line-height: 1.5; }
+.dd-item:last-child { border-bottom: none; }
+
+/* NAV */
+.nav-demo { background: var(--ww); border: 0.5px solid var(--si2); border-radius: 4px; overflow: hidden; margin-bottom: 16px; }
+.nav-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 0.5px solid var(--si2); }
+.nav-bottom { display: flex; padding: 10px 0 14px; border-top: 0.5px solid var(--si2); }
+.nav-item { flex: 1; text-align: center; font-size: 8px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--si); }
+.nav-item.active { color: var(--ob); }
+.nav-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--ob); margin: 3px auto 0; }
+
+/* FLOW */
+.flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+.flow-box { background: var(--pe); border: 0.5px solid var(--si2); border-radius: 4px; padding: 10px 16px; font-size: 10px; font-weight: 400; color: var(--ob); letter-spacing: 0.04em; white-space: nowrap; }
+.flow-box.highlight { background: var(--ob); color: var(--pe); }
+.flow-box.mv { background: var(--mv); color: #fff; }
+.flow-arrow { font-size: 12px; color: var(--si); }
+
+/* PHOTOGRAPHY */
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+.photo-example { border-radius: 8px; overflow: hidden; }
+.photo-block { height: 120px; display: flex; align-items: flex-end; padding: 12px; }
+.photo-caption { font-size: 9px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 8px; }
+.photo-sub { font-size: 9px; font-weight: 300; color: var(--si); margin-top: 3px; line-height: 1.4; }
+
+/* FOOTER */
+.doc-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 0.5px solid var(--si2); margin-top: 80px; }
+.footer-brand { font-family: var(--serif); font-size: 14px; font-weight: 300; color: var(--ob); }
+.footer-note { font-size: 9px; font-weight: 300; color: var(--si); letter-spacing: 0.08em; }
+
+/* ANNOTATION */
+.annotation { background: var(--pe); border-left: 3px solid var(--mv); padding: 16px 20px; border-radius: 0 4px 4px 0; margin: 16px 0; }
+.annotation p { font-size: 12px; font-weight: 300; color: var(--gr); line-height: 1.6; }
+.annotation strong { font-weight: 500; color: var(--ob); }
+
+/* TABLE */
+.spec-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+.spec-table th { font-size: 8px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--si); padding: 10px 14px; border-bottom: 0.5px solid var(--ob); text-align: left; }
+.spec-table td { font-size: 11px; font-weight: 300; padding: 10px 14px; border-bottom: 0.5px solid var(--si2); color: var(--gr); vertical-align: top; }
+.spec-table td:first-child { font-weight: 400; color: var(--ob); white-space: nowrap; }
+.spec-table tr:last-child td { border-bottom: none; }
+.tag { display: inline-block; font-size: 8px; font-weight: 300; padding: 2px 8px; border-radius: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+.tag-mv { background: rgba(158,126,150,0.12); color: var(--mv); }
+.tag-ob { background: rgba(12,12,10,0.08); color: var(--ob); }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:80px;">Design Document · Confidential</div>
+    <div class="cover-logo">Doctor<br>Hasia</div>
+    <div class="cover-sub">Aesthetics &amp; Wellness · Dubai · Birmingham</div>
+    <div class="cover-rule"></div>
+    <div class="cover-title">Design System &amp; Screen Specification</div>
+    <div class="cover-desc">A complete reference document for the Doctor Hasia iOS application and website. Covers brand direction, colour system, typography, component specifications, screen-by-screen layout, navigation flows, and design rules. Intended for designers, developers, and client approval.</div>
+  </div>
+  <div>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><div class="meta-label">Prepared by</div><div class="meta-value">[Your Name]</div></div>
+      <div class="cover-meta-item"><div class="meta-label">Prepared for</div><div class="meta-value">Doctor Hasia</div></div>
+      <div class="cover-meta-item"><div class="meta-label">Document version</div><div class="meta-value">v1.0</div></div>
+      <div class="cover-meta-item"><div class="meta-label">Date</div><div class="meta-value">April 2026</div></div>
+      <div class="cover-meta-item"><div class="meta-label">Project</div><div class="meta-value">iOS App + Website</div></div>
+      <div class="cover-meta-item"><div class="meta-label">Design direction</div><div class="meta-value">Obsidian Pearl + Mauve Whisper</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 01 BRAND DIRECTION ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 01</div>
+  <div class="sec-title">Brand Direction</div>
+  <div class="sec-desc">The Doctor Hasia app is a luxury medical editorial experience. The reference aesthetic is drawn from SKKN by Kim Kardashian (warm monochrome, stone surfaces, zero decorative colour) and Vogue magazine (editorial serif typography, full-bleed photography, generous white space, one high-impact colour hit). The result is a light-mode app that feels like opening a luxury medical magazine — not a clinic portal.</div>
+
+  <div class="divider-sm"></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:40px;">
+    <div style="background:var(--pe);border-radius:4px;padding:24px;">
+      <div style="font-size:8px;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:var(--si);margin-bottom:10px;">Audience</div>
+      <div style="font-size:12px;font-weight:300;color:var(--gr);line-height:1.8;">Existing patients<br>New clients<br>Medical professionals<br>Aesthetics-curious public</div>
+    </div>
+    <div style="background:var(--pe);border-radius:4px;padding:24px;">
+      <div style="font-size:8px;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:var(--si);margin-bottom:10px;">Tone</div>
+      <div style="font-size:12px;font-weight:300;color:var(--gr);line-height:1.8;">Expert but warm<br>Science-led but personal<br>Luxurious but inclusive<br>Clinical but beautiful</div>
+    </div>
+    <div style="background:var(--pe);border-radius:4px;padding:24px;">
+      <div style="font-size:8px;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:var(--si);margin-bottom:10px;">References</div>
+      <div style="font-size:12px;font-weight:300;color:var(--gr);line-height:1.8;">SKKN by Kim<br>Vogue magazine<br>The Row<br>HASIA app screens</div>
+    </div>
+  </div>
+
+  <div class="annotation"><p><strong>Design principle:</strong> Every screen should feel like opening a page of Vogue, not like logging into a clinic portal. Large serif display type, warm cream surfaces, full-bleed photography, and generous negative space are non-negotiable. Complexity is hidden. Clarity is the luxury.</p></div>
+
+  <div class="divider"></div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:20px;">Key design rules</div>
+  <table class="spec-table">
+    <thead><tr><th>Rule</th><th>Definition</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Background</td><td>Every screen uses warm white #F8F8F4 only. No screen has a dark or coloured background.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
+      <tr><td>Colour restraint</td><td>No teal, green, blue, or gradient anywhere in the app. No coloured card borders or section fills.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
+      <tr><td>Mauve usage</td><td>Mauve #9E7E96 appears in exactly 5 defined places. No additional use under any circumstance.</td><td><span class="tag tag-mv">Mauve rule</span></td></tr>
+      <tr><td>Shadows</td><td>No box shadows, drop shadows, or blur effects anywhere in the app.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
+      <tr><td>Photography</td><td>All images are full-bleed to card edges. No images with white padding around them.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
+      <tr><td>Typography</td><td>Cormorant Garamond for all serif. Montserrat for all sans. No other fonts.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
+      <tr><td>Button shape</td><td>All buttons are pill-shaped (20px radius) or full-width pill. No square buttons.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ 02 COLOUR ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 02</div>
+  <div class="sec-title">Colour System</div>
+  <div class="sec-desc">The palette is warm monochrome — obsidian, pearl, and warm white form 95% of all surfaces and text. Mauve is the single accent colour, used in exactly 5 touchpoints across the entire app.</div>
+
+  <div class="swatch-strip">
+    <div style="background:#0C0C0A;"></div>
+    <div style="background:#1C1C18;"></div>
+    <div style="background:#2E2E28;"></div>
+    <div style="background:#9A9A90;"></div>
+    <div style="background:#CCCCC0;"></div>
+    <div style="background:#E4E0D6;"></div>
+    <div style="background:#EEEAE2;"></div>
+    <div style="background:#F8F8F4;border:0.5px solid #E4E0D6;"></div>
+    <div style="flex:0.2;background:#2E2E28;"></div>
+    <div style="background:#9E7E96;"></div>
+  </div>
+
+  <div class="swatch-grid">
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#0C0C0A;"></div>
+      <div class="swatch-name">Obsidian</div>
+      <div class="swatch-hex">#0C0C0A</div>
+      <div class="swatch-use">Primary text, all button fills, wordmark, active states</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#2E2E28;"></div>
+      <div class="swatch-name">Graphite</div>
+      <div class="swatch-hex">#2E2E28 — #4A4A44</div>
+      <div class="swatch-use">Secondary body text, supporting copy, descriptors</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#9A9A90;"></div>
+      <div class="swatch-name">Silver</div>
+      <div class="swatch-hex">#9A9A90</div>
+      <div class="swatch-use">Overline labels, metadata, timestamps, captions, muted text</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#CCCCC0;border:0.5px solid #BBBBB4;"></div>
+      <div class="swatch-name">Silver Light</div>
+      <div class="swatch-hex">#CCCCC0</div>
+      <div class="swatch-use">Card borders, dividers, input borders, section separators</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#E4E0D6;"></div>
+      <div class="swatch-name">Pearl Warm</div>
+      <div class="swatch-hex">#E4E0D6</div>
+      <div class="swatch-use">Card backgrounds, secondary surfaces, input fields, image placeholder backgrounds</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#EEEAE2;border:0.5px solid #DEDAD2;"></div>
+      <div class="swatch-name">Pearl</div>
+      <div class="swatch-hex">#EEEAE2</div>
+      <div class="swatch-use">Primary light surface, hero backgrounds, pearl text on obsidian buttons</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#F8F8F4;border:0.5px solid #E4E0D6;"></div>
+      <div class="swatch-name">Warm White</div>
+      <div class="swatch-hex">#F8F8F4</div>
+      <div class="swatch-use">Universal screen background. Every screen. No exceptions.</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#9E7E96;"></div>
+      <div class="swatch-name">Mauve <span class="tag tag-mv" style="font-size:8px;">Accent</span></div>
+      <div class="swatch-hex">#9E7E96</div>
+      <div class="swatch-use">5 touchpoints only. See Mauve Rule below.</div>
+    </div>
+  </div>
+
+  <div class="divider-sm"></div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--mv);margin-bottom:16px;">The Mauve Rule — exactly 5 uses, nowhere else</div>
+  <div class="mauve-rules">
+    <div class="mauve-do">
+      <div class="rule-label" style="color:#2E7D52;">✓ Mauve lives here</div>
+      <div class="rule-item"><span>01</span>The H letter inside the monogram circle on the identity card and obsidian surfaces</div>
+      <div class="rule-item"><span>02</span>The 1px thin rule line under the wordmark in the identity card and logo</div>
+      <div class="rule-item"><span>03</span>The primary hero CTA button on the home screen only</div>
+      <div class="rule-item"><span>04</span>Italic pull quotes and Doctor Hasia's Journal text colour</div>
+      <div class="rule-item"><span>05</span>The Free badge on academy courses</div>
+    </div>
+    <div class="mauve-dont">
+      <div class="rule-label" style="color:#B04040;">✗ Mauve never goes here</div>
+      <div class="rule-item"><span>—</span>Navigation tabs, active states, bottom nav indicators</div>
+      <div class="rule-item"><span>—</span>Tags, badges, pills, labels throughout the app</div>
+      <div class="rule-item"><span>—</span>Section backgrounds or card fills</div>
+      <div class="rule-item"><span>—</span>Secondary or ghost buttons on any screen</div>
+      <div class="rule-item"><span>—</span>Progress bars, step chips, calendar selections</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 03 TYPOGRAPHY ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 03</div>
+  <div class="sec-title">Typography</div>
+  <div class="sec-desc">Two typefaces only. Cormorant Garamond for all editorial serif moments — headlines, pull quotes, prices, display text. Montserrat light for all interface text — body, overlines, buttons, labels, captions.</div>
+
+  <div style="background:var(--pe);border-radius:4px;padding:4px 0;margin-bottom:32px;">
+    <table class="type-table" style="width:100%;">
+      <tr>
+        <td><div class="type-name">Display</div><div class="type-meta">Cormorant Garamond<br>52px / weight 300<br>tracking −0.01em<br>line height 1.1</div></td>
+        <td><div style="font-family:var(--serif);font-size:44px;font-weight:300;color:var(--ob);letter-spacing:-0.01em;line-height:1.1;">Doctor Hasia</div></td>
+        <td><div class="type-use">Hero screen. Splash. App Store. Used once per screen maximum. Never used for two headings on the same screen.</div></td>
+      </tr>
+      <tr>
+        <td><div class="type-name">Heading 1</div><div class="type-meta">Cormorant Garamond<br>36px / weight 300<br>tracking −0.01em</div></td>
+        <td><div style="font-family:var(--serif);font-size:36px;font-weight:300;color:var(--ob);letter-spacing:-0.01em;">Collagen Infusion</div></td>
+        <td><div class="type-use">Screen titles. Service names. Product names. Article headlines.</div></td>
+      </tr>
+      <tr>
+        <td><div class="type-name">Heading 2</div><div class="type-meta">Cormorant Garamond<br>26px / weight 300</div></td>
+        <td><div style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--ob);">Award winning aesthetics</div></td>
+        <td><div class="type-use">Card titles. Course names. Community post headlines.</div></td>
+      </tr>
+      <tr>
+        <td><div class="type-name">Heading 3 / Pull Quote</div><div class="type-meta">Cormorant Garamond<br>20px / weight 300<br>italic</div></td>
+        <td><div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--mv);font-style:italic;">"The ritual of care is vital."</div></td>
+        <td><div class="type-use">Pull quotes. Doctor Hasia's notes. Editorial subheadings. Always in mauve or graphite.</div></td>
+      </tr>
+      <tr>
+        <td><div class="type-name">Overline</div><div class="type-meta">Montserrat<br>8px / weight 300<br>tracking 0.22em<br>ALL CAPS</div></td>
+        <td><div style="font-size:8px;font-weight:300;color:var(--si);letter-spacing:0.22em;text-transform:uppercase;">AESTHETICS &amp; WELLNESS · DUBAI</div></td>
+        <td><div class="type-use">Above every heading. Section labels, category tags, issue numbers. Always in silver.</div></td>
+      </tr>
+      <tr>
+        <td><div class="type-name">Subheading / Button</div><div class="type-meta">Montserrat<br>10px / weight 400<br>tracking 0.14em<br>ALL CAPS</div></td>
+        <td><div style="font-size:10px;font-weight:400;color:var(--ob2);letter-spacing:0.14em;text-transform:uppercase;">UK &amp; American Board Certified</div></td>
+        <td><div class="type-use">All button labels. Badge text. Tab labels. Form field labels.</div></td>
+      </tr>
+      <tr>
+        <td><div class="type-name">Body</div><div class="type-meta">Montserrat<br>14px / weight 300<br>line height 1.7</div></td>
+        <td><div style="font-size:14px;font-weight:300;color:var(--gr);line-height:1.7;max-width:280px;">Doctor-led aesthetics bringing science and safety to every treatment. Pro-ageing, not anti-ageing.</div></td>
+        <td><div class="type-use">Service descriptions. Product clinical detail. Course descriptions. Community post body.</div></td>
+      </tr>
+      <tr>
+        <td><div class="type-name">Body Small</div><div class="type-meta">Montserrat<br>12px / weight 300<br>line height 1.5</div></td>
+        <td><div style="font-size:12px;font-weight:300;color:var(--si);line-height:1.5;">Capsule 7 · Dubai · In-person · 60 minutes</div></td>
+        <td><div class="type-use">Metadata. Timestamps. Secondary card info. Ingredient sub-labels.</div></td>
+      </tr>
+      <tr>
+        <td><div class="type-name">Price</div><div class="type-meta">Cormorant Garamond<br>22px / weight 300</div></td>
+        <td><div style="display:flex;align-items:baseline;gap:6px;"><span style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--ob);">£48</span><span style="font-size:10px;font-weight:300;color:var(--si);letter-spacing:0.1em;text-transform:uppercase;">/ bottle</span></div></td>
+        <td><div class="type-use">Products. Courses. Membership tiers. Always serif — authority without weight.</div></td>
+      </tr>
+      <tr>
+        <td><div class="type-name">Caption</div><div class="type-meta">Montserrat<br>10px / weight 300<br>tracking 0.04em</div></td>
+        <td><div style="font-size:10px;font-weight:300;color:var(--si);letter-spacing:0.04em;">Results may vary. Always consult a practitioner. Doctors Dose™</div></td>
+        <td><div class="type-use">Legal text. Disclaimers. Image captions. Clinical references. Footnotes.</div></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ══ 04 SPACING + SHAPE ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 04</div>
+  <div class="sec-title">Spacing &amp; Shape</div>
+  <div class="sec-desc">All spacing uses a consistent scale. Border radii are defined per component type. No mixing of radii within a component family.</div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:20px;">Spacing scale</div>
+  <table class="spec-table" style="margin-bottom:48px;">
+    <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td>Screen padding</td><td>16px horizontal</td><td>Left and right padding on all screens. Never less.</td></tr>
+      <tr><td>Top bar height</td><td>44px + status bar</td><td>Standard iOS navigation bar height.</td></tr>
+      <tr><td>Section spacing</td><td>32px</td><td>Between all major content sections on a screen.</td></tr>
+      <tr><td>Card gap</td><td>12px</td><td>Between stacked or adjacent cards.</td></tr>
+      <tr><td>Card padding</td><td>16px</td><td>Internal padding inside all card components.</td></tr>
+      <tr><td>Body paragraph</td><td>8px bottom</td><td>Spacing between paragraphs.</td></tr>
+      <tr><td>Overline to heading</td><td>6px</td><td>Gap between the overline label and the heading below it.</td></tr>
+      <tr><td>Heading to body</td><td>10px</td><td>Gap between a heading and the body text that follows.</td></tr>
+      <tr><td>Divider margin</td><td>16px top and bottom</td><td>Breathing room around all 0.5px divider lines.</td></tr>
+      <tr><td>Button height</td><td>48px</td><td>Minimum touch target for all buttons. Never smaller.</td></tr>
+      <tr><td>Input height</td><td>48px</td><td>All pill input fields. Matches button height.</td></tr>
+      <tr><td>Avatar size</td><td>40px standard, 28px compact</td><td>User and Doctor Hasia avatars.</td></tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:20px;">Border radius</div>
+  <div class="radius-grid">
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:0;"></div>
+      <div class="radius-label"><strong>0px</strong><br>Screen backgrounds<br>Bottom nav bar</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:4px;"></div>
+      <div class="radius-label"><strong>4px</strong><br>Section dividers<br>Table rows</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:8px;"></div>
+      <div class="radius-label"><strong>8px</strong><br>Small badges<br>Avatar squares<br>Compact cards</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:12px;"></div>
+      <div class="radius-label"><strong>12px</strong><br>Standard cards<br>Product images<br>Course cards</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:16px;"></div>
+      <div class="radius-label"><strong>16px</strong><br>Full-bleed images<br>Feature blocks<br>Membership card</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:20px;"></div>
+      <div class="radius-label"><strong>20px</strong><br>All buttons<br>All pill inputs<br>Filter chips</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:50%;width:80px;height:80px;"></div>
+      <div class="radius-label"><strong>50%</strong><br>Avatar circles<br>Monogram circles<br>Play buttons</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:20px;">Borders</div>
+  <table class="spec-table">
+    <thead><tr><th>Context</th><th>Specification</th></tr></thead>
+    <tbody>
+      <tr><td>Standard card border</td><td>0.5px solid #CCCCC0 (Silver Light)</td></tr>
+      <tr><td>Emphasis border (recommended tier, membership)</td><td>0.5px solid #0C0C0A (Obsidian)</td></tr>
+      <tr><td>Section divider</td><td>0.5px solid #CCCCC0 full width</td></tr>
+      <tr><td>Mauve rule line</td><td>1px solid #9E7E96, width 20–48px only</td></tr>
+      <tr><td>Pull quote left border</td><td>3px solid #9E7E96 (mauve), no radius</td></tr>
+      <tr><td>Top bar bottom border</td><td>0.5px solid #CCCCC0</td></tr>
+      <tr><td>Bottom nav top border</td><td>0.5px solid #CCCCC0</td></tr>
+      <tr><td>No shadows</td><td>box-shadow: none on all elements, always</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ 05 COMPONENTS ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 05</div>
+  <div class="sec-title">Components</div>
+  <div class="sec-desc">Every reusable UI component defined with all states. Developers should build from these specifications exactly.</div>
+
+  <!-- BUTTONS -->
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">Buttons — all states</div>
+  <div class="btn-grid" style="margin-bottom:8px;">
+    <div><div class="btn-demo" style="background:var(--ob);color:var(--pe);">Book session</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Primary</div></div>
+    <div><div class="btn-demo" style="background:var(--mv);color:#fff;">Join the Registry</div><div style="font-size:9px;color:var(--mv);margin-top:6px;text-align:center;">Mauve — home hero only</div></div>
+    <div><div class="btn-demo" style="border:0.5px solid var(--ob);color:var(--ob);">Explore Protocol</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Secondary / outline</div></div>
+    <div><div class="btn-demo" style="border:0.5px solid var(--si2);color:var(--si);">Join to unlock</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Ghost</div></div>
+    <div><div class="btn-demo" style="background:var(--pe2);color:var(--si2);">Disabled</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Disabled state</div></div>
+  </div>
+  <table class="spec-table" style="margin-bottom:40px;">
+    <thead><tr><th>Property</th><th>Primary</th><th>Mauve</th><th>Secondary</th></tr></thead>
+    <tbody>
+      <tr><td>Background</td><td>#0C0C0A</td><td>#9E7E96</td><td>transparent</td></tr>
+      <tr><td>Text colour</td><td>#F8F8F4</td><td>#FFFFFF</td><td>#0C0C0A</td></tr>
+      <tr><td>Border</td><td>none</td><td>none</td><td>0.5px solid #0C0C0A</td></tr>
+      <tr><td>Border radius</td><td>20px</td><td>20px</td><td>20px</td></tr>
+      <tr><td>Font</td><td>Montserrat 400</td><td>Montserrat 400</td><td>Montserrat 400</td></tr>
+      <tr><td>Font size</td><td>9–10px</td><td>9–10px</td><td>9–10px</td></tr>
+      <tr><td>Letter spacing</td><td>0.12em</td><td>0.12em</td><td>0.12em</td></tr>
+      <tr><td>Text case</td><td>ALL CAPS</td><td>ALL CAPS</td><td>ALL CAPS</td></tr>
+      <tr><td>Height</td><td>48px min</td><td>48px min</td><td>48px min</td></tr>
+      <tr><td>Width</td><td>Full width or auto</td><td>Full width only</td><td>Full width or auto</td></tr>
+    </tbody>
+  </table>
+
+  <!-- CARDS -->
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">Card types</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px;">
+    <div>
+      <div style="background:var(--ww);border:0.5px solid var(--si2);border-radius:12px;padding:16px;margin-bottom:8px;">
+        <div style="font-size:7px;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:var(--si);margin-bottom:6px;">CATEGORY LABEL</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--ob);margin-bottom:4px;">Card Heading</div>
+        <div style="font-size:11px;font-weight:300;color:var(--gr);line-height:1.5;margin-bottom:10px;">Descriptor body text goes here in light weight.</div>
+        <div style="background:var(--ob);color:var(--pe);border-radius:16px;font-size:7px;text-align:center;padding:5px 0;letter-spacing:0.1em;text-transform:uppercase;">Action</div>
+      </div>
+      <div style="font-size:9px;font-weight:300;color:var(--si);">Editorial content card<br>bg: Warm white · border: 0.5px Silver Light · radius: 12px</div>
+    </div>
+    <div>
+      <div style="background:var(--pe2);border:0.5px solid var(--si2);border-radius:12px;padding:16px;margin-bottom:8px;">
+        <div style="font-size:7px;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:var(--si);margin-bottom:6px;">FEATURED</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--ob);margin-bottom:4px;">Pearl Warm Card</div>
+        <div style="font-size:11px;font-weight:300;color:var(--gr);line-height:1.5;margin-bottom:10px;">Secondary surface. Used for featured content blocks.</div>
+        <div style="border:0.5px solid var(--ob);color:var(--ob);border-radius:16px;font-size:7px;text-align:center;padding:5px 0;letter-spacing:0.1em;text-transform:uppercase;">Secondary Action</div>
+      </div>
+      <div style="font-size:9px;font-weight:300;color:var(--si);">Feature / pearl card<br>bg: Pearl Warm · border: 0.5px Silver Light · radius: 12px</div>
+    </div>
+    <div>
+      <div style="background:var(--pe2);border:0.5px solid var(--ob);border-radius:12px;padding:16px;margin-bottom:8px;">
+        <div style="font-size:7px;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:var(--si);margin-bottom:6px;">RECOMMENDED</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--ob);margin-bottom:4px;">Emphasis Card</div>
+        <div style="font-size:11px;font-weight:300;color:var(--gr);line-height:1.5;margin-bottom:10px;">Obsidian border signals recommended or featured tier.</div>
+        <div style="background:var(--ob);color:var(--pe);border-radius:16px;font-size:7px;text-align:center;padding:5px 0;letter-spacing:0.1em;text-transform:uppercase;">Primary Action</div>
+      </div>
+      <div style="font-size:9px;font-weight:300;color:var(--si);">Recommended tier card<br>bg: Pearl Warm · border: 0.5px Obsidian · radius: 12px</div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">Navigation</div>
+  <div class="nav-demo">
+    <div class="nav-top">
+      <svg width="16" height="12" viewBox="0 0 16 12"><line x1="0" y1="2" x2="16" y2="2" stroke="#0C0C0A" stroke-width="0.8"/><line x1="0" y1="7" x2="16" y2="7" stroke="#0C0C0A" stroke-width="0.8"/></svg>
+      <div style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--ob);">Doctor Hasia</div>
+      <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="7" cy="7" r="5" fill="none" stroke="#9A9A90" stroke-width="0.8"/><line x1="11" y1="11" x2="15" y2="15" stroke="#9A9A90" stroke-width="0.8"/></svg>
+    </div>
+    <div class="nav-bottom">
+      <div class="nav-item active">Home<div class="nav-dot"></div></div>
+      <div class="nav-item">Book</div>
+      <div class="nav-item">Shop</div>
+      <div class="nav-item">Community</div>
+      <div class="nav-item">Learn</div>
+    </div>
+  </div>
+  <table class="spec-table">
+    <thead><tr><th>Property</th><th>Specification</th></tr></thead>
+    <tbody>
+      <tr><td>Top bar background</td><td>Warm white #F8F8F4, 0.5px silver light bottom border</td></tr>
+      <tr><td>Top bar wordmark</td><td>Cormorant Garamond 16px weight 300, obsidian, centred</td></tr>
+      <tr><td>Bottom nav background</td><td>Warm white, 0.5px silver light top border</td></tr>
+      <tr><td>Bottom nav labels</td><td>Montserrat 5.5px weight 300, tracking 0.08em, ALL CAPS</td></tr>
+      <tr><td>Active tab</td><td>Obsidian text + 3px obsidian circle dot centred below label</td></tr>
+      <tr><td>Inactive tab</td><td>Silver #9A9A90 text, no indicator</td></tr>
+      <tr><td>Tab count</td><td>5 tabs: HOME · BOOK · SHOP · COMMUNITY · LEARN</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ 06 PHOTOGRAPHY ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 06</div>
+  <div class="sec-title">Photography &amp; Imagery</div>
+  <div class="sec-desc">Photography is the primary visual language of the app. Every image must meet these specifications. No exceptions — a wrong image destroys the editorial aesthetic.</div>
+
+  <div class="photo-grid">
+    <div class="photo-example">
+      <div class="photo-block" style="background:linear-gradient(to bottom, #2A2A26, #4A4A42);height:160px;align-items:flex-end;">
+        <div style="font-size:9px;font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Editorial portrait</div>
+      </div>
+      <div class="photo-caption">Doctor Hasia portraits</div>
+      <div class="photo-sub">Black and white or warm-toned editorial. Professional clinical authority. Never casual or candid.</div>
+    </div>
+    <div class="photo-example">
+      <div class="photo-block" style="background:linear-gradient(to bottom, #F0EDE6, #D4D0C8);height:160px;align-items:center;justify-content:center;">
+        <div style="font-size:28px;color:var(--si);font-family:var(--serif);">△</div>
+      </div>
+      <div class="photo-caption">Product photography</div>
+      <div class="photo-sub">Isolated on pure white or pearl warm. No props. No lifestyle elements. The product is the subject.</div>
+    </div>
+    <div class="photo-example">
+      <div class="photo-block" style="background:linear-gradient(to bottom, #C8B898, #8A7858);height:160px;align-items:flex-end;">
+        <div style="font-size:9px;font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Architectural interior</div>
+      </div>
+      <div class="photo-caption">Editorial atmosphere</div>
+      <div class="photo-sub">Warm sandy tones, arched forms, natural materials. Used in community and editorial hero sections.</div>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div class="dd-label" style="color:#2E7D52;">✓ Photography do's</div>
+      <div class="dd-item">Full-bleed to card edges — no white padding inside image containers</div>
+      <div class="dd-item">16px border radius on standalone image cards</div>
+      <div class="dd-item">Black and white or warm editorial tone for Doctor Hasia portraits</div>
+      <div class="dd-item">High contrast, clean backgrounds for product shots</div>
+      <div class="dd-item">Architectural and spatial photography for editorial atmosphere</div>
+      <div class="dd-item">Treatment photography clinical but beautiful — professional environment</div>
+    </div>
+    <div class="dont-card">
+      <div class="dd-label" style="color:#B04040;">✗ Photography don'ts</div>
+      <div class="dd-item">No casual or candid photography — always professional and editorial</div>
+      <div class="dd-item">No brightly lit fluorescent clinic photography — too cold</div>
+      <div class="dd-item">No stock photography — no generic faces or scenes</div>
+      <div class="dd-item">No lifestyle product shots — products on white or near-black only</div>
+      <div class="dd-item">No images with visible white padding inside card containers</div>
+      <div class="dd-item">No before/after photography without explicit patient consent documented</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 07 SCREEN SPECS ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 07</div>
+  <div class="sec-title">Screen Specifications</div>
+  <div class="sec-desc">All 14 screens defined. Each screen specification covers the visual hierarchy, component usage, interaction notes, and clinical content requirements. Designed for iPhone 14 base at 390×844px.</div>
+
+  <!-- PHONE MOCKUPS ROW 1 -->
+  <div class="phone-row">
+    <div>
+      <div class="phone-frame">
+        <div class="ph-notch"></div>
+        <div class="ph-sb"><span style="font-size:7px;color:var(--ob2);">9:41</span><span style="font-size:7px;color:var(--ob2);">●●●</span></div>
+        <div class="ph-nav">
+          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#0C0C0A" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#0C0C0A" stroke-width="0.6"/></svg>
+          <div class="ph-logo">Doctor Hasia</div>
+          <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="5" cy="5" r="4" fill="none" stroke="#9A9A90" stroke-width="0.6"/><line x1="8" y1="8" x2="11" y2="11" stroke="#9A9A90" stroke-width="0.6"/></svg>
+        </div>
+        <div class="ph-body">
+          <div class="ph-id-card">
+            <div style="font-family:var(--serif);font-size:9px;font-weight:300;color:var(--ob);">Doctor Hasia</div>
+            <div style="font-size:5px;font-weight:300;letter-spacing:0.1em;text-transform:uppercase;color:var(--si);">MBBS · Board Certified</div>
+            <div class="mv-rule"></div>
+            <div style="font-size:5px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:var(--si);">Dubai · Birmingham</div>
+          </div>
+          <div class="ph-img"><div class="ph-img-text">H</div></div>
+          <div style="font-family:var(--serif);font-size:11px;font-weight:300;color:var(--ob);line-height:1.2;margin-bottom:4px;">The Science of Sophisticated Skin.</div>
+          <div class="ph-btn-mv">Enter the Archive</div>
+          <div style="display:flex;gap:4px;"><div class="ph-btn" style="flex:1;">Collagen Call</div><div class="ph-btn" style="flex:1;">In Person</div></div>
+        </div>
+        <div class="ph-bnav">
+          <div class="ph-bn on">Home<div class="ph-bn-d"></div></div>
+          <div class="ph-bn">Book</div><div class="ph-bn">Shop</div>
+          <div class="ph-bn">Comm.</div><div class="ph-bn">Learn</div>
+        </div>
+      </div>
+      <div class="ph-lbl">01 Home</div>
+    </div>
+    <div>
+      <div class="phone-frame">
+        <div class="ph-notch"></div>
+        <div class="ph-sb"><span style="font-size:7px;color:var(--ob2);">9:41</span><span style="font-size:7px;color:var(--ob2);">●●●</span></div>
+        <div class="ph-nav">
+          <div style="font-size:7px;font-weight:300;color:var(--si);">← Back</div>
+          <div class="ph-logo" style="font-size:9px;">Book a session</div>
+          <div style="width:16px;"></div>
+        </div>
+        <div class="ph-body">
+          <div class="ph-ol">Curated Medical Sessions</div>
+          <div style="font-family:var(--serif);font-size:12px;font-weight:300;font-style:italic;color:var(--ob);line-height:1.2;margin-bottom:8px;">The precision of care, the art of you.</div>
+          <div class="ph-card">
+            <div class="ph-ol">Collagen Call</div>
+            <div class="ph-card-title">The Introductory Dialogue</div>
+            <div class="ph-card-sub">30 min · Virtual · Complimentary</div>
+            <div class="ph-btn">Book Session</div>
+          </div>
+          <div class="ph-card">
+            <div class="ph-ol">In Person — Capsule 7</div>
+            <div class="ph-card-title">The Precision Appointment</div>
+            <div class="ph-card-sub">Dubai clinic · 60–120 min</div>
+            <div class="ph-btn">Book Session</div>
+          </div>
+          <div class="ph-ol" style="margin-top:6px;">Select a service</div>
+          <div class="ph-li"><span>01 / Collagen Protocol</span><span>›</span></div>
+          <div class="ph-li"><span>02 / Peptide Therapy</span><span>›</span></div>
+          <div class="ph-li"><span>03 / Dermal Therapy</span><span>›</span></div>
+        </div>
+        <div class="ph-bnav">
+          <div class="ph-bn">Home</div>
+          <div class="ph-bn on">Book<div class="ph-bn-d"></div></div>
+          <div class="ph-bn">Shop</div><div class="ph-bn">Comm.</div><div class="ph-bn">Learn</div>
+        </div>
+      </div>
+      <div class="ph-lbl">02 Booking</div>
+    </div>
+    <div>
+      <div class="phone-frame">
+        <div class="ph-notch"></div>
+        <div class="ph-sb"><span style="font-size:7px;color:var(--ob2);">9:41</span><span style="font-size:7px;color:var(--ob2);">●●●</span></div>
+        <div class="ph-nav">
+          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#0C0C0A" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#0C0C0A" stroke-width="0.6"/></svg>
+          <div class="ph-logo" style="font-size:9px;">Services</div>
+          <div style="width:12px;"></div>
+        </div>
+        <div class="ph-body">
+          <div class="ph-ol">Curated Medical Services</div>
+          <div style="font-family:var(--serif);font-size:11px;font-weight:300;color:var(--ob);line-height:1.2;margin-bottom:4px;">The precision of medicine,<br><em>the soul of artistry.</em></div>
+          <div class="ph-img" style="height:60px;border-radius:10px;margin-bottom:5px;"><div style="font-size:7px;font-weight:400;letter-spacing:0.1em;color:rgba(255,255,255,0.7);background:rgba(0,0,0,0.4);padding:3px 8px;border-radius:4px;text-transform:uppercase;">COLLAGEN PROTOCOL</div></div>
+          <div style="font-family:var(--serif);font-size:10px;font-weight:300;color:var(--ob);margin-bottom:2px;">Collagen Infusion</div>
+          <div style="font-size:6px;font-weight:300;color:var(--si);margin-bottom:4px;">Cellular-level collagen stimulation</div>
+          <div class="ph-btn-mv" style="margin-bottom:6px;">Book Session</div>
+          <div style="font-family:var(--serif);font-size:10px;font-weight:300;color:var(--ob);margin-bottom:2px;">Injectable Peptides</div>
+          <div style="font-size:6px;font-weight:300;color:var(--si);margin-bottom:4px;">Subcutaneous regeneration protocol</div>
+          <div class="ph-btn">Explore Protocol</div>
+        </div>
+        <div class="ph-bnav">
+          <div class="ph-bn">Home</div>
+          <div class="ph-bn on">Book<div class="ph-bn-d"></div></div>
+          <div class="ph-bn">Shop</div><div class="ph-bn">Comm.</div><div class="ph-bn">Learn</div>
+        </div>
+      </div>
+      <div class="ph-lbl">03 Services</div>
+    </div>
+    <div>
+      <div class="phone-frame">
+        <div class="ph-notch"></div>
+        <div class="ph-sb"><span style="font-size:7px;color:var(--ob2);">9:41</span><span style="font-size:7px;color:var(--ob2);">●●●</span></div>
+        <div class="ph-nav">
+          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#0C0C0A" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#0C0C0A" stroke-width="0.6"/></svg>
+          <div class="ph-logo" style="font-size:9px;">Doctors Dose</div>
+          <div style="font-size:6px;color:var(--si);font-weight:300;">Cart (2)</div>
+        </div>
+        <div class="ph-body">
+          <div class="ph-ol">The Collection</div>
+          <div style="font-family:var(--serif);font-size:13px;font-weight:300;font-style:italic;color:var(--ob);margin-bottom:6px;">Atmospheric Silence.</div>
+          <div class="ph-img" style="height:50px;border-radius:8px;background:#fff;border:0.5px solid var(--si2);">
+            <div style="font-family:var(--serif);font-size:10px;color:var(--si);">Obsidian Cleanser</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin:4px 0 2px;">
+            <div style="font-family:var(--serif);font-size:10px;font-weight:300;color:var(--ob);">Obsidian Cleanser</div>
+            <div style="font-family:var(--serif);font-size:10px;font-weight:300;color:var(--ob);">£84</div>
+          </div>
+          <div style="font-size:5.5px;font-weight:300;letter-spacing:0.1em;text-transform:uppercase;color:var(--si);margin-bottom:4px;">Detoxifying · Volumising</div>
+          <div class="ph-btn" style="margin-bottom:6px;">Purchase</div>
+          <div class="ph-img" style="height:50px;border-radius:8px;background:var(--ob2);">
+            <div style="font-family:var(--serif);font-size:10px;color:var(--pe2);">Pearl Essence</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin:4px 0 2px;">
+            <div style="font-family:var(--serif);font-size:10px;color:var(--ob);">Pearl Essence</div>
+            <div style="font-family:var(--serif);font-size:10px;color:var(--ob);">£—</div>
+          </div>
+          <div class="ph-btn">Purchase</div>
+        </div>
+        <div class="ph-bnav">
+          <div class="ph-bn">Home</div><div class="ph-bn">Book</div>
+          <div class="ph-bn on">Shop<div class="ph-bn-d"></div></div>
+          <div class="ph-bn">Comm.</div><div class="ph-bn">Learn</div>
+        </div>
+      </div>
+      <div class="ph-lbl">04 Shop</div>
+    </div>
+    <div>
+      <div class="phone-frame">
+        <div class="ph-notch"></div>
+        <div class="ph-sb"><span style="font-size:7px;color:var(--ob2);">9:41</span><span style="font-size:7px;color:var(--ob2);">●●●</span></div>
+        <div class="ph-nav">
+          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#0C0C0A" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#0C0C0A" stroke-width="0.6"/></svg>
+          <div class="ph-logo" style="font-size:9px;">Community</div>
+          <div style="font-size:7px;font-weight:300;color:var(--si);">+ Post</div>
+        </div>
+        <div class="ph-body">
+          <div class="ph-ol">Dialogue &amp; Sanctuary</div>
+          <div style="font-family:var(--serif);font-size:12px;font-weight:300;color:var(--ob);margin-bottom:4px;">The Sanctuary Community.</div>
+          <div class="ph-img" style="height:48px;background:linear-gradient(to bottom, #C8B898, #8A7858);border-radius:10px;"></div>
+          <div style="display:flex;gap:8px;margin:6px 0;">
+            <div style="font-size:7px;font-weight:400;color:var(--ob);border-bottom:0.5px solid var(--ob);padding-bottom:2px;">Everything</div>
+            <div style="font-size:7px;font-weight:300;color:var(--si);">Case Studies</div>
+          </div>
+          <div class="ph-card" style="margin-bottom:5px;">
+            <div style="font-size:5.5px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:var(--si);margin-bottom:3px;">ELIAS THORNE · 3 DAYS</div>
+            <div style="font-family:var(--serif);font-size:9px;font-weight:300;color:var(--ob);margin-bottom:2px;">On the silence of morning rituals.</div>
+            <div style="font-size:6px;font-weight:300;color:var(--gr);line-height:1.4;">Integrating the 5AM protocol has shifted my cognitive capacity…</div>
+          </div>
+          <div class="ph-card">
+            <div style="font-size:5.5px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:var(--si);margin-bottom:3px;">FROM DOCTOR HASIA · PINNED</div>
+            <div style="font-family:var(--serif);font-size:9px;font-weight:300;font-style:italic;color:var(--mv);">"Best foods for collagen production"</div>
+          </div>
+        </div>
+        <div class="ph-bnav">
+          <div class="ph-bn">Home</div><div class="ph-bn">Book</div><div class="ph-bn">Shop</div>
+          <div class="ph-bn on">Comm.<div class="ph-bn-d"></div></div>
+          <div class="ph-bn">Learn</div>
+        </div>
+      </div>
+      <div class="ph-lbl">05 Community</div>
+    </div>
+  </div>
+
+  <!-- SCREEN SPECIFICATIONS TABLE -->
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:20px;">All 14 screens — element inventory</div>
+  <table class="spec-table">
+    <thead><tr><th>Screen</th><th>Primary elements</th><th>Key interaction</th></tr></thead>
+    <tbody>
+      <tr><td>01 Home</td><td>Identity card, editorial hero, what's new (3 rows), Doctor Hasia's note, membership block</td><td>Identity card tap → About screen. Hero CTA → Archive.</td></tr>
+      <tr><td>02 Booking</td><td>Session type blocks, skin concern selector, service list, calendar, time slots, checklist, confirmation</td><td>All checklist items must be checked to confirm booking.</td></tr>
+      <tr><td>03 Services</td><td>Filter pills, featured service block, service cards with overlay text, Avatar innovation block</td><td>Service card tap → Service detail screen.</td></tr>
+      <tr><td>04 Shop</td><td>Editorial note, filter pills, product blocks (image + name + price + purchase), stack it recommendations, pull quote, registry join</td><td>Product image tap → Product detail screen.</td></tr>
+      <tr><td>05 Community</td><td>Input field, editorial image, tabs, post cards with pull quotes, trending topics table, Doctor Hasia pinned post, members channel, live Q&amp;A</td><td>Post tap → full post view. Members channel → join flow.</td></tr>
+      <tr><td>06 Academy</td><td>Student type selector, featured course, course cards (free/paid/members badges), testimonials, certificate block, registry join</td><td>Course card tap → Course detail. Free courses play directly.</td></tr>
+      <tr><td>07 Blog</td><td>Featured article, numbered editorial list (7 articles), Doctor Hasia's Journal block (mauve text), members-only block</td><td>Article tap → full article. Share → deep link to website.</td></tr>
+      <tr><td>08 Membership</td><td>Monthly and annual tier cards (annual has obsidian border), benefits list, testimonials, Doctor Hasia note, JOIN THE REGISTRY button (mauve)</td><td>Join button → Apple IAP membership purchase flow.</td></tr>
+      <tr><td>09 Service Detail</td><td>Full-bleed image, clinical overview, who it's for/not for, active ingredients, numbered what to expect, recovery table, results timeline, book CTA, Doctor Hasia note, related services</td><td>Book session → Booking screen with service pre-selected.</td></tr>
+      <tr><td>10 Product Detail</td><td>Product image, clinical profile, Doctor Hasia note, numbered actives, what it does not contain, how to use, stack it, subscription toggle, purchase, related products</td><td>Purchase → Shopify checkout. Subscription toggle → monthly flow.</td></tr>
+      <tr><td>11 Profile</td><td>Patient summary card, upcoming bookings, treatment history, biometric progress, academy progress, saved articles, membership card, settings</td><td>Settings rows → individual setting screens.</td></tr>
+      <tr><td>12 Course Player</td><td>Video player (with speed control), lesson overview, learning points, clinical references, take a note input, course outline, linked service/product cards, next lesson button</td><td>End of course → completion screen with certificate and booking CTA.</td></tr>
+      <tr><td>13 Notifications</td><td>10 notification types — appointment reminders, protocol starts, journey milestones, new content, product restocks, weekly skin tips, membership renewal, assessment results</td><td>Each notification taps through to the relevant screen.</td></tr>
+      <tr><td>14 Onboarding</td><td>Obsidian splash (tap anywhere), 2 value prop screens with progress dots, sign up (Sign in with Apple + email), profile setup (6 preference tiles)</td><td>Cannot skip. Sign in with Apple is required by Apple App Store guidelines.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ 08 NAVIGATION FLOW ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 08</div>
+  <div class="sec-title">Navigation &amp; User Flows</div>
+  <div class="sec-desc">How screens connect. The bottom navigation is the primary system. Modal flows (booking confirmation, course player, product detail) sit above the tab bar.</div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">Primary navigation flow</div>
+  <div class="flow-row">
+    <div class="flow-box highlight">Splash</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Value Prop 1</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Value Prop 2</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Sign Up</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Profile Setup</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box highlight">Home</div>
+  </div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin:24px 0 16px;">Booking flow</div>
+  <div class="flow-row">
+    <div class="flow-box">Home → Book tab</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Session type</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Skin concern</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Service select</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Calendar + time</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Checklist</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box mv">Confirmed</div>
+  </div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin:24px 0 16px;">Membership flow</div>
+  <div class="flow-row">
+    <div class="flow-box">Home membership block</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Membership screen</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Tier select</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Apple IAP</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box mv">Access unlocked</div>
+  </div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin:24px 0 16px;">Academy flow</div>
+  <div class="flow-row">
+    <div class="flow-box">Learn tab → Academy</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Course card tap</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Course detail</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Course player</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box mv">Certificate</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">Tab bar destinations</div>
+  <table class="spec-table">
+    <thead><tr><th>Tab</th><th>Primary screen</th><th>Sub-navigation</th></tr></thead>
+    <tbody>
+      <tr><td>Home</td><td>Home / Dashboard</td><td>Identity card → About Doctor Hasia screen</td></tr>
+      <tr><td>Book</td><td>Booking flow start</td><td>Services screen → Service detail → Booking</td></tr>
+      <tr><td>Shop</td><td>Doctors Dose shop</td><td>Product card → Product detail</td></tr>
+      <tr><td>Community</td><td>The Sanctuary feed</td><td>Post → full post · Members channel → join</td></tr>
+      <tr><td>Learn</td><td>Academy (default)</td><td>Sub-tabs: ACADEMY · BLOG. Course → player. Article → full article.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ 09 DO'S AND DON'TS ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 09</div>
+  <div class="sec-title">Do's &amp; Don'ts</div>
+  <div class="sec-desc">Common mistakes that break the editorial luxury aesthetic. Every member of the design and development team should review this section before building.</div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div class="dd-label" style="color:#2E7D52;">✓ Typography do's</div>
+      <div class="dd-item">Use Cormorant Garamond for all display and serif text</div>
+      <div class="dd-item">One display-size heading per screen maximum</div>
+      <div class="dd-item">Overline label always appears above headings, never below</div>
+      <div class="dd-item">Pull quotes in italic Cormorant Garamond with mauve left border</div>
+      <div class="dd-item">Prices always in Cormorant Garamond serif, never Montserrat</div>
+    </div>
+    <div class="dont-card">
+      <div class="dd-label" style="color:#B04040;">✗ Typography don'ts</div>
+      <div class="dd-item">Never use Inter, Roboto, Arial, or system fonts</div>
+      <div class="dd-item">Never use two display-size headings on the same screen</div>
+      <div class="dd-item">Never mix serif and sans at the same hierarchy level</div>
+      <div class="dd-item">Never use font weights above 500 anywhere in the app</div>
+      <div class="dd-item">Never use underlines on body text for links — use arrows instead</div>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div class="dd-label" style="color:#2E7D52;">✓ Colour do's</div>
+      <div class="dd-item">Obsidian for all text and button fills</div>
+      <div class="dd-item">Pearl warm for all card surfaces and secondary backgrounds</div>
+      <div class="dd-item">Warm white for all screen backgrounds</div>
+      <div class="dd-item">Mauve only in the 5 defined touchpoints</div>
+      <div class="dd-item">Silver for all overline labels, metadata, and captions</div>
+    </div>
+    <div class="dont-card">
+      <div class="dd-label" style="color:#B04040;">✗ Colour don'ts</div>
+      <div class="dd-item">Never use teal, green, blue, or any hue other than mauve</div>
+      <div class="dd-item">Never use gradients on any surface or button</div>
+      <div class="dd-item">Never use coloured borders on cards (only silver light or obsidian)</div>
+      <div class="dd-item">Never use mauve on nav items, progress bars, or step indicators</div>
+      <div class="dd-item">Never use dark or black screen backgrounds</div>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div class="dd-label" style="color:#2E7D52;">✓ Layout do's</div>
+      <div class="dd-item">Full-bleed images to card edges, 16px radius on image cards</div>
+      <div class="dd-item">Generous white space between all content sections</div>
+      <div class="dd-item">0.5px divider lines, silver light colour only</div>
+      <div class="dd-item">Numbered editorial lists for service menus and article lists</div>
+      <div class="dd-item">Pill buttons with 20px radius on all interactive elements</div>
+    </div>
+    <div class="dont-card">
+      <div class="dd-label" style="color:#B04040;">✗ Layout don'ts</div>
+      <div class="dd-item">Never add box shadows or drop shadows to any element</div>
+      <div class="dd-item">Never add white padding inside image containers</div>
+      <div class="dd-item">Never use square buttons or 0px radius buttons</div>
+      <div class="dd-item">Never crowd elements — white space is a design choice not a waste</div>
+      <div class="dd-item">Never stack two obsidian buttons next to each other on the same screen</div>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div class="dd-label" style="color:#2E7D52;">✓ Content do's</div>
+      <div class="dd-item">Post titles in community written as editorial headlines, not sentences</div>
+      <div class="dd-item">Service descriptions in Doctor Hasia's clinical voice, not marketing copy</div>
+      <div class="dd-item">Product descriptions include clinical rationale and key actives</div>
+      <div class="dd-item">Course cards show module count and CPD hours where applicable</div>
+      <div class="dd-item">Contraindications section on every service detail screen</div>
+    </div>
+    <div class="dont-card">
+      <div class="dd-label" style="color:#B04040;">✗ Content don'ts</div>
+      <div class="dd-item">Never use generic marketing language on service or product descriptions</div>
+      <div class="dd-item">Never show before/after photography without documented patient consent</div>
+      <div class="dd-item">Never omit the contraindications section from service detail screens</div>
+      <div class="dd-item">Never use exclamation marks in copy — the brand tone is measured and expert</div>
+      <div class="dd-item">Never truncate overline labels — if too long, rewrite shorter</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 10 TECHNICAL ══ -->
+<div class="page">
+  <div class="sec-eyebrow">Section 10</div>
+  <div class="sec-title">Technical Specification</div>
+  <div class="sec-desc">Build requirements for developers. All measurements in points (iOS standard). Minimum iOS 16 support.</div>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">Device and screen targets</div>
+  <table class="spec-table" style="margin-bottom:40px;">
+    <thead><tr><th>Device</th><th>Resolution</th><th>Scale</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>iPhone 14 / 15</td><td>390 × 844pt</td><td>@3x</td><td><span class="tag tag-ob">Primary target</span></td></tr>
+      <tr><td>iPhone 14 Pro Max</td><td>430 × 932pt</td><td>@3x</td><td>Supported</td></tr>
+      <tr><td>iPhone SE (3rd gen)</td><td>375 × 667pt</td><td>@2x</td><td>Minimum supported</td></tr>
+      <tr><td>iPhone 14 Pro</td><td>393 × 852pt</td><td>@3x</td><td>Supported</td></tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">Tech stack</div>
+  <table class="spec-table" style="margin-bottom:40px;">
+    <thead><tr><th>Layer</th><th>Technology</th><th>Reason</th></tr></thead>
+    <tbody>
+      <tr><td>App framework</td><td>React Native (Expo)</td><td>Production quality, shorter build time, future Android-ready</td></tr>
+      <tr><td>Backend + Auth</td><td>Supabase</td><td>Fast setup, real-time for community, open source, scales well</td></tr>
+      <tr><td>Video hosting</td><td>Mux</td><td>Built for programmatic video, adaptive streaming, fast load</td></tr>
+      <tr><td>CMS + Website</td><td>Webflow</td><td>Design control, SEO, CMS API feeds content into app</td></tr>
+      <tr><td>Shop</td><td>Shopify Storefront API</td><td>Connects Doctors Dose catalogue directly, no rebuild needed</td></tr>
+      <tr><td>Booking (in-person)</td><td>Capsule 7 API</td><td>Existing clinic software, must confirm API access with Capsule 7</td></tr>
+      <tr><td>Payments (digital)</td><td>Apple In-App Purchase</td><td>Required by Apple for all digital goods inside the app</td></tr>
+      <tr><td>Payments (products)</td><td>Stripe via Shopify</td><td>Physical products bypass Apple IAP</td></tr>
+      <tr><td>Push notifications</td><td>OneSignal</td><td>Free to 10K subscribers, handles all 10 notification types</td></tr>
+      <tr><td>Analytics</td><td>Mixpanel</td><td>Event tracking for booking, purchase, course, membership funnels</td></tr>
+      <tr><td>Crash reporting</td><td>Sentry</td><td>Real-time crash monitoring, session replays</td></tr>
+      <tr><td>Subscription mgmt</td><td>RevenueCat</td><td>Manages Apple IAP subscriptions, cross-platform ready</td></tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">App Store requirements</div>
+  <table class="spec-table">
+    <thead><tr><th>Requirement</th><th>Detail</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Apple Developer account</td><td>$99/year, registered under Doctor Hasia's entity</td><td>To do</td></tr>
+      <tr><td>Sign in with Apple</td><td>Required when any third-party login is offered. Non-negotiable.</td><td>To do</td></tr>
+      <tr><td>Privacy policy URL</td><td>Must be hosted and live before App Store submission. Covers GDPR, health data, third-party integrations.</td><td>To do</td></tr>
+      <tr><td>App icon</td><td>1024×1024px PNG, no alpha channel, no rounded corners (iOS applies mask automatically)</td><td>To do</td></tr>
+      <tr><td>Screenshots</td><td>5 marketing screens at 1290×2796px (iPhone 6.7") and 1242×2208px (iPhone 5.5")</td><td>To do</td></tr>
+      <tr><td>App Store listing copy</td><td>App name (30 chars max), subtitle (30 chars), description (4000 chars), keywords (100 chars)</td><td>To do</td></tr>
+    </tbody>
+  </table>
+
+  <div class="doc-footer">
+    <div class="footer-brand">Doctor Hasia — Design Document</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:24px;height:1px;background:var(--mv);"></div>
+      <div class="footer-note">Obsidian Pearl + Mauve Whisper · v1.0 · April 2026 · Confidential</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
