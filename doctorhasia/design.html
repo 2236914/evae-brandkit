@@ -3,20 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doctor Hasia — Design Document</title>
+<title>Doctor Hasia — Design Document v2</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ob: #0C0C0A;
-  --ob2: #1C1C18;
-  --ob3: #2E2E28;
-  --si: #9A9A90;
-  --si2: #CCCCC0;
-  --pe: #EEEAE2;
-  --pe2: #E4E0D6;
-  --ww: #F8F8F4;
-  --mv: #9E7E96;
-  --gr: #4A4A44;
+  /* ── WARM PALETTE v2 ── */
+  --ob: #1A1614;       /* Deep — primary text, wordmark */
+  --ob2: #2C2825;      /* Charcoal — secondary text */
+  --ob3: #2C2825;      /* Charcoal — supporting */
+  --si: #7A6E67;       /* Mid — overlines, captions, metadata */
+  --si2: #C4B9AC;      /* Stone — borders, dividers */
+  --pe: #F2EDE6;       /* Warm — primary card surface */
+  --pe2: #EAD7C6;      /* Blush — secondary card, inputs */
+  --ww: #FAF8F5;       /* Ivory — screen background */
+  --mv: #9E7E96;       /* Mauve — 5 touchpoints only, UNCHANGED */
+  --tw: #B5967A;       /* Tawny — all button fills, active states */
+  --gr: #7A6E67;       /* Mid — body text */
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans: 'Montserrat', sans-serif;
 }
@@ -223,7 +225,7 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
       <div class="cover-meta-item"><div class="meta-label">Document version</div><div class="meta-value">v1.0</div></div>
       <div class="cover-meta-item"><div class="meta-label">Date</div><div class="meta-value">April 2026</div></div>
       <div class="cover-meta-item"><div class="meta-label">Project</div><div class="meta-value">iOS App + Website</div></div>
-      <div class="cover-meta-item"><div class="meta-label">Design direction</div><div class="meta-value">Obsidian Pearl + Mauve Whisper</div></div>
+      <div class="cover-meta-item"><div class="meta-label">Design direction</div><div class="meta-value">Ivory · Tawny · Mauve Whisper</div></div>
     </div>
   </div>
 </div>
@@ -259,13 +261,13 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
   <table class="spec-table">
     <thead><tr><th>Rule</th><th>Definition</th><th>Status</th></tr></thead>
     <tbody>
-      <tr><td>Background</td><td>Every screen uses warm white #F8F8F4 only. No screen has a dark or coloured background.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
+      <tr><td>Background</td><td>Every screen uses warm white #FAF8F5 only. No screen has a dark or coloured background.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
       <tr><td>Colour restraint</td><td>No teal, green, blue, or gradient anywhere in the app. No coloured card borders or section fills.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
       <tr><td>Mauve usage</td><td>Mauve #9E7E96 appears in exactly 5 defined places. No additional use under any circumstance.</td><td><span class="tag tag-mv">Mauve rule</span></td></tr>
       <tr><td>Shadows</td><td>No box shadows, drop shadows, or blur effects anywhere in the app.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
       <tr><td>Photography</td><td>All images are full-bleed to card edges. No images with white padding around them.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
       <tr><td>Typography</td><td>Cormorant Garamond for all serif. Montserrat for all sans. No other fonts.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
-      <tr><td>Button shape</td><td>All buttons are pill-shaped (20px radius) or full-width pill. No square buttons.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
+      <tr><td>Button shape</td><td>All buttons are 8px radius — slightly rounded rectangle, not a pill. Input fields stay pill shaped at 20px.</td><td><span class="tag tag-ob">Absolute</span></td></tr>
     </tbody>
   </table>
 </div>
@@ -274,69 +276,75 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
 <div class="page">
   <div class="sec-eyebrow">Section 02</div>
   <div class="sec-title">Colour System</div>
-  <div class="sec-desc">The palette is warm monochrome — obsidian, pearl, and warm white form 95% of all surfaces and text. Mauve is the single accent colour, used in exactly 5 touchpoints across the entire app.</div>
+  <div class="sec-desc">The palette is warm and feminine — ivory, warm, and blush surfaces form the foundation. Tawny terracotta drives all interactive elements. Deep and charcoal carry all text. Mauve is the single accent, used in exactly 5 touchpoints only.</div>
 
   <div class="swatch-strip">
-    <div style="background:#0C0C0A;"></div>
-    <div style="background:#1C1C18;"></div>
-    <div style="background:#2E2E28;"></div>
-    <div style="background:#9A9A90;"></div>
-    <div style="background:#CCCCC0;"></div>
-    <div style="background:#E4E0D6;"></div>
-    <div style="background:#EEEAE2;"></div>
-    <div style="background:#F8F8F4;border:0.5px solid #E4E0D6;"></div>
-    <div style="flex:0.2;background:#2E2E28;"></div>
+    <div style="background:#1A1614;"></div>
+    <div style="background:#2C2825;"></div>
+    <div style="background:#7A6E67;"></div>
+    <div style="background:#C4B9AC;"></div>
+    <div style="background:#EAD7C6;"></div>
+    <div style="background:#F2EDE6;"></div>
+    <div style="background:#FAF8F5;border:0.5px solid #EAD7C6;"></div>
+    <div style="flex:0.2;background:#C4B9AC;"></div>
+    <div style="background:#B5967A;"></div>
     <div style="background:#9E7E96;"></div>
   </div>
 
   <div class="swatch-grid">
     <div class="swatch-card">
-      <div class="swatch-block" style="background:#0C0C0A;"></div>
-      <div class="swatch-name">Obsidian</div>
-      <div class="swatch-hex">#0C0C0A</div>
-      <div class="swatch-use">Primary text, all button fills, wordmark, active states</div>
+      <div class="swatch-block" style="background:#1A1614;"></div>
+      <div class="swatch-name">Deep</div>
+      <div class="swatch-hex">#1A1614</div>
+      <div class="swatch-use">Primary text only — headlines, wordmark, primary body. Never used as a button fill or card fill.</div>
     </div>
     <div class="swatch-card">
-      <div class="swatch-block" style="background:#2E2E28;"></div>
-      <div class="swatch-name">Graphite</div>
-      <div class="swatch-hex">#2E2E28 — #4A4A44</div>
-      <div class="swatch-use">Secondary body text, supporting copy, descriptors</div>
+      <div class="swatch-block" style="background:#2C2825;"></div>
+      <div class="swatch-name">Charcoal</div>
+      <div class="swatch-hex">#2C2825</div>
+      <div class="swatch-use">Secondary body text, supporting copy, descriptors. Text only.</div>
     </div>
     <div class="swatch-card">
-      <div class="swatch-block" style="background:#9A9A90;"></div>
-      <div class="swatch-name">Silver</div>
-      <div class="swatch-hex">#9A9A90</div>
-      <div class="swatch-use">Overline labels, metadata, timestamps, captions, muted text</div>
+      <div class="swatch-block" style="background:#7A6E67;"></div>
+      <div class="swatch-name">Mid</div>
+      <div class="swatch-hex">#7A6E67</div>
+      <div class="swatch-use">Overline labels, metadata, timestamps, captions, muted text. Text only.</div>
     </div>
     <div class="swatch-card">
-      <div class="swatch-block" style="background:#CCCCC0;border:0.5px solid #BBBBB4;"></div>
-      <div class="swatch-name">Silver Light</div>
-      <div class="swatch-hex">#CCCCC0</div>
-      <div class="swatch-use">Card borders, dividers, input borders, section separators</div>
+      <div class="swatch-block" style="background:#C4B9AC;border:0.5px solid #B8ADA0;"></div>
+      <div class="swatch-name">Stone</div>
+      <div class="swatch-hex">#C4B9AC</div>
+      <div class="swatch-use">All card borders at 0.5px, all divider lines. Never used as a text colour or fill.</div>
     </div>
     <div class="swatch-card">
-      <div class="swatch-block" style="background:#E4E0D6;"></div>
-      <div class="swatch-name">Pearl Warm</div>
-      <div class="swatch-hex">#E4E0D6</div>
-      <div class="swatch-use">Card backgrounds, secondary surfaces, input fields, image placeholder backgrounds</div>
+      <div class="swatch-block" style="background:#EAD7C6;"></div>
+      <div class="swatch-name">Blush</div>
+      <div class="swatch-hex">#EAD7C6</div>
+      <div class="swatch-use">Secondary card surfaces, input fields, image placeholder backgrounds.</div>
     </div>
     <div class="swatch-card">
-      <div class="swatch-block" style="background:#EEEAE2;border:0.5px solid #DEDAD2;"></div>
-      <div class="swatch-name">Pearl</div>
-      <div class="swatch-hex">#EEEAE2</div>
-      <div class="swatch-use">Primary light surface, hero backgrounds, pearl text on obsidian buttons</div>
+      <div class="swatch-block" style="background:#F2EDE6;border:0.5px solid #E4D8CC;"></div>
+      <div class="swatch-name">Warm</div>
+      <div class="swatch-hex">#F2EDE6</div>
+      <div class="swatch-use">Primary card surface, hero surfaces. Text colour on tawny buttons.</div>
     </div>
     <div class="swatch-card">
-      <div class="swatch-block" style="background:#F8F8F4;border:0.5px solid #E4E0D6;"></div>
-      <div class="swatch-name">Warm White</div>
-      <div class="swatch-hex">#F8F8F4</div>
+      <div class="swatch-block" style="background:#FAF8F5;border:0.5px solid #EAD7C6;"></div>
+      <div class="swatch-name">Ivory</div>
+      <div class="swatch-hex">#FAF8F5</div>
       <div class="swatch-use">Universal screen background. Every screen. No exceptions.</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-block" style="background:#B5967A;"></div>
+      <div class="swatch-name">Tawny <span class="tag tag-ob" style="font-size:8px;">Interactive</span></div>
+      <div class="swatch-hex">#B5967A</div>
+      <div class="swatch-use">All button fills, active tile fills, calendar selection, nav dot, step chips, toggles. All interactive states.</div>
     </div>
     <div class="swatch-card">
       <div class="swatch-block" style="background:#9E7E96;"></div>
       <div class="swatch-name">Mauve <span class="tag tag-mv" style="font-size:8px;">Accent</span></div>
       <div class="swatch-hex">#9E7E96</div>
-      <div class="swatch-use">5 touchpoints only. See Mauve Rule below.</div>
+      <div class="swatch-use">5 touchpoints only. Unchanged. See Mauve Rule below.</div>
     </div>
   </div>
 
@@ -488,13 +496,13 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
   <table class="spec-table">
     <thead><tr><th>Context</th><th>Specification</th></tr></thead>
     <tbody>
-      <tr><td>Standard card border</td><td>0.5px solid #CCCCC0 (Silver Light)</td></tr>
-      <tr><td>Emphasis border (recommended tier, membership)</td><td>0.5px solid #0C0C0A (Obsidian)</td></tr>
-      <tr><td>Section divider</td><td>0.5px solid #CCCCC0 full width</td></tr>
+      <tr><td>Standard card border</td><td>0.5px solid #C4B9AC (Stone)</td></tr>
+      <tr><td>Emphasis border (recommended tier, membership)</td><td>0.5px solid #B5967A (Tawny)</td></tr>
+      <tr><td>Section divider</td><td>0.5px solid #C4B9AC (Stone) full width</td></tr>
       <tr><td>Mauve rule line</td><td>1px solid #9E7E96, width 20–48px only</td></tr>
       <tr><td>Pull quote left border</td><td>3px solid #9E7E96 (mauve), no radius</td></tr>
-      <tr><td>Top bar bottom border</td><td>0.5px solid #CCCCC0</td></tr>
-      <tr><td>Bottom nav top border</td><td>0.5px solid #CCCCC0</td></tr>
+      <tr><td>Top bar bottom border</td><td>0.5px solid #C4B9AC (Stone)</td></tr>
+      <tr><td>Bottom nav top border</td><td>0.5px solid #C4B9AC (Stone)</td></tr>
       <tr><td>No shadows</td><td>box-shadow: none on all elements, always</td></tr>
     </tbody>
   </table>
@@ -509,19 +517,19 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
   <!-- BUTTONS -->
   <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">Buttons — all states</div>
   <div class="btn-grid" style="margin-bottom:8px;">
-    <div><div class="btn-demo" style="background:var(--ob);color:var(--pe);">Book session</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Primary</div></div>
-    <div><div class="btn-demo" style="background:var(--mv);color:#fff;">Join the Registry</div><div style="font-size:9px;color:var(--mv);margin-top:6px;text-align:center;">Mauve — home hero only</div></div>
-    <div><div class="btn-demo" style="border:0.5px solid var(--ob);color:var(--ob);">Explore Protocol</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Secondary / outline</div></div>
-    <div><div class="btn-demo" style="border:0.5px solid var(--si2);color:var(--si);">Join to unlock</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Ghost</div></div>
-    <div><div class="btn-demo" style="background:var(--pe2);color:var(--si2);">Disabled</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Disabled state</div></div>
+    <div><div class="btn-demo" style="background:#B5967A;color:#F2EDE6;border-radius:8px;">Book session</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Primary — Tawny</div></div>
+    <div><div class="btn-demo" style="background:#9E7E96;color:#fff;border-radius:8px;">Join the Registry</div><div style="font-size:9px;color:var(--mv);margin-top:6px;text-align:center;">Mauve — home hero only</div></div>
+    <div><div class="btn-demo" style="border:0.5px solid #B5967A;color:#B5967A;border-radius:8px;">Explore Protocol</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Secondary / outline</div></div>
+    <div><div class="btn-demo" style="border:0.5px solid var(--si2);color:var(--si);border-radius:8px;">Join to unlock</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Ghost</div></div>
+    <div><div class="btn-demo" style="background:var(--pe2);color:var(--si2);border-radius:8px;">Disabled</div><div style="font-size:9px;color:var(--si);margin-top:6px;text-align:center;">Disabled state</div></div>
   </div>
   <table class="spec-table" style="margin-bottom:40px;">
     <thead><tr><th>Property</th><th>Primary</th><th>Mauve</th><th>Secondary</th></tr></thead>
     <tbody>
-      <tr><td>Background</td><td>#0C0C0A</td><td>#9E7E96</td><td>transparent</td></tr>
-      <tr><td>Text colour</td><td>#F8F8F4</td><td>#FFFFFF</td><td>#0C0C0A</td></tr>
-      <tr><td>Border</td><td>none</td><td>none</td><td>0.5px solid #0C0C0A</td></tr>
-      <tr><td>Border radius</td><td>20px</td><td>20px</td><td>20px</td></tr>
+      <tr><td>Background</td><td>#B5967A (Tawny)</td><td>#9E7E96 (Mauve)</td><td>transparent</td></tr>
+      <tr><td>Text colour</td><td>#F2EDE6 (Warm)</td><td>#FFFFFF</td><td>#B5967A (Tawny)</td></tr>
+      <tr><td>Border</td><td>none</td><td>none</td><td>0.5px solid #B5967A</td></tr>
+      <tr><td>Border radius</td><td>8px</td><td>8px</td><td>8px</td></tr>
       <tr><td>Font</td><td>Montserrat 400</td><td>Montserrat 400</td><td>Montserrat 400</td></tr>
       <tr><td>Font size</td><td>9–10px</td><td>9–10px</td><td>9–10px</td></tr>
       <tr><td>Letter spacing</td><td>0.12em</td><td>0.12em</td><td>0.12em</td></tr>
@@ -539,9 +547,9 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         <div style="font-size:7px;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:var(--si);margin-bottom:6px;">CATEGORY LABEL</div>
         <div style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--ob);margin-bottom:4px;">Card Heading</div>
         <div style="font-size:11px;font-weight:300;color:var(--gr);line-height:1.5;margin-bottom:10px;">Descriptor body text goes here in light weight.</div>
-        <div style="background:var(--ob);color:var(--pe);border-radius:16px;font-size:7px;text-align:center;padding:5px 0;letter-spacing:0.1em;text-transform:uppercase;">Action</div>
+        <div style="background:#B5967A;color:#F2EDE6;border-radius:10px;font-size:7px;text-align:center;padding:5px 0;letter-spacing:0.1em;text-transform:uppercase;">Action</div>
       </div>
-      <div style="font-size:9px;font-weight:300;color:var(--si);">Editorial content card<br>bg: Warm white · border: 0.5px Silver Light · radius: 12px</div>
+      <div style="font-size:9px;font-weight:300;color:var(--si);">Editorial content card<br>bg: Ivory #FAF8F5 · border: 0.5px Stone · radius: 12px</div>
     </div>
     <div>
       <div style="background:var(--pe2);border:0.5px solid var(--si2);border-radius:12px;padding:16px;margin-bottom:8px;">
@@ -550,16 +558,16 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         <div style="font-size:11px;font-weight:300;color:var(--gr);line-height:1.5;margin-bottom:10px;">Secondary surface. Used for featured content blocks.</div>
         <div style="border:0.5px solid var(--ob);color:var(--ob);border-radius:16px;font-size:7px;text-align:center;padding:5px 0;letter-spacing:0.1em;text-transform:uppercase;">Secondary Action</div>
       </div>
-      <div style="font-size:9px;font-weight:300;color:var(--si);">Feature / pearl card<br>bg: Pearl Warm · border: 0.5px Silver Light · radius: 12px</div>
+      <div style="font-size:9px;font-weight:300;color:var(--si);">Feature / pearl card<br>bg: Blush #EAD7C6 · border: 0.5px Stone · radius: 12px</div>
     </div>
     <div>
       <div style="background:var(--pe2);border:0.5px solid var(--ob);border-radius:12px;padding:16px;margin-bottom:8px;">
         <div style="font-size:7px;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:var(--si);margin-bottom:6px;">RECOMMENDED</div>
         <div style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--ob);margin-bottom:4px;">Emphasis Card</div>
-        <div style="font-size:11px;font-weight:300;color:var(--gr);line-height:1.5;margin-bottom:10px;">Obsidian border signals recommended or featured tier.</div>
-        <div style="background:var(--ob);color:var(--pe);border-radius:16px;font-size:7px;text-align:center;padding:5px 0;letter-spacing:0.1em;text-transform:uppercase;">Primary Action</div>
+        <div style="font-size:11px;font-weight:300;color:var(--gr);line-height:1.5;margin-bottom:10px;">Tawny border signals the recommended or featured tier.</div>
+        <div style="background:#B5967A;color:#F2EDE6;border-radius:10px;font-size:7px;text-align:center;padding:5px 0;letter-spacing:0.1em;text-transform:uppercase;">Primary Action</div>
       </div>
-      <div style="font-size:9px;font-weight:300;color:var(--si);">Recommended tier card<br>bg: Pearl Warm · border: 0.5px Obsidian · radius: 12px</div>
+      <div style="font-size:9px;font-weight:300;color:var(--si);">Recommended tier card<br>bg: Blush #EAD7C6 · border: 0.5px Tawny · radius: 12px</div>
     </div>
   </div>
 
@@ -567,12 +575,12 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
   <div style="font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--si);margin-bottom:16px;">Navigation</div>
   <div class="nav-demo">
     <div class="nav-top">
-      <svg width="16" height="12" viewBox="0 0 16 12"><line x1="0" y1="2" x2="16" y2="2" stroke="#0C0C0A" stroke-width="0.8"/><line x1="0" y1="7" x2="16" y2="7" stroke="#0C0C0A" stroke-width="0.8"/></svg>
+      <svg width="16" height="12" viewBox="0 0 16 12"><line x1="0" y1="2" x2="16" y2="2" stroke="#1A1614" stroke-width="0.8"/><line x1="0" y1="7" x2="16" y2="7" stroke="#1A1614" stroke-width="0.8"/></svg>
       <div style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--ob);">Doctor Hasia</div>
-      <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="7" cy="7" r="5" fill="none" stroke="#9A9A90" stroke-width="0.8"/><line x1="11" y1="11" x2="15" y2="15" stroke="#9A9A90" stroke-width="0.8"/></svg>
+      <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="7" cy="7" r="5" fill="none" stroke="#7A6E67" stroke-width="0.8"/><line x1="11" y1="11" x2="15" y2="15" stroke="#7A6E67" stroke-width="0.8"/></svg>
     </div>
     <div class="nav-bottom">
-      <div class="nav-item active">Home<div class="nav-dot"></div></div>
+      <div class="nav-item active">Home<div class="nav-dot" style="background:#B5967A;"></div></div>
       <div class="nav-item">Book</div>
       <div class="nav-item">Shop</div>
       <div class="nav-item">Community</div>
@@ -582,12 +590,12 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
   <table class="spec-table">
     <thead><tr><th>Property</th><th>Specification</th></tr></thead>
     <tbody>
-      <tr><td>Top bar background</td><td>Warm white #F8F8F4, 0.5px silver light bottom border</td></tr>
+      <tr><td>Top bar background</td><td>Warm white #FAF8F5, 0.5px silver light bottom border</td></tr>
       <tr><td>Top bar wordmark</td><td>Cormorant Garamond 16px weight 300, obsidian, centred</td></tr>
       <tr><td>Bottom nav background</td><td>Warm white, 0.5px silver light top border</td></tr>
       <tr><td>Bottom nav labels</td><td>Montserrat 5.5px weight 300, tracking 0.08em, ALL CAPS</td></tr>
       <tr><td>Active tab</td><td>Obsidian text + 3px obsidian circle dot centred below label</td></tr>
-      <tr><td>Inactive tab</td><td>Silver #9A9A90 text, no indicator</td></tr>
+      <tr><td>Inactive tab</td><td>Silver #7A6E67 text, no indicator</td></tr>
       <tr><td>Tab count</td><td>5 tabs: HOME · BOOK · SHOP · COMMUNITY · LEARN</td></tr>
     </tbody>
   </table>
@@ -658,9 +666,9 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         <div class="ph-notch"></div>
         <div class="ph-sb"><span style="font-size:7px;color:var(--ob2);">9:41</span><span style="font-size:7px;color:var(--ob2);">●●●</span></div>
         <div class="ph-nav">
-          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#0C0C0A" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#0C0C0A" stroke-width="0.6"/></svg>
+          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#1A1614" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#1A1614" stroke-width="0.6"/></svg>
           <div class="ph-logo">Doctor Hasia</div>
-          <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="5" cy="5" r="4" fill="none" stroke="#9A9A90" stroke-width="0.6"/><line x1="8" y1="8" x2="11" y2="11" stroke="#9A9A90" stroke-width="0.6"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="5" cy="5" r="4" fill="none" stroke="#7A6E67" stroke-width="0.6"/><line x1="8" y1="8" x2="11" y2="11" stroke="#7A6E67" stroke-width="0.6"/></svg>
         </div>
         <div class="ph-body">
           <div class="ph-id-card">
@@ -675,7 +683,7 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
           <div style="display:flex;gap:4px;"><div class="ph-btn" style="flex:1;">Collagen Call</div><div class="ph-btn" style="flex:1;">In Person</div></div>
         </div>
         <div class="ph-bnav">
-          <div class="ph-bn on">Home<div class="ph-bn-d"></div></div>
+          <div class="ph-bn on">Home<div class="ph-bn-d" style="background:#B5967A;"></div></div>
           <div class="ph-bn">Book</div><div class="ph-bn">Shop</div>
           <div class="ph-bn">Comm.</div><div class="ph-bn">Learn</div>
         </div>
@@ -713,7 +721,7 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         </div>
         <div class="ph-bnav">
           <div class="ph-bn">Home</div>
-          <div class="ph-bn on">Book<div class="ph-bn-d"></div></div>
+          <div class="ph-bn on">Book<div class="ph-bn-d" style="background:#B5967A;"></div></div>
           <div class="ph-bn">Shop</div><div class="ph-bn">Comm.</div><div class="ph-bn">Learn</div>
         </div>
       </div>
@@ -724,7 +732,7 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         <div class="ph-notch"></div>
         <div class="ph-sb"><span style="font-size:7px;color:var(--ob2);">9:41</span><span style="font-size:7px;color:var(--ob2);">●●●</span></div>
         <div class="ph-nav">
-          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#0C0C0A" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#0C0C0A" stroke-width="0.6"/></svg>
+          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#1A1614" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#1A1614" stroke-width="0.6"/></svg>
           <div class="ph-logo" style="font-size:9px;">Services</div>
           <div style="width:12px;"></div>
         </div>
@@ -741,7 +749,7 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         </div>
         <div class="ph-bnav">
           <div class="ph-bn">Home</div>
-          <div class="ph-bn on">Book<div class="ph-bn-d"></div></div>
+          <div class="ph-bn on">Book<div class="ph-bn-d" style="background:#B5967A;"></div></div>
           <div class="ph-bn">Shop</div><div class="ph-bn">Comm.</div><div class="ph-bn">Learn</div>
         </div>
       </div>
@@ -752,7 +760,7 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         <div class="ph-notch"></div>
         <div class="ph-sb"><span style="font-size:7px;color:var(--ob2);">9:41</span><span style="font-size:7px;color:var(--ob2);">●●●</span></div>
         <div class="ph-nav">
-          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#0C0C0A" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#0C0C0A" stroke-width="0.6"/></svg>
+          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#1A1614" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#1A1614" stroke-width="0.6"/></svg>
           <div class="ph-logo" style="font-size:9px;">Doctors Dose</div>
           <div style="font-size:6px;color:var(--si);font-weight:300;">Cart (2)</div>
         </div>
@@ -779,7 +787,7 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         </div>
         <div class="ph-bnav">
           <div class="ph-bn">Home</div><div class="ph-bn">Book</div>
-          <div class="ph-bn on">Shop<div class="ph-bn-d"></div></div>
+          <div class="ph-bn on">Shop<div class="ph-bn-d" style="background:#B5967A;"></div></div>
           <div class="ph-bn">Comm.</div><div class="ph-bn">Learn</div>
         </div>
       </div>
@@ -790,7 +798,7 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         <div class="ph-notch"></div>
         <div class="ph-sb"><span style="font-size:7px;color:var(--ob2);">9:41</span><span style="font-size:7px;color:var(--ob2);">●●●</span></div>
         <div class="ph-nav">
-          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#0C0C0A" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#0C0C0A" stroke-width="0.6"/></svg>
+          <svg width="12" height="9" viewBox="0 0 12 9"><line x1="0" y1="1" x2="12" y2="1" stroke="#1A1614" stroke-width="0.6"/><line x1="0" y1="5" x2="12" y2="5" stroke="#1A1614" stroke-width="0.6"/></svg>
           <div class="ph-logo" style="font-size:9px;">Community</div>
           <div style="font-size:7px;font-weight:300;color:var(--si);">+ Post</div>
         </div>
@@ -814,7 +822,7 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
         </div>
         <div class="ph-bnav">
           <div class="ph-bn">Home</div><div class="ph-bn">Book</div><div class="ph-bn">Shop</div>
-          <div class="ph-bn on">Comm.<div class="ph-bn-d"></div></div>
+          <div class="ph-bn on">Comm.<div class="ph-bn-d" style="background:#B5967A;"></div></div>
           <div class="ph-bn">Learn</div>
         </div>
       </div>
@@ -1057,10 +1065,10 @@ body { font-family: var(--sans); background: var(--ww); color: var(--ob); -webki
   </table>
 
   <div class="doc-footer">
-    <div class="footer-brand">Doctor Hasia — Design Document</div>
+    <div class="footer-brand">Doctor Hasia — Design Document v2</div>
     <div style="display:flex;align-items:center;gap:12px;">
       <div style="width:24px;height:1px;background:var(--mv);"></div>
-      <div class="footer-note">Obsidian Pearl + Mauve Whisper · v1.0 · April 2026 · Confidential</div>
+      <div class="footer-note">Ivory Tawny + Mauve Whisper · v2.0 · April 2026 · Confidential</div>
     </div>
   </div>
 </div>
