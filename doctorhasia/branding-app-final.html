@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Hasia — Design System v5</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory:    #FAF8F5;
+  --warm:     #F2EDE6;
+  --blush:    #EAD7C6;
+  --stone:    #C4B9AC;
+  --mid:      #7A6E67;
+  --charcoal: #2C2825;
+  --deep:     #1A1614;
+  --tawny:    #B5967A;
+  --burgundy: #72383D;
+  --serif:    'Cormorant Garamond', Georgia, serif;
+  --sans:     'DM Sans', system-ui, sans-serif;
+  --radius-none:  0px;
+  --radius-xs:    4px;
+  --radius-panel: 12px;
+  --radius-full:  50%;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);font-weight:300;background:var(--ivory);color:var(--deep);-webkit-font-smoothing:antialiased;}
+
+.page{max-width:1000px;margin:0 auto;padding:80px 64px;border-bottom:0.5px solid var(--stone);}
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:80px 64px;max-width:1000px;margin:0 auto;}
+.eyebrow{font-size:9px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--burgundy);margin-bottom:8px;}
+.sec-title{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--deep);line-height:1.05;margin-bottom:16px;}
+.sec-desc{font-size:13px;font-weight:300;color:var(--mid);line-height:1.7;max-width:600px;margin-bottom:48px;}
+.rule{height:0.5px;background:var(--stone);margin:32px 0;}
+.rule-sm{height:0.5px;background:var(--stone);margin:16px 0;}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;margin-bottom:32px;}
+th{font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);padding:10px 16px;border-bottom:1px solid var(--stone);text-align:left;}
+td{font-size:12px;font-weight:300;color:var(--charcoal);padding:12px 16px;border-bottom:0.5px solid rgba(196,185,172,0.3);vertical-align:top;line-height:1.6;}
+td:first-child{font-weight:400;color:var(--deep);}
+tr:last-child td{border-bottom:none;}
+
+/* COLOUR SWATCHES */
+.swatch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
+.swatch{border-radius:4px;overflow:hidden;}
+.swatch-block{height:80px;}
+.swatch-info{padding:14px 16px;background:var(--warm);}
+.swatch-name{font-size:12px;font-weight:500;color:var(--deep);margin-bottom:2px;}
+.swatch-hex{font-size:11px;font-weight:300;color:var(--mid);font-family:monospace;margin-bottom:4px;}
+.swatch-role{font-size:10px;font-weight:300;color:var(--mid);line-height:1.5;}
+
+/* TYPE SPECIMENS */
+.specimen{display:grid;grid-template-columns:180px 1fr 200px;gap:24px;padding:28px 0;border-top:0.5px solid var(--stone);align-items:start;}
+.spec-meta .token{font-size:11px;font-weight:500;color:var(--deep);margin-bottom:6px;}
+.spec-meta .detail{font-size:10px;font-weight:300;color:var(--mid);line-height:1.7;font-family:monospace;}
+.spec-use{font-size:11px;font-weight:300;color:var(--mid);line-height:1.6;}
+.specimen-demo{background:var(--warm);border-radius:4px;padding:24px;}
+
+/* BUTTONS */
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px;}
+.btn{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:14px 28px;border-radius:0;cursor:pointer;display:inline-block;}
+.btn-primary{background:var(--charcoal);color:var(--ivory);border:none;}
+.btn-burgundy{background:var(--burgundy);color:#fff;border:none;}
+.btn-tawny{background:var(--tawny);color:var(--warm);border:none;}
+.btn-outline{background:transparent;color:var(--charcoal);border:0.5px solid var(--charcoal);}
+.btn-ghost{background:transparent;color:var(--ivory);border:0.5px solid rgba(250,248,245,0.4);}
+
+/* RADIUS DEMOS */
+.radius-grid{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:40px;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:12px;}
+.radius-box{width:80px;height:80px;background:var(--warm);border:0.5px solid var(--stone);}
+.radius-label{font-size:10px;font-weight:300;color:var(--mid);text-align:center;line-height:1.6;}
+
+/* SPACING */
+.spacing-row{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:0.5px solid rgba(196,185,172,0.2);}
+.sp-bar{background:var(--tawny);height:8px;border-radius:0;}
+.sp-token{font-size:10px;font-weight:400;color:var(--deep);font-family:monospace;width:60px;}
+.sp-val{font-size:10px;font-weight:300;color:var(--mid);width:50px;}
+.sp-use{font-size:10px;font-weight:300;color:var(--mid);}
+
+/* COMPONENT DEMOS */
+.card-demo{background:var(--warm);border:0.5px solid var(--stone);border-radius:4px;padding:24px;margin-bottom:16px;}
+.identity-card{background:var(--blush);border:0.5px solid var(--stone);border-radius:4px;padding:24px 28px;display:grid;grid-template-columns:1fr auto;gap:24px;margin-bottom:16px;}
+.monogram{width:48px;height:48px;border-radius:50%;background:var(--warm);border:0.5px solid var(--deep);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:22px;color:var(--burgundy);}
+.quiz-option{padding:13px 16px;border:1px solid rgba(196,185,172,0.4);background:white;font-size:13px;font-weight:300;color:var(--mid);display:flex;align-items:center;gap:12px;margin-bottom:8px;border-radius:0;}
+.quiz-option.selected{border-color:var(--tawny);color:var(--charcoal);background:rgba(181,150,122,0.05);}
+.q-dot{width:16px;height:16px;border:1.5px solid rgba(196,185,172,0.6);border-radius:50%;flex-shrink:0;}
+.q-dot.filled{border-color:var(--tawny);background:var(--tawny);}
+.badge{display:inline-block;padding:3px 8px;font-size:9px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;}
+.badge-burgundy{background:var(--burgundy);color:var(--warm);}
+.badge-charcoal{background:var(--charcoal);color:var(--ivory);}
+.badge-tawny{background:rgba(181,150,122,0.15);color:var(--tawny);}
+
+.annotation{background:rgba(114,56,61,0.05);border-left:3px solid var(--burgundy);padding:16px 20px;border-radius:0;margin-bottom:24px;}
+.annotation p{font-size:12px;font-weight:300;color:var(--charcoal);line-height:1.7;}
+.tag{display:inline-block;padding:2px 8px;font-size:8px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;}
+.tag-burg{background:rgba(114,56,61,0.1);color:var(--burgundy);}
+.tag-mid{background:rgba(196,185,172,0.2);color:var(--mid);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px;}
+
+/* NAV DEMO */
+.nav-demo{background:var(--ivory);border-bottom:0.5px solid var(--stone);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-radius:4px;margin-bottom:16px;}
+.nav-logo{font-family:var(--serif);font-size:14px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--deep);}
+.bnav-demo{background:var(--ivory);border-top:0.5px solid var(--stone);padding:10px 0;display:flex;justify-content:space-around;border-radius:0 0 4px 4px;}
+.bnav-tab{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.bnav-label{font-size:7px;font-weight:300;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+.bnav-label.active{color:var(--deep);}
+.bnav-dot{width:4px;height:4px;border-radius:50%;background:var(--tawny);}
+
+/* PRINT */
+@media print{.page{page-break-after:always;padding:48px;}}
+</style>
+</head>
+<body>
+
+<!-- ── COVER ── -->
+<div class="cover">
+  <div>
+    <div class="eyebrow">Design System</div>
+    <div style="font-family:var(--serif);font-size:72px;font-weight:300;color:var(--deep);line-height:1;margin-bottom:12px;">Doctor<br>Hasia</div>
+    <div style="height:1px;width:64px;background:var(--burgundy);margin-bottom:24px;"></div>
+    <div style="font-size:16px;font-weight:300;color:var(--mid);">Ivory Tawny + Burgundy Wine · v5 · April 2026</div>
+  </div>
+  <div>
+    <table style="margin:0;">
+      <tr><td style="border:none;padding:10px 0;font-size:11px;color:var(--mid);border-top:0.5px solid var(--stone);">Fonts</td><td style="border:none;padding:10px 0;font-size:11px;color:var(--charcoal);border-top:0.5px solid var(--stone);">Cormorant Garamond (serif) + DM Sans (sans)</td></tr>
+      <tr><td style="border:none;padding:10px 0;font-size:11px;color:var(--mid);border-top:0.5px solid var(--stone);">Button radius</td><td style="border:none;padding:10px 0;font-size:11px;color:var(--charcoal);border-top:0.5px solid var(--stone);">0px — sharp rectangle. Non-negotiable.</td></tr>
+      <tr><td style="border:none;padding:10px 0;font-size:11px;color:var(--mid);border-top:0.5px solid var(--stone);">Accent</td><td style="border:none;padding:10px 0;font-size:11px;color:var(--burgundy);border-top:0.5px solid var(--stone);">Burgundy #72383D — exactly 5 touchpoints only</td></tr>
+      <tr><td style="border:none;padding:10px 0;font-size:11px;color:var(--mid);border-top:0.5px solid var(--stone);">Token source</td><td style="border:none;padding:10px 0;font-size:11px;color:var(--charcoal);border-top:0.5px solid var(--stone);">design.d.ts — Dr Hasia Bespoke token spec</td></tr>
+      <tr><td style="border:none;padding:10px 0;font-size:11px;color:var(--mid);border-top:0.5px solid var(--stone);">Platforms</td><td style="border:none;padding:10px 0;font-size:11px;color:var(--charcoal);border-top:0.5px solid var(--stone);">iOS App (React Native) · doctorhasia.com · bespoke.doctorhasia.com</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ── COLOUR ── -->
+<div class="page">
+  <div class="eyebrow">Section 01</div>
+  <div class="sec-title">Colour</div>
+  <div class="sec-desc">Nine tokens. No others. The palette is warm and editorial — ivory and warm surfaces carry the screens. Tawny drives all active states and accents. Burgundy appears in exactly 5 defined touchpoints. Charcoal fills all buttons.</div>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-block" style="background:#FAF8F5;border:0.5px solid var(--stone);"></div><div class="swatch-info"><div class="swatch-name">Ivory</div><div class="swatch-hex">#FAF8F5 · --ivory</div><div class="swatch-role">bgPage — screen background on every screen</div></div></div>
+    <div class="swatch"><div class="swatch-block" style="background:#F2EDE6;"></div><div class="swatch-info"><div class="swatch-name">Warm</div><div class="swatch-hex">#F2EDE6 · --warm</div><div class="swatch-role">bgSurface / bgCard — primary card surface</div></div></div>
+    <div class="swatch"><div class="swatch-block" style="background:#EAD7C6;"></div><div class="swatch-info"><div class="swatch-name">Blush</div><div class="swatch-hex">#EAD7C6 · --blush</div><div class="swatch-role">bgCta / secondary cards / full section bg on Bespoke + Membership</div></div></div>
+    <div class="swatch"><div class="swatch-block" style="background:#C4B9AC;"></div><div class="swatch-info"><div class="swatch-name">Stone</div><div class="swatch-hex">#C4B9AC · --stone</div><div class="swatch-role">accentNeutral — all borders 0.5px, dividers</div></div></div>
+    <div class="swatch"><div class="swatch-block" style="background:#7A6E67;"></div><div class="swatch-info"><div class="swatch-name">Mid</div><div class="swatch-hex">#7A6E67 · --mid</div><div class="swatch-role">textMuted — overlines, captions, metadata</div></div></div>
+    <div class="swatch"><div class="swatch-block" style="background:#2C2825;"></div><div class="swatch-info"><div class="swatch-name">Charcoal</div><div class="swatch-hex">#2C2825 · --charcoal</div><div class="swatch-role">bgDark — all primary button fills, dark surfaces</div></div></div>
+    <div class="swatch"><div class="swatch-block" style="background:#1A1614;"></div><div class="swatch-info"><div class="swatch-name">Deep</div><div class="swatch-hex">#1A1614 · --deep</div><div class="swatch-role">textPrimary / bgFooter — headlines, wordmark, footer</div></div></div>
+    <div class="swatch"><div class="swatch-block" style="background:#B5967A;"></div><div class="swatch-info"><div class="swatch-name">Tawny</div><div class="swatch-hex">#B5967A · --tawny</div><div class="swatch-role">accentPrimary — active states, progress bars, selected elements</div></div></div>
+    <div class="swatch"><div class="swatch-block" style="background:#72383D;"></div><div class="swatch-info"><div class="swatch-name">Burgundy</div><div class="swatch-hex">#72383D · --burgundy</div><div class="swatch-role">Brand accent — exactly 5 touchpoints only. No exceptions.</div></div></div>
+  </div>
+
+  <div class="annotation"><p><strong>Burgundy rule:</strong> The 5 touchpoints are — (1) H monogram letter on identity card · (2) 1px rule line under wordmark · (3) Home hero CTA button fill only · (4) Italic pull quote text colour · (5) Free badge on academy courses. Never a sixth place. Count them.</p></div>
+
+  <div class="rule"></div>
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:16px;">Semantic colour roles — ColorRole</div>
+  <table>
+    <thead><tr><th>Role</th><th>Token</th><th>Hex</th><th>Applied to</th></tr></thead>
+    <tbody>
+      <tr><td>bgPage</td><td>--ivory</td><td>#FAF8F5</td><td>Screen background — every screen without exception</td></tr>
+      <tr><td>bgSurface / bgCard</td><td>--warm</td><td>#F2EDE6</td><td>Primary card surface, hero surfaces, quiz panel</td></tr>
+      <tr><td>bgCta / accentLight</td><td>--blush</td><td>#EAD7C6</td><td>Secondary cards, input fields, Bespoke + Membership full-section bg</td></tr>
+      <tr><td>bgDark</td><td>--charcoal</td><td>#2C2825</td><td>All primary button fills, dark card surfaces, booking confirmation bg</td></tr>
+      <tr><td>bgFooter</td><td>--deep</td><td>#1A1614</td><td>Onboarding splash background, footer background</td></tr>
+      <tr><td>bgOverlay</td><td>—</td><td>rgba(26,22,20,0.6)</td><td>Quiz panel overlay backdrop</td></tr>
+      <tr><td>textPrimary</td><td>--charcoal</td><td>#2C2825</td><td>All primary headlines and body text on light backgrounds</td></tr>
+      <tr><td>textMuted</td><td>--mid</td><td>#7A6E67</td><td>Overlines, metadata, timestamps, captions</td></tr>
+      <tr><td>textSubtle</td><td>--stone</td><td>#C4B9AC</td><td>Quiz labels, placeholder text, handle bars</td></tr>
+      <tr><td>textOnDark</td><td>--ivory</td><td>#FAF8F5</td><td>All text on charcoal or deep backgrounds</td></tr>
+      <tr><td>textOnDarkMuted</td><td>—</td><td>rgba(250,248,245,0.55)</td><td>Body text on dark backgrounds (bodyProse)</td></tr>
+      <tr><td>accentPrimary</td><td>--tawny</td><td>#B5967A</td><td>Active states, progress bars, selected tiles, nav dot, input focus</td></tr>
+      <tr><td>borderDefault</td><td>—</td><td>rgba(196,185,172,0.2)</td><td>Very subtle dividers</td></tr>
+      <tr><td>borderMid</td><td>—</td><td>rgba(196,185,172,0.4)</td><td>Quiz option borders (default state)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── TYPOGRAPHY ── -->
+<div class="page">
+  <div class="eyebrow">Section 02</div>
+  <div class="sec-title">Typography</div>
+  <div class="sec-desc">Two typefaces only — defined in design.d.ts FontFamily. Cormorant Garamond for all editorial moments. DM Sans for all UI. No other fonts anywhere in the system.</div>
+
+  <div class="two-col" style="margin-bottom:40px;">
+    <div style="background:var(--warm);border-radius:4px;padding:32px;">
+      <div class="eyebrow" style="margin-bottom:16px;">FontFamily · serif</div>
+      <div style="font-family:var(--serif);font-size:44px;font-weight:300;color:var(--deep);line-height:1.05;">Cormorant<br>Garamond</div>
+      <div style="font-family:var(--serif);font-size:14px;font-weight:300;font-style:italic;color:var(--mid);margin-top:12px;">Display · headings · pull quotes · prices · quiz questions</div>
+      <div style="margin-top:16px;font-size:10px;font-weight:300;color:var(--stone);font-family:monospace;">"Cormorant Garamond", Georgia, serif</div>
+    </div>
+    <div style="background:var(--warm);border-radius:4px;padding:32px;">
+      <div class="eyebrow" style="margin-bottom:16px;">FontFamily · sans</div>
+      <div style="font-family:var(--sans);font-size:44px;font-weight:300;color:var(--deep);line-height:1.05;">DM<br>Sans</div>
+      <div style="font-family:var(--sans);font-size:14px;font-weight:300;color:var(--mid);margin-top:12px;">UI · overlines · buttons · body · labels · captions</div>
+      <div style="margin-top:16px;font-size:10px;font-weight:300;color:var(--stone);font-family:monospace;">"DM Sans", system-ui, sans-serif</div>
+    </div>
+  </div>
+
+  <!-- SPECIMENS -->
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">TypeStyle specimens — design.d.ts</div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">heroH1</div><div class="detail">Cormorant Garamond<br>clamp(44–72px)<br>weight 300 · lh 1.08<br>color: textOnDark<br>em → italic, blush</div></div>
+    <div style="background:var(--charcoal);border-radius:4px;padding:24px;"><div style="font-family:var(--serif);font-size:52px;font-weight:300;color:var(--ivory);line-height:1.08;">Your skin.<br>Your hair.<br><em style="font-style:italic;color:var(--blush);">Your formula.</em></div></div>
+    <div class="spec-use">Hero display. Splash. One per screen maximum. Never two per screen.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">sectionH</div><div class="detail">Cormorant Garamond<br>clamp(34–52px)<br>weight 300 · lh 1.1<br>color: textPrimary<br>em → italic, tawny</div></div>
+    <div style="background:var(--warm);border-radius:4px;padding:24px;"><div style="font-family:var(--serif);font-size:44px;font-weight:300;color:var(--charcoal);line-height:1.1;">Simple. Personal.<br><em style="font-style:italic;color:var(--tawny);">Entirely yours.</em></div></div>
+    <div class="spec-use">Section headings above step lists, quiz choosers, philosophy blocks.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">stepTitle</div><div class="detail">Cormorant Garamond<br>24px · weight 400<br>lh 1.2 · textPrimary</div></div>
+    <div style="background:var(--warm);border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:12px;"><div style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--charcoal);">Choose your quiz</div><div style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--charcoal);">Receive your bespoke formula</div></div>
+    <div class="spec-use">Numbered step titles, card titles, course names, service names.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">Pull Quote</div><div class="detail">Cormorant Garamond<br>20px · weight 300<br>italic · lh 1.5<br>color: burgundy</div></div>
+    <div style="background:var(--warm);border-radius:4px;padding:24px;"><div style="border-left:3px solid var(--burgundy);padding-left:16px;"><div style="font-family:var(--serif);font-size:20px;font-weight:300;font-style:italic;color:var(--burgundy);line-height:1.5;">"The ritual of care is as vital as the formula itself."</div><div style="font-family:var(--sans);font-size:9px;font-weight:300;color:var(--stone);letter-spacing:0.1em;text-transform:uppercase;margin-top:8px;">— Doctor Hasia</div></div></div>
+    <div class="spec-use">Doctor Hasia notes, section divider quotes, journal entries. Always burgundy. Always 3px burgundy left border.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">ts-name-personal</div><div class="detail">Cormorant Garamond<br>Same size as context<br>italic · tawny<br>lowercase always</div></div>
+    <div style="background:var(--warm);border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:12px;">
+      <div style="font-family:var(--serif);font-size:30px;font-weight:300;color:var(--charcoal);">Thank you, <em style="font-style:italic;color:var(--tawny);">eli.</em></div>
+      <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--charcoal);">Good morning, <em style="font-style:italic;color:var(--tawny);">eli.</em></div>
+      <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--charcoal);">Well done, <em style="font-style:italic;color:var(--tawny);">eli.</em></div>
+    </div>
+    <div class="spec-use">All emotional name contexts. Bespoke thank you, home greeting, course completion. Lowercase italic tawny always.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">eyebrow</div><div class="detail">DM Sans · 9px<br>weight 400<br>tracking 4px<br>ALL CAPS · stone</div></div>
+    <div style="background:var(--warm);border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:12px;">
+      <div style="font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--stone);">AESTHETICS &amp; WELLNESS · DUBAI</div>
+      <div style="font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--stone);">DR HASIA BESPOKE · UK ONLY</div>
+      <div style="font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--stone);">ISSUE NO. 01 — THE COLLAGEN EDITION</div>
+    </div>
+    <div class="spec-use">Above every heading on every screen. Always stone colour. Always all-caps.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">buttonLabel</div><div class="detail">DM Sans · 10px<br>weight 500<br>tracking 2.5px<br>ALL CAPS</div></div>
+    <div style="background:var(--warm);border-radius:4px;padding:24px;display:flex;flex-wrap:wrap;gap:10px;">
+      <div class="btn btn-primary">Book Session</div>
+      <div class="btn btn-burgundy">Join the Registry</div>
+      <div class="btn btn-outline">Explore Protocol</div>
+      <div class="btn btn-tawny">Begin Skin Quiz</div>
+    </div>
+    <div class="spec-use">All buttons. 0px radius always. Charcoal = primary. Burgundy = hero CTA + registry only. Tawny = Bespoke quizzes only.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">quizLabel + quizQuestion</div><div class="detail">quizLabel: DM Sans 9px 400 stone<br>quizQuestion: Cormorant 22px 300 charcoal lh 1.35</div></div>
+    <div style="background:var(--warm);border-radius:4px;padding:24px;">
+      <div style="font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--stone);margin-bottom:10px;">Your skin · 2 of 7</div>
+      <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--charcoal);line-height:1.35;margin-bottom:16px;">How would you describe your skin by midday?</div>
+      <div class="quiz-option"><div class="q-dot filled"></div>Oily, especially the T-zone</div>
+      <div class="quiz-option"><div class="q-dot"></div>Dry and tight throughout the day</div>
+    </div>
+    <div class="spec-use">Quiz bottom sheet. Label in stone DM Sans. Question in serif. Options 0px radius.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">bodyUI + heroSub</div><div class="detail">bodyUI: DM Sans 13px 300 lh 1.7 mid<br>heroSub: DM Sans 14px 300 lh 1.8 rgba ivory 0.5</div></div>
+    <div style="border-radius:4px;overflow:hidden;">
+      <div style="background:var(--warm);padding:20px;"><div style="font-family:var(--sans);font-size:13px;font-weight:300;color:var(--mid);line-height:1.7;">Doctor-led aesthetics. Science and safety at every treatment. Pro-ageing, not anti-ageing.</div></div>
+      <div style="background:var(--charcoal);padding:20px;"><div style="font-family:var(--sans);font-size:14px;font-weight:300;color:rgba(250,248,245,0.5);line-height:1.8;">Doctor-led aesthetics. Science and safety at every treatment. Pro-ageing, not anti-ageing.</div></div>
+    </div>
+    <div class="spec-use">bodyUI on light surfaces. heroSub on charcoal. Same font, different colour roles.</div>
+  </div>
+
+  <div class="specimen">
+    <div class="spec-meta"><div class="token">ts-price</div><div class="detail">Cormorant Garamond<br>22px · weight 300<br>color: deep</div></div>
+    <div style="background:var(--warm);border-radius:4px;padding:24px;display:flex;align-items:baseline;gap:28px;">
+      <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--deep);">£29<span style="font-size:12px;font-weight:300;color:var(--mid);font-family:var(--sans);margin-left:4px;">/ month</span></div>
+      <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--deep);">£249<span style="font-size:12px;font-weight:300;color:var(--mid);font-family:var(--sans);margin-left:4px;">/ year</span></div>
+      <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--deep);">From £320</div>
+    </div>
+    <div class="spec-use">All prices. Membership tiers. Service prices. Always Cormorant Garamond. Unit label in DM Sans 12px mid.</div>
+  </div>
+</div>
+
+<!-- ── SHAPE + SPACING ── -->
+<div class="page">
+  <div class="eyebrow">Section 03</div>
+  <div class="sec-title">Shape &amp; Spacing</div>
+  <div class="sec-desc">All radius values from design.d.ts BorderRadius. All spacing values from design.d.ts Spacing. No hardcoded values — always use CSS variables.</div>
+
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:20px;">BorderRadius tokens</div>
+  <div class="radius-grid" style="margin-bottom:40px;">
+    <div class="radius-item"><div class="radius-box" style="border-radius:0;"></div><div class="radius-label"><strong>0px · none</strong><br>--radius-none<br>All buttons · all inputs<br>Quiz option rows · progress bars<br><strong>Non-negotiable</strong></div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:4px;"></div><div class="radius-label"><strong>4px · xs</strong><br>--radius-xs<br>All cards<br>Feature blocks<br>Section surfaces</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:8px;background:var(--blush);"></div><div class="radius-label"><strong>8px</strong><br>(no token)<br>Standalone images<br>Editorial photo blocks<br>Video thumbnails</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:12px 12px 0 0;background:var(--warm);"></div><div class="radius-label"><strong>12px · panel</strong><br>--radius-panel<br>Quiz bottom-sheet<br>top corners only</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:50%;"></div><div class="radius-label"><strong>50% · full</strong><br>--radius-full<br>Avatars · monogram circles<br>✦ sparkle circle</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:2px;background:var(--warm);height:32px;width:80px;display:flex;align-items:center;justify-content:center;"><span class="badge badge-burgundy">Free</span></div><div class="radius-label"><strong>2px</strong><br>Badges · filter chips<br>Small pills</div></div>
+  </div>
+
+  <div class="rule"></div>
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:16px;">Spacing tokens — design.d.ts Spacing</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:40px;">
+    <div>
+      <div class="spacing-row"><div class="sp-token">--sp-2</div><div class="sp-val">8px</div><div class="sp-bar" style="width:8px;"></div><div class="sp-use">Component gaps, icon gaps</div></div>
+      <div class="spacing-row"><div class="sp-token">--sp-4</div><div class="sp-val">16px</div><div class="sp-bar" style="width:16px;"></div><div class="sp-use">Hero sub margin, quiz card inner</div></div>
+      <div class="spacing-row"><div class="sp-token">--sp-5</div><div class="sp-val">20px</div><div class="sp-bar" style="width:20px;"></div><div class="sp-use">Eyebrow margin-bottom</div></div>
+      <div class="spacing-row"><div class="sp-token">--sp-6</div><div class="sp-val">24px</div><div class="sp-bar" style="width:24px;"></div><div class="sp-use">Step row gap, quiz panel padding</div></div>
+      <div class="spacing-row"><div class="sp-token">--sp-7</div><div class="sp-val">28px</div><div class="sp-bar" style="width:28px;"></div><div class="sp-use">Section horizontal padding</div></div>
+    </div>
+    <div>
+      <div class="spacing-row"><div class="sp-token">--sp-8</div><div class="sp-val">32px</div><div class="sp-bar" style="width:32px;"></div><div class="sp-use">Quiz card padding</div></div>
+      <div class="spacing-row"><div class="sp-token">--sp-10</div><div class="sp-val">40px</div><div class="sp-bar" style="width:40px;"></div><div class="sp-use">Hero sub margin-bottom</div></div>
+      <div class="spacing-row"><div class="sp-token">--sp-12</div><div class="sp-val">48px</div><div class="sp-bar" style="width:48px;"></div><div class="sp-use">Footer padding, divider margins</div></div>
+      <div class="spacing-row"><div class="sp-token">--sp-14</div><div class="sp-val">56px</div><div class="sp-bar" style="width:56px;"></div><div class="sp-use">Section heading mb, ✦ circle size</div></div>
+      <div class="spacing-row"><div class="sp-token">--sp-25</div><div class="sp-val">100px</div><div class="sp-bar" style="width:100px;"></div><div class="sp-use">Desktop section padding vertical</div></div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:16px;">Motion — design.d.ts Duration + Easing</div>
+  <table>
+    <thead><tr><th>Token</th><th>Variable</th><th>Value</th><th>Used for</th></tr></thead>
+    <tbody>
+      <tr><td>fast</td><td>--dur-fast</td><td>0.18s</td><td>Option select, border transitions</td></tr>
+      <tr><td>base</td><td>--dur-base</td><td>0.2s · ease</td><td>Button hover, progress fill</td></tr>
+      <tr><td>mid</td><td>--dur-mid</td><td>0.25s</td><td>Card hover lift, nav hover</td></tr>
+      <tr><td>slow</td><td>--dur-slow</td><td>0.35s</td><td>Overlay fade, nav bg transition</td></tr>
+      <tr><td>reveal</td><td>--dur-reveal</td><td>0.6s</td><td>IntersectionObserver step rows and values</td></tr>
+      <tr><td>hero</td><td>--dur-hero</td><td>0.9s · ease · both/forwards</td><td>Hero fadeUp animations with stagger delays</td></tr>
+      <tr><td>panel</td><td>--dur-panel</td><td>0.4s · cubic-bezier(0.32,0.72,0,1)</td><td>Quiz panel slide up from bottom</td></tr>
+    </tbody>
+  </table>
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin:24px 0 12px;">Stagger delays — Delay tokens</div>
+  <table>
+    <thead><tr><th>Token</th><th>Value</th><th>Element</th></tr></thead>
+    <tbody>
+      <tr><td>heroStep1</td><td>0.2s</td><td>Hero eyebrow</td></tr>
+      <tr><td>heroStep2</td><td>0.35s</td><td>Hero h1</td></tr>
+      <tr><td>heroStep3</td><td>0.5s</td><td>Hero sub</td></tr>
+      <tr><td>heroStep4</td><td>0.65s</td><td>Hero actions</td></tr>
+      <tr><td>heroStep5</td><td>1s</td><td>Scroll hint</td></tr>
+      <tr><td>stagger</td><td>0.1s</td><td>nth-child multiplier for step rows and about values</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── COMPONENTS ── -->
+<div class="page">
+  <div class="eyebrow">Section 04</div>
+  <div class="sec-title">Components</div>
+  <div class="sec-desc">Live component specimens. All radii, colours, and typography match the token spec. These are the reference states for Figma and development.</div>
+
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:16px;">Button system — ButtonVariant tokens</div>
+  <div style="background:var(--warm);border-radius:4px;padding:32px;margin-bottom:32px;">
+    <div class="btn-row">
+      <div class="btn btn-primary">Book Session</div>
+      <div style="font-size:10px;font-weight:300;color:var(--mid);">Primary — charcoal fill, ivory text, 0px radius</div>
+    </div>
+    <div class="btn-row">
+      <div class="btn btn-burgundy">Join the Registry</div>
+      <div style="font-size:10px;font-weight:300;color:var(--mid);">Burgundy — hero CTA + Membership JOIN THE REGISTRY only. Two places total.</div>
+    </div>
+    <div class="btn-row">
+      <div class="btn btn-tawny">Begin Skin Quiz</div>
+      <div style="font-size:10px;font-weight:300;color:var(--mid);">Tawny — Bespoke quiz buttons only (Screen 15)</div>
+    </div>
+    <div class="btn-row">
+      <div class="btn btn-outline">Explore Protocol</div>
+      <div style="font-size:10px;font-weight:300;color:var(--mid);">Secondary — transparent, 0.5px charcoal border, charcoal text, 0px</div>
+    </div>
+    <div class="btn-row" style="background:var(--charcoal);padding:16px;border-radius:4px;margin-top:4px;">
+      <div class="btn btn-ghost">Add to Calendar</div>
+      <div style="font-size:10px;font-weight:300;color:rgba(250,248,245,0.5);">Ghost — transparent, 0.5px warm border, warm text. On dark only.</div>
+    </div>
+    <div class="btn-row" style="margin-top:16px;">
+      <div style="font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--stone);">CLOSE</div>
+      <div style="font-size:10px;font-weight:300;color:var(--mid);margin-left:12px;">Text-only close — no button shape. DM Sans 9px stone all-caps. Bespoke thank you state only.</div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:16px;">Identity card — Home Screen 01</div>
+  <div class="identity-card">
+    <div>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--stone);border:0.5px solid var(--stone);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--warm);">DH</div>
+        <div>
+          <div style="font-family:var(--serif);font-size:18px;font-weight:300;color:var(--deep);">Doctor Hasia</div>
+          <div style="font-family:var(--sans);font-size:8px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid);">MBBS · UK &amp; American Board Certified</div>
+          <div style="width:20px;height:1px;background:var(--burgundy);margin:5px 0;"></div>
+          <div style="font-family:var(--sans);font-size:7px;font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);">Aesthetics &amp; Wellness · Dubai · Birmingham</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div class="monogram">H</div>
+      <div style="font-family:var(--sans);font-size:7px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);">Award Winning UAE</div>
+      <div style="font-family:var(--sans);font-size:7px;font-weight:300;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);">Vogue · GQ · NY Times</div>
+    </div>
+  </div>
+  <div style="background:var(--warm);border:0.5px solid var(--stone);border-top:none;border-radius:0 0 4px 4px;padding:10px 28px;display:flex;justify-content:space-between;margin-bottom:32px;">
+    <div style="font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);">Capsule 7 Clinic — Dubai</div>
+    <div style="font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);">Doctors Dose™</div>
+  </div>
+
+  <div class="rule"></div>
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:16px;">Bottom navigation</div>
+  <div style="border:0.5px solid var(--stone);border-radius:4px;overflow:hidden;margin-bottom:32px;">
+    <div class="nav-demo">
+      <div style="width:16px;height:12px;display:flex;flex-direction:column;gap:3px;"><div style="height:1px;background:var(--deep);"></div><div style="height:1px;background:var(--deep);"></div></div>
+      <div class="nav-logo">Doctor Hasia</div>
+      <div style="font-family:var(--sans);font-size:8px;font-weight:300;color:var(--mid);">⚙</div>
+    </div>
+    <div class="bnav-demo">
+      <div class="bnav-tab"><div class="bnav-label active">Home</div><div class="bnav-dot"></div></div>
+      <div class="bnav-tab"><div class="bnav-label">Book</div></div>
+      <div class="bnav-tab"><div class="bnav-label">Shop</div></div>
+      <div class="bnav-tab"><div class="bnav-label">Community</div></div>
+      <div class="bnav-tab"><div class="bnav-label">Learn</div></div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:16px;">Bespoke thank you state</div>
+  <div style="background:var(--ivory);border:0.5px solid var(--stone);border-radius:4px;padding:40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:32px;">
+    <div style="width:56px;height:56px;border-radius:50%;border:1px solid var(--stone);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--deep);">✦</div>
+    <div style="font-family:var(--serif);font-size:30px;font-weight:300;color:var(--charcoal);line-height:1.2;">Thank you,<br><em style="font-style:italic;color:var(--tawny);">eli.</em></div>
+    <div style="font-family:var(--sans);font-size:13px;font-weight:300;color:var(--mid);line-height:1.85;max-width:320px;">Your responses are with us. We'll review your profile personally and send your bespoke formula recommendation within 24 hours.</div>
+    <div style="font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--stone);">CLOSE</div>
+  </div>
+
+  <div class="rule"></div>
+  <div style="font-size:8px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:16px;">Badges</div>
+  <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+    <div><span class="badge badge-burgundy">Free</span><div style="font-size:10px;color:var(--mid);margin-top:6px;">Burgundy — touchpoint 5</div></div>
+    <div><span class="badge badge-charcoal">Paid</span><div style="font-size:10px;color:var(--mid);margin-top:6px;">Charcoal</div></div>
+    <div><span class="badge badge-charcoal">Members</span><div style="font-size:10px;color:var(--mid);margin-top:6px;">Charcoal</div></div>
+    <div><span class="badge badge-tawny">In Clinic Use</span><div style="font-size:10px;color:var(--mid);margin-top:6px;">Tawny subtle</div></div>
+    <div><span class="badge" style="background:var(--warm);border:0.5px solid var(--tawny);color:var(--tawny);">Hasia Member</span><div style="font-size:10px;color:var(--mid);margin-top:6px;">Warm + tawny border</div></div>
+  </div>
+</div>
+
+<!-- ── DO'S AND DONT'S ── -->
+<div class="page">
+  <div class="eyebrow">Section 05</div>
+  <div class="sec-title">Do's &amp; Don'ts</div>
+  <div class="sec-desc">The rules that protect the editorial luxury aesthetic. Every designer and developer should review this before building.</div>
+
+  <div class="two-col">
+    <div>
+      <div style="font-size:10px;font-weight:500;color:#2E7D52;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">✓ Do</div>
+      <table style="margin:0;"><tbody>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Use Cormorant Garamond for all serif moments</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Use DM Sans for all UI, buttons, overlines</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Keep all buttons at 0px radius — always</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Use burgundy only in the 5 defined touchpoints</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Use tawny for all active states and progress</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Use charcoal for all primary button fills</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Use 0.5px stone borders on all cards</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Render user's name in italic tawny in emotional contexts</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;color:var(--charcoal);">Use prices always in Cormorant Garamond serif</td></tr>
+      </tbody></table>
+    </div>
+    <div>
+      <div style="font-size:10px;font-weight:500;color:#B04040;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">✗ Don't</div>
+      <table style="margin:0;"><tbody>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Never round buttons — 0px radius everywhere, no exceptions</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Never use mauve — it is removed from this project entirely</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Never use burgundy in a 6th place</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Never use shadows anywhere in the system</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Never use gradients anywhere</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Never use teal, green, blue or any other hue</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Never use Montserrat, Inter, Roboto or system fonts</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;border-bottom:0.5px solid rgba(196,185,172,0.3);color:var(--charcoal);">Never use two display-size headings on the same screen</td></tr>
+        <tr><td style="padding:10px 0;font-size:12px;color:var(--charcoal);">Never use dark backgrounds except booking confirmation and onboarding splash</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div style="text-align:center;padding:40px 0;">
+    <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--charcoal);margin-bottom:8px;">This is a luxury medical editorial iOS app.</div>
+    <div style="font-family:var(--serif);font-size:20px;font-weight:300;font-style:italic;color:var(--burgundy);">It should feel like opening Vogue, not like opening a medical portal.</div>
+  </div>
+  <div style="text-align:center;padding:20px 0;border-top:0.5px solid var(--stone);">
+    <div style="font-family:var(--sans);font-size:11px;font-weight:300;color:var(--mid);">Doctor Hasia — Design System v5 · Ivory Tawny + Burgundy Wine · April 2026 · Prepared by Faith Banares</div>
+  </div>
+</div>
+
+</body>
+</html>
