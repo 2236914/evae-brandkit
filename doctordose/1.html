@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Doctors Dose — Palette Comparison · 3 Directions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   SHARED BASE
+   ============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #0F0E0D;
+  background: #F4F2EE;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   COMPARISON HEADER
+   ============================================================ */
+.compare-header {
+  padding: 96px 40px 64px;
+  text-align: center;
+  background: #FFFFFF;
+  border-bottom: 1px solid #DDD7CC;
+}
+.compare-header .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: #8A8378;
+  margin-bottom: 16px;
+}
+.compare-header h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 720px;
+  margin: 0 auto 20px;
+}
+.compare-header h1 strong { font-weight: 500; }
+.compare-header p {
+  font-size: 16px; line-height: 1.6;
+  color: #3D3833;
+  max-width: 620px; margin: 0 auto;
+}
+
+/* ============================================================
+   DIRECTION WRAPPER
+   ============================================================ */
+.direction {
+  padding: 80px 40px;
+  border-bottom: 1px solid #DDD7CC;
+}
+.direction-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.direction-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: end;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid currentColor;
+}
+.direction-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.direction-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+}
+.direction-title strong { font-weight: 500; }
+.direction-mood {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  opacity: 0.6;
+}
+.direction-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 460px;
+}
+.direction-desc .reference {
+  display: block; margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* Swatch grid (per direction) */
+.swatch-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  margin-bottom: 32px;
+}
+.swatch {
+  padding: 0;
+}
+.swatch-color {
+  width: 100%;
+  aspect-ratio: 3/2;
+}
+.swatch-info {
+  padding: 12px 14px 16px;
+}
+.swatch-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+.swatch-hex {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  opacity: 0.6;
+}
+
+/* Application demos */
+.demos {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.demo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 5/3;
+}
+.demo-hero {
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.demo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  width: fit-content;
+  margin-bottom: 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.demo-pill::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+}
+.demo-headline {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+}
+.demo-headline strong { font-weight: 500; }
+.demo-sub {
+  font-size: 13px;
+  line-height: 1.55;
+  max-width: 340px;
+  margin-bottom: 24px;
+  opacity: 0.75;
+}
+.demo-btn-row { display: flex; gap: 20px; align-items: center; }
+.demo-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: none;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.demo-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  text-decoration: none;
+}
+
+.demo-glass {
+  padding: 32px;
+}
+.demo-glass-card {
+  position: absolute;
+  inset: 20%;
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(15,14,13,0.06);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 8px 32px rgba(15,14,13,0.06);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+.stat-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 36px;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.stat-value strong { font-weight: 500; }
+
+/* Status pills */
+.status-row {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+.status-pill::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+
+/* Verdict block */
+.verdict {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 32px;
+  padding: 28px 32px;
+  border: 1px solid currentColor;
+}
+.verdict-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+.verdict-col p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+.verdict-col ul {
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.verdict-col li {
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.verdict-col li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 8px; height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   DIRECTION 01 — WARM APOTHECARY
+   ============================================================ */
+.d-warm {
+  background:
+    radial-gradient(ellipse 60% 50% at 12% 8%,   #ECE3D0 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 88% 18%,  #E0CFB0 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 95%,  #D9A88A 0%, transparent 50%),
+    #FBF8F1;
+  color: #2E1F12;
+}
+.d-warm .swatch-row { background: #C7BAA0; border: 1px solid #C7BAA0; }
+.d-warm .swatch { background: #FBF8F1; }
+.d-warm .demo-hero {
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 30%, #D9A88A 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, #E0CFB0 0%, transparent 55%),
+    #FBF8F1;
+  color: #2E1F12;
+}
+.d-warm .demo-pill {
+  background: rgba(251, 248, 241, 0.78);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(46, 31, 18, 0.08);
+  color: #2E1F12;
+}
+.d-warm .demo-pill::before { background: #C4A572; }
+.d-warm .demo-btn { background: #2E1F12; color: #FBF8F1; }
+.d-warm .demo-link { color: #2E1F12; }
+.d-warm .demo-glass {
+  background:
+    linear-gradient(135deg, #D9A88A 0%, #E0CFB0 60%, #C4A572 100%);
+}
+.d-warm .demo-glass-card { background: rgba(251, 248, 241, 0.78); color: #2E1F12; }
+.d-warm .status-paid { color: #2A4533; border-color: rgba(42,69,51,0.3); }
+.d-warm .status-paid::before { background: #2A4533; }
+.d-warm .status-shipped { color: #8B6028; border-color: rgba(139,96,40,0.3); }
+.d-warm .status-shipped::before { background: #8B6028; }
+.d-warm .status-pending { color: #6B5D4F; border-color: rgba(107,93,79,0.3); }
+.d-warm .status-pending::before { background: #6B5D4F; }
+.d-warm .status-cancelled { color: #7A2424; border-color: rgba(122,36,36,0.3); }
+.d-warm .status-cancelled::before { background: #7A2424; }
+.d-warm .verdict { background: rgba(251, 248, 241, 0.5); }
+
+/* ============================================================
+   DIRECTION 02 — ELEVATED CHAMPAGNE (RECOMMENDED — middle path)
+   ============================================================ */
+.d-elevated {
+  background:
+    radial-gradient(ellipse 60% 50% at 12% 8%,   #F2EDE2 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 88% 18%,  #DCE2E5 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 95%,  #D9C49E 0%, transparent 50%),
+    #FBFAF7;
+  color: #0F0E0D;
+  position: relative;
+}
+.d-elevated::before {
+  content: 'RECOMMENDED';
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  padding: 5px 10px;
+  background: #0F0E0D;
+  color: #FBFAF7;
+}
+.d-elevated .swatch-row { background: #DDD7CC; border: 1px solid #DDD7CC; }
+.d-elevated .swatch { background: #FBFAF7; }
+.d-elevated .demo-hero {
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 30%, #DCE2E5 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, #D9C49E 0%, transparent 55%),
+    #FBFAF7;
+  color: #0F0E0D;
+}
+.d-elevated .demo-pill {
+  background: rgba(251, 250, 247, 0.78);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(15, 14, 13, 0.06);
+  color: #0F0E0D;
+}
+.d-elevated .demo-pill::before { background: #C4A572; }
+.d-elevated .demo-btn { background: #0F0E0D; color: #FBFAF7; }
+.d-elevated .demo-link { color: #0F0E0D; }
+.d-elevated .demo-glass {
+  background:
+    linear-gradient(135deg, #DCE2E5 0%, #D9C49E 100%);
+}
+.d-elevated .demo-glass-card { background: rgba(251, 250, 247, 0.78); color: #0F0E0D; }
+.d-elevated .status-paid { color: #2A4533; border-color: rgba(42,69,51,0.3); }
+.d-elevated .status-paid::before { background: #2A4533; }
+.d-elevated .status-shipped { color: #8B6028; border-color: rgba(139,96,40,0.3); }
+.d-elevated .status-shipped::before { background: #8B6028; }
+.d-elevated .status-pending { color: #8A8378; border-color: #C9C2B7; }
+.d-elevated .status-pending::before { background: #8A8378; }
+.d-elevated .status-cancelled { color: #7A2424; border-color: rgba(122,36,36,0.3); }
+.d-elevated .status-cancelled::before { background: #7A2424; }
+.d-elevated .verdict { background: rgba(251, 250, 247, 0.5); }
+
+/* ============================================================
+   DIRECTION 03 — REFINED CLINICAL
+   ============================================================ */
+.d-clinical {
+  background:
+    radial-gradient(ellipse 60% 50% at 12% 8%,   #DCE2E5 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 88% 18%,  #ECEEF0 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 95%,  #BFC8D0 0%, transparent 50%),
+    #FAFBFC;
+  color: #1A1F25;
+}
+.d-clinical .swatch-row { background: #C9CDD3; border: 1px solid #C9CDD3; }
+.d-clinical .swatch { background: #FAFBFC; }
+.d-clinical .demo-hero {
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 30%, #BFC8D0 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, #ECEEF0 0%, transparent 55%),
+    #FAFBFC;
+  color: #1A1F25;
+}
+.d-clinical .demo-pill {
+  background: rgba(250, 251, 252, 0.78);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(26, 31, 37, 0.06);
+  color: #1A1F25;
+}
+.d-clinical .demo-pill::before { background: #5D6B7A; }
+.d-clinical .demo-btn { background: #1A1F25; color: #FAFBFC; }
+.d-clinical .demo-link { color: #1A1F25; }
+.d-clinical .demo-glass {
+  background:
+    linear-gradient(135deg, #BFC8D0 0%, #B8B0A4 100%);
+}
+.d-clinical .demo-glass-card { background: rgba(250, 251, 252, 0.78); color: #1A1F25; }
+.d-clinical .status-paid { color: #2A4533; border-color: rgba(42,69,51,0.3); }
+.d-clinical .status-paid::before { background: #2A4533; }
+.d-clinical .status-shipped { color: #5D6B7A; border-color: rgba(93,107,122,0.3); }
+.d-clinical .status-shipped::before { background: #5D6B7A; }
+.d-clinical .status-pending { color: #6F7682; border-color: #C9CDD3; }
+.d-clinical .status-pending::before { background: #6F7682; }
+.d-clinical .status-cancelled { color: #7A2424; border-color: rgba(122,36,36,0.3); }
+.d-clinical .status-cancelled::before { background: #7A2424; }
+.d-clinical .verdict { background: rgba(250, 251, 252, 0.5); }
+
+/* ============================================================
+   FINAL COMPARISON STRIP
+   ============================================================ */
+.final {
+  padding: 96px 40px 120px;
+  background: #FFFFFF;
+}
+.final-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.final h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 44px;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.final h2 strong { font-weight: 500; }
+.final-intro {
+  font-size: 16px; line-height: 1.6;
+  color: #3D3833;
+  max-width: 620px;
+  margin-bottom: 56px;
+}
+
+.matrix {
+  display: grid;
+  grid-template-columns: 200px repeat(3, 1fr);
+  gap: 1px;
+  background: #DDD7CC;
+  border: 1px solid #DDD7CC;
+  margin-bottom: 56px;
+}
+.matrix-cell {
+  background: #FFFFFF;
+  padding: 20px 24px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.matrix-cell.head {
+  background: #0F0E0D;
+  color: #FBFAF7;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.matrix-cell.row-label {
+  background: #F4F2EE;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8A8378;
+}
+.matrix-cell .check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  background: #2A4533;
+  color: #FFFFFF;
+  margin-right: 8px;
+  font-size: 11px;
+}
+
+.signature {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8A8378;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #DDD7CC;
+}
+
+@media (max-width: 900px) {
+  .direction-head { grid-template-columns: 1fr; gap: 24px; }
+  .swatch-row { grid-template-columns: repeat(3, 1fr); }
+  .demos { grid-template-columns: 1fr; }
+  .verdict { grid-template-columns: 1fr; gap: 24px; }
+  .matrix { grid-template-columns: 1fr; }
+  .matrix-cell.head ~ .matrix-cell:not(.row-label) {
+    border-top: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COMPARISON HEADER
+     ============================================================ -->
+<header class="compare-header">
+  <div class="eyebrow">// Palette Comparison · 3 Directions</div>
+  <h1>Three <strong>elevated</strong> directions for review.</h1>
+  <p>Each leans into "elevated, science-y, lab-y" differently. Scroll through, react to each as a whole — colour swatches, hero treatment, glass card, status pills. The recommendation is at the bottom.</p>
+</header>
+
+<!-- ============================================================
+     DIRECTION 01 — WARM APOTHECARY
+     ============================================================ -->
+<section class="direction d-warm">
+  <div class="direction-inner">
+
+    <div class="direction-head">
+      <div>
+        <div class="direction-num">Direction 01</div>
+        <h2 class="direction-title"><strong>Warm</strong> Apothecary.</h2>
+        <div class="direction-mood">Peach · Champagne · Umber · No blue</div>
+      </div>
+      <div class="direction-desc">
+        Deeply warm, ritualistic, longevity-forward. The "lab" is implied through molecular imagery and ingredient typography rather than colour. No blue at all — the cool counterpart to champagne is soft peach.
+        <span class="reference">References · Augustinus Bader · Aesop · La Mer</span>
+      </div>
+    </div>
+
+    <!-- Swatches -->
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #2E1F12;"></div>
+        <div class="swatch-info"><div class="swatch-name">Ink</div><div class="swatch-hex">#2E1F12</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #FBF8F1;"></div>
+        <div class="swatch-info"><div class="swatch-name">Paper</div><div class="swatch-hex">#FBF8F1</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #ECE3D0;"></div>
+        <div class="swatch-info"><div class="swatch-name">Bone</div><div class="swatch-hex">#ECE3D0</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #C4A572;"></div>
+        <div class="swatch-info"><div class="swatch-name">Champagne</div><div class="swatch-hex">#C4A572</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #D9A88A;"></div>
+        <div class="swatch-info"><div class="swatch-name">Peach</div><div class="swatch-hex">#D9A88A</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #6B4A2F;"></div>
+        <div class="swatch-info"><div class="swatch-name">Umber</div><div class="swatch-hex">#6B4A2F</div></div>
+      </div>
+    </div>
+
+    <!-- Demos -->
+    <div class="demos">
+      <div class="demo demo-hero">
+        <span class="demo-pill"><span></span>New · Tretinoin 0.05% Protocol</span>
+        <h3 class="demo-headline">Skincare,<br><strong>prescribed</strong> by science.</h3>
+        <p class="demo-sub">Clinically dosed, doctor-formulated treatments — engineered by Dr. Hasia.</p>
+        <div class="demo-btn-row">
+          <button class="demo-btn">Begin protocol →</button>
+          <a href="#" class="demo-link">Take quiz</a>
+        </div>
+      </div>
+      <div class="demo demo-glass">
+        <div class="demo-glass-card">
+          <div>
+            <div class="stat-label">Active strength</div>
+            <div class="stat-value">0.05<strong>%</strong></div>
+          </div>
+          <div>
+            <div class="stat-label">Skin barrier</div>
+            <div class="stat-value"><strong>14</strong> days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <span class="status-pill status-paid"><span></span>Paid</span>
+      <span class="status-pill status-shipped"><span></span>Shipped</span>
+      <span class="status-pill status-pending"><span></span>Pending</span>
+      <span class="status-pill status-cancelled"><span></span>Cancelled</span>
+    </div>
+
+    <div class="verdict">
+      <div class="verdict-col">
+        <h4>Pros</h4>
+        <ul>
+          <li>Most distinctive — looks like no other skincare brand</li>
+          <li>Premium luxury read, ritual/longevity association</li>
+          <li>Very photogenic for editorial PR shots</li>
+        </ul>
+      </div>
+      <div class="verdict-col">
+        <h4>Cons</h4>
+        <ul>
+          <li>Reads more spa than clinic</li>
+          <li>Less obviously "science" without supporting imagery</li>
+          <li>Hardest to maintain — needs strong art direction</li>
+        </ul>
+      </div>
+      <div class="verdict-col">
+        <h4>Best if</h4>
+        <p>Doctors Dose positions further toward longevity and luxury wellness over time. Clinic credentials stay important but recede in the visual hierarchy.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     DIRECTION 02 — ELEVATED CHAMPAGNE (RECOMMENDED)
+     ============================================================ -->
+<section class="direction d-elevated">
+  <div class="direction-inner">
+
+    <div class="direction-head">
+      <div>
+        <div class="direction-num">Direction 02</div>
+        <h2 class="direction-title">Elevated <strong>Champagne</strong>.</h2>
+        <div class="direction-mood">Cream · Champagne · Dove-blue · Balanced</div>
+      </div>
+      <div class="direction-desc">
+        The middle path. Warm cream and bone do 95% of the canvas, champagne lifts premium moments (badges, pull-quote accents, divider details), and a single refined dove-grey-blue plays the "labby trace" in glass mesh underlays and molecular SVGs.
+        <span class="reference">References · Noble Panacea · Sturm · Your Pinterest board</span>
+      </div>
+    </div>
+
+    <!-- Swatches -->
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #0F0E0D;"></div>
+        <div class="swatch-info"><div class="swatch-name">Ink</div><div class="swatch-hex">#0F0E0D</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #FBFAF7;"></div>
+        <div class="swatch-info"><div class="swatch-name">Paper</div><div class="swatch-hex">#FBFAF7</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #F2EDE2;"></div>
+        <div class="swatch-info"><div class="swatch-name">Bone</div><div class="swatch-hex">#F2EDE2</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #C4A572;"></div>
+        <div class="swatch-info"><div class="swatch-name">Champagne</div><div class="swatch-hex">#C4A572</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #94A3B0;"></div>
+        <div class="swatch-info"><div class="swatch-name">Clinical</div><div class="swatch-hex">#94A3B0</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #DCE2E5;"></div>
+        <div class="swatch-info"><div class="swatch-name">Lab Mist</div><div class="swatch-hex">#DCE2E5</div></div>
+      </div>
+    </div>
+
+    <!-- Demos -->
+    <div class="demos">
+      <div class="demo demo-hero">
+        <span class="demo-pill"><span></span>New · Tretinoin 0.05% Protocol</span>
+        <h3 class="demo-headline">Skincare,<br><strong>prescribed</strong> by science.</h3>
+        <p class="demo-sub">Clinically dosed, doctor-formulated treatments — engineered by Dr. Hasia.</p>
+        <div class="demo-btn-row">
+          <button class="demo-btn">Begin protocol →</button>
+          <a href="#" class="demo-link">Take quiz</a>
+        </div>
+      </div>
+      <div class="demo demo-glass">
+        <div class="demo-glass-card">
+          <div>
+            <div class="stat-label">Active strength</div>
+            <div class="stat-value">0.05<strong>%</strong></div>
+          </div>
+          <div>
+            <div class="stat-label">Skin barrier</div>
+            <div class="stat-value"><strong>14</strong> days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <span class="status-pill status-paid"><span></span>Paid</span>
+      <span class="status-pill status-shipped"><span></span>Shipped</span>
+      <span class="status-pill status-pending"><span></span>Pending</span>
+      <span class="status-pill status-cancelled"><span></span>Cancelled</span>
+    </div>
+
+    <div class="verdict">
+      <div class="verdict-col">
+        <h4>Pros</h4>
+        <ul>
+          <li>Best match to your brief — minimal blue, but enough for labby trace</li>
+          <li>Warm canvas reads premium without being spa-coded</li>
+          <li>Most versatile — works across storefront, account, admin</li>
+          <li>Photographs well in both lifestyle and product contexts</li>
+        </ul>
+      </div>
+      <div class="verdict-col">
+        <h4>Cons</h4>
+        <ul>
+          <li>Less distinctive than 01 or 03 individually</li>
+          <li>The "middle path" can read as cautious to a bold client</li>
+        </ul>
+      </div>
+      <div class="verdict-col">
+        <h4>Best if</h4>
+        <p>Doctors Dose wants to balance science authority with luxury feel — clinical credentials and editorial polish carry equal weight. This is the recommended direction for the current brand brief.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     DIRECTION 03 — REFINED CLINICAL
+     ============================================================ -->
+<section class="direction d-clinical">
+  <div class="direction-inner">
+
+    <div class="direction-head">
+      <div>
+        <div class="direction-num">Direction 03</div>
+        <h2 class="direction-title">Refined <strong>Clinical</strong>.</h2>
+        <div class="direction-mood">Mist · Slate · Platinum · Lab-forward</div>
+      </div>
+      <div class="direction-desc">
+        Coolest of the three but still elevated — never icy. Platinum-grey replaces champagne as the metallic accent, dove-blue surface area doubles to ~5%, and the canvas takes a slightly cool tint. Reads as the laboratory, not the boutique.
+        <span class="reference">References · Sturm MC1 · Augustinus Bader Clinical · Lab UI</span>
+      </div>
+    </div>
+
+    <!-- Swatches -->
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #1A1F25;"></div>
+        <div class="swatch-info"><div class="swatch-name">Ink</div><div class="swatch-hex">#1A1F25</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #FAFBFC;"></div>
+        <div class="swatch-info"><div class="swatch-name">Paper</div><div class="swatch-hex">#FAFBFC</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #ECEEF0;"></div>
+        <div class="swatch-info"><div class="swatch-name">Mist</div><div class="swatch-hex">#ECEEF0</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #B8B0A4;"></div>
+        <div class="swatch-info"><div class="swatch-name">Platinum</div><div class="swatch-hex">#B8B0A4</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #94A3B0;"></div>
+        <div class="swatch-info"><div class="swatch-name">Clinical</div><div class="swatch-hex">#94A3B0</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #5D6B7A;"></div>
+        <div class="swatch-info"><div class="swatch-name">Slate</div><div class="swatch-hex">#5D6B7A</div></div>
+      </div>
+    </div>
+
+    <!-- Demos -->
+    <div class="demos">
+      <div class="demo demo-hero">
+        <span class="demo-pill"><span></span>New · Tretinoin 0.05% Protocol</span>
+        <h3 class="demo-headline">Skincare,<br><strong>prescribed</strong> by science.</h3>
+        <p class="demo-sub">Clinically dosed, doctor-formulated treatments — engineered by Dr. Hasia.</p>
+        <div class="demo-btn-row">
+          <button class="demo-btn">Begin protocol →</button>
+          <a href="#" class="demo-link">Take quiz</a>
+        </div>
+      </div>
+      <div class="demo demo-glass">
+        <div class="demo-glass-card">
+          <div>
+            <div class="stat-label">Active strength</div>
+            <div class="stat-value">0.05<strong>%</strong></div>
+          </div>
+          <div>
+            <div class="stat-label">Skin barrier</div>
+            <div class="stat-value"><strong>14</strong> days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <span class="status-pill status-paid"><span></span>Paid</span>
+      <span class="status-pill status-shipped"><span></span>Shipped</span>
+      <span class="status-pill status-pending"><span></span>Pending</span>
+      <span class="status-pill status-cancelled"><span></span>Cancelled</span>
+    </div>
+
+    <div class="verdict">
+      <div class="verdict-col">
+        <h4>Pros</h4>
+        <ul>
+          <li>Reads most obviously "science" / clinic at first glance</li>
+          <li>Modern medical-tech feel — closer to a research portal</li>
+          <li>Most authoritative for prescription products</li>
+          <li>Best fit for the molecular/cellular imagery from the moodboard</li>
+        </ul>
+      </div>
+      <div class="verdict-col">
+        <h4>Cons</h4>
+        <ul>
+          <li>Goes against your "don't go too much blue" instinct</li>
+          <li>Less warmth means less premium-spa appeal</li>
+          <li>Photographs well but can feel cold in product macros</li>
+        </ul>
+      </div>
+      <div class="verdict-col">
+        <h4>Best if</h4>
+        <p>Doctors Dose leans further into the doctor-developed, prescription-grade clinical positioning. The brand becomes a "research portal" first, "boutique" second.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL COMPARISON & RECOMMENDATION
+     ============================================================ -->
+<section class="final">
+  <div class="final-inner">
+
+    <h2>Side-by-<strong>side</strong>.</h2>
+    <p class="final-intro">
+      Reading the brief literally — "elevated, minimum blue, a bit of labby" — Direction 02 is the closest fit. But the right answer depends on which positioning matters more long-term: longevity-luxury (01), balanced (02), or clinical-authority (03).
+    </p>
+
+    <div class="matrix">
+      <div class="matrix-cell head">Trait</div>
+      <div class="matrix-cell head">01 · Warm</div>
+      <div class="matrix-cell head">02 · Elevated</div>
+      <div class="matrix-cell head">03 · Clinical</div>
+
+      <div class="matrix-cell row-label">Warmth</div>
+      <div class="matrix-cell">Highest — peach, umber, champagne carry the brand</div>
+      <div class="matrix-cell">Balanced — warm canvas + cool whisper</div>
+      <div class="matrix-cell">Lowest — cool-tinted canvas with platinum metallic</div>
+
+      <div class="matrix-cell row-label">Blue presence</div>
+      <div class="matrix-cell">Zero. No blue anywhere</div>
+      <div class="matrix-cell">~2% — single dove-blue accent</div>
+      <div class="matrix-cell">~5% — primary mesh + slate accent</div>
+
+      <div class="matrix-cell row-label">Reads as</div>
+      <div class="matrix-cell">Apothecary · Spa · Longevity</div>
+      <div class="matrix-cell">Doctor-designed luxury skincare</div>
+      <div class="matrix-cell">Research lab · Clinic · Pharmacy</div>
+
+      <div class="matrix-cell row-label">Closest competitor</div>
+      <div class="matrix-cell">Augustinus Bader · Tata Harper</div>
+      <div class="matrix-cell">Noble Panacea · 111Skin</div>
+      <div class="matrix-cell">Dr. Sturm · SkinCeuticals</div>
+
+      <div class="matrix-cell row-label">Best for moodboard</div>
+      <div class="matrix-cell">Photography over molecular imagery</div>
+      <div class="matrix-cell">Mixed — both work</div>
+      <div class="matrix-cell">Molecular/cellular renders shine</div>
+
+      <div class="matrix-cell row-label">Match to brief</div>
+      <div class="matrix-cell">Strong on "elevated" · No on "labby"</div>
+      <div class="matrix-cell"><span class="check">✓</span> All three</div>
+      <div class="matrix-cell">Strong on "labby" · Pushes more blue than asked</div>
+
+      <div class="matrix-cell row-label">Risk</div>
+      <div class="matrix-cell">Loses science authority</div>
+      <div class="matrix-cell">Could feel safe — needs strong execution</div>
+      <div class="matrix-cell">Loses warmth — could feel cold</div>
+    </div>
+
+   
+
+    <div class="signature">faithb. · Palette comparison · For Dr. Hasia decision</div>
+
+  </div>
+</section>
+
+</body>
+</html>
